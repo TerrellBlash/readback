@@ -1,6 +1,8 @@
-# Intelligent Document Processing Agent
+# readback
 
-> LangGraph pipeline that reads invoices, resumes and contracts from text, PDFs and scans, sends low-confidence extractions to a human reviewer, and is measured by a published eval. Live on Azure Container Apps.
+> LangGraph pipeline that reads invoices, resumes and contracts from text, PDFs and scans. A second model re-reads every scanned page, anything doubtful goes to a human reviewer, and a published eval measures how often a wrong value gets through. Live on Azure Container Apps.
+
+The name comes from radio readback: a pilot repeats an instruction back, and a mismatch gets caught before anyone acts on it.
 
 
 
@@ -40,8 +42,8 @@ Text ───────────────┴→ Ingest → Classify ─
 
 ```bash
 # Clone and install
-git clone https://github.com/TerrellBlash/doc-processing-agent.git
-cd doc-processing-agent
+git clone https://github.com/TerrellBlash/readback.git
+cd readback
 pip install -r requirements.txt
 
 # Set your API key
@@ -164,7 +166,7 @@ Azure registry and no Azure database to pay for.
 ## Project Structure
 
 ```
-doc-processing-agent/
+readback/
 ├── app/
 │   ├── __init__.py
 │   ├── state.py          # State definitions

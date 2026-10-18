@@ -19,7 +19,7 @@ permissions:
   packages: write
 
 env:
-  IMAGE: ghcr.io/terrellblash/doc-processing-agent  # registry names must be lowercase
+  IMAGE: ghcr.io/terrellblash/readback  # registry names must be lowercase
 
 jobs:
   build:

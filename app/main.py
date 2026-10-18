@@ -260,7 +260,7 @@ async def get_status(thread_id: str):
 @app.get("/health")
 async def health_check():
     """Azure Container Apps uses this to know the service is alive."""
-    return {"status": "healthy", "service": "doc-processing-agent"}
+    return {"status": "healthy", "service": "readback"}
 
 
 # --- Helpers ---
