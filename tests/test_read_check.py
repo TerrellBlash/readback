@@ -188,7 +188,7 @@ def test_an_unchecked_page_sends_the_document_to_review():
 def test_agreeing_reads_do_not_block_auto_storage():
     pages = [{"page": 1, "source": "vision", "chars": 60,
               "check": {"agrees": True, "first_read_only": [], "second_read_only": [], "error": None}}]
-    assert validate_extraction(_state(pages)).goto == "enrich_extraction"
+    assert validate_extraction(_state(pages)).goto == "store_results"
 
 
 

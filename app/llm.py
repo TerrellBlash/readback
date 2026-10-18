@@ -61,9 +61,10 @@ def _build(model: str, reasoning_effort: str) -> ChatOpenAI:
     # by default, and nothing here needs OpenAI to retain them.
     if not is_reasoning_model(model):
         return ChatOpenAI(model=model, temperature=0, store=False, timeout=REQUEST_TIMEOUT_SECONDS)
-    # Chat Completions rejects function tools combined with a reasoning
-    # effort on current models, and enrich_extraction binds a tool. Any
-    # effort other than "none" therefore goes through the Responses API.
+    # Any effort other than "none" goes through the Responses API: Chat
+    # Completions rejects function tools combined with a reasoning effort on
+    # current models, so structured output in function-calling mode would
+    # fail there.
     return ChatOpenAI(
         model=model,
         reasoning_effort=reasoning_effort,

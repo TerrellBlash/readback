@@ -19,12 +19,10 @@ Send it an invoice, resume or contract as text, a PDF or a photo:
 4. **Validate.** A document with every required field present and, for
    scanned pages, both reads agreeing is stored. Anything else goes to
    review, with the reasons.
-5. **Enrich.** A stored invoice gets one tool call: the model may look its
-   vendor up in a vendor table (a fixed stand-in in this repo).
-6. **Review.** LangGraph's `interrupt()` pauses the run and saves it to
+5. **Review.** LangGraph's `interrupt()` pauses the run and saves it to
    Postgres. A reviewer approves, corrects or rejects it through `/review`,
    from any worker, after any restart.
-7. **Return.** The API returns the extracted fields, the confidence, each
+6. **Return.** The API returns the extracted fields, the confidence, each
    page's source, and the review decision. Writing them to a system of
    record is left to the caller.
 
@@ -34,9 +32,9 @@ Send it an invoice, resume or contract as text, a PDF or a photo:
 PDF / image → Read (text layer, or vision model for scans)
                     │
 Text ───────────────┴→ Ingest → Classify ─┬─→ Extract Invoice  ─┐
-                              │            ├─→ Extract Resume   ─┼─→ Validate ─┬─→ Enrich ─→ Store Results
-                              │            └─→ Extract Contract ─┘             │
-                              └────────────────────────────────────────────────┴─→ Human Review → Store Results
+                                   │       ├─→ Extract Resume   ─┼─→ Validate ─┬─→ Store Results
+                                   │       └─→ Extract Contract ─┘             │
+                                   └───────────────────────────────────────────┴─→ Human Review → Store Results
 ```
 
 ## Quick Start
@@ -185,11 +183,10 @@ readback/
 ├── app/
 │   ├── __init__.py
 │   ├── state.py          # Graph state
-│   ├── nodes.py          # Graph nodes: classify, extract, validate, review, enrich, store
+│   ├── nodes.py          # Graph nodes: classify, extract, validate, review, store
 │   ├── schemas.py        # Extraction schemas per document type
 │   ├── llm.py            # Model selection, the second-read model, timeouts
 │   ├── documents.py      # PDF/image to text: text layer, vision read, second read
-│   ├── tools.py          # vendor_lookup, the enrich step's tool
 │   ├── graph.py          # Graph wiring and the Postgres checkpointer
 │   └── main.py           # FastAPI endpoints, API key, body limits
 ├── tests/

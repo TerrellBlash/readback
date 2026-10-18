@@ -7,7 +7,6 @@ to the decision that drives it: classify picks the extractor, validate
 picks auto-store or human review.
 """
 
-import json
 import logging
 from typing import Literal
 
@@ -17,7 +16,6 @@ from langgraph.types import Command, interrupt
 from app.llm import get_llm
 from app.schemas import EXTRACTION_SCHEMAS, REQUIRED_FIELDS
 from app.state import DocAgentState, DocumentClassification, ExtractionResult
-from app.tools import vendor_lookup
 
 logger = logging.getLogger(__name__)
 
@@ -262,7 +260,7 @@ def _page_check_issues(pages: list[dict]) -> list[str]:
 
 def validate_extraction(
     state: DocAgentState,
-) -> Command[Literal["enrich_extraction", "human_review"]]:
+) -> Command[Literal["store_results", "human_review"]]:
     """
     Decide whether the extraction can be stored without a person looking.
 
@@ -270,7 +268,7 @@ def validate_extraction(
     scanned pages, both reads agreeing. Anything else goes to review.
 
     - Parameter state: graph state; reads extraction and document_pages.
-    - Returns: a Command to enrich_extraction when it passes, otherwise to
+    - Returns: a Command to store_results when it passes, otherwise to
         human_review with the issues the reviewer should check.
     """
     extraction = state.get("extraction")
@@ -299,7 +297,7 @@ def validate_extraction(
         logger.info("Validation passed; storing without review")
         return Command(
             update={"validation_issues": [], "processing_status": "validated"},
-            goto="enrich_extraction",
+            goto="store_results",
         )
     logger.info("Validation found %d issues; sending to review", len(issues))
     return Command(
@@ -385,44 +383,3 @@ def store_results(state: DocAgentState) -> dict:
                 final_output["document_type"], status)
     return {"final_output": final_output, "processing_status": status}
 
-
-def enrich_extraction(
-    state: DocAgentState, config: RunnableConfig
-) -> Command[Literal["store_results"]]:
-    """
-    The one agentic node. Binds the vendor_lookup tool to the LLM and
-    lets the MODEL decide whether a lookup applies to this document.
-
-    Invoices with a named vendor: the model calls the tool.
-    Resumes and most other docs: the model declines, enrichment stays None.
-
-    Either way, this node routes to store_results. It never changes
-    which nodes run; its only discretion is whether to call the tool.
-    """
-    extraction = state.get("extraction") or {}
-    fields = extraction.get("fields", {})
-
-    llm_with_tools = get_llm(config).bind_tools([vendor_lookup])
-
-    prompt = (
-        "You are enriching extracted document data. If the document names a "
-        "vendor or supplier and a vendor lookup would add useful detail, call "
-        "the vendor_lookup tool with the vendor name. If there is no vendor "
-        "(for example a resume), do not call any tool.\n\n"
-        f"Extracted fields:\n{json.dumps(fields, indent=2)}"
-    )
-
-    response = llm_with_tools.invoke(prompt)
-
-    enrichment = None
-    if response.tool_calls:
-        vendor_name = response.tool_calls[0]["args"].get("vendor_name", "")
-        enrichment = vendor_lookup.invoke({"vendor_name": vendor_name})
-        logger.info("enrich_extraction: looked up vendor %r", vendor_name)
-    else:
-        logger.info("enrich_extraction: no vendor lookup needed")
-
-    return Command(
-        update={"enrichment": enrichment},
-        goto="store_results",
-    )

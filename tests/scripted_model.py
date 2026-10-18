@@ -1,10 +1,8 @@
 """
-A scripted stand-in for ChatOpenAI that answers each node's call: the
-classifier, the invoice extractor and the enrichment tool call. Tests use
-it to run the real graph offline.
+A scripted stand-in for ChatOpenAI that answers each node's call, the
+classifier and the invoice extractor. Tests use it to run the real graph
+offline.
 """
-
-from langchain_core.messages import AIMessage
 
 from app.schemas import InvoiceFields
 
@@ -22,7 +20,7 @@ INVOICE_FIELDS = {
 
 
 class ScriptedModel:
-    """Answers the classifier, the extractor and the enrichment call."""
+    """Answers the classifier and the invoice extractor."""
 
     def __init__(self, doc_type="invoice", confidence=0.95):
         self.classification = {"doc_type": doc_type, "confidence": confidence,
@@ -34,12 +32,7 @@ class ScriptedModel:
         clone.classification, clone.schema = self.classification, schema
         return clone
 
-    def bind_tools(self, tools):
-        return self
-
     def invoke(self, prompt):
         if self.schema is InvoiceFields:
             return {"parsed": InvoiceFields(**INVOICE_FIELDS), "raw": None, "parsing_error": None}
-        if self.schema is not None:
-            return self.classification
-        return AIMessage(content="no lookup needed")
+        return self.classification

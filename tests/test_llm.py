@@ -96,7 +96,8 @@ def test_per_run_config_overrides_the_env_var(monkeypatch):
 
 def test_reasoning_effort_above_none_uses_the_responses_api(monkeypatch):
     """Chat Completions returns a 400 for tools plus a reasoning effort on
-    gpt-6 models, which would break the enrich_extraction tool call."""
+    gpt-6 models, which would break structured output in function-calling
+    mode."""
     monkeypatch.setenv("DOC_AGENT_REASONING_EFFORT", "medium")
     llm = get_llm({"configurable": {"model": "gpt-6-luna"}})
     assert llm.reasoning_effort == "medium"

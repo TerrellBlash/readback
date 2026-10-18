@@ -19,7 +19,6 @@ from langgraph.graph import END, START, StateGraph
 
 from app.nodes import (
     classify_document,
-    enrich_extraction,
     extract_contract,
     extract_invoice,
     extract_resume,
@@ -164,7 +163,6 @@ def build_graph(checkpointer=None):
     workflow.add_node("extract_resume", extract_resume)
     workflow.add_node("extract_contract", extract_contract)
     workflow.add_node("validate_extraction", validate_extraction)
-    workflow.add_node("enrich_extraction", enrich_extraction)
     workflow.add_node("human_review", human_review)
     workflow.add_node("store_results", store_results)
 
