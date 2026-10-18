@@ -4,21 +4,29 @@
 
 The name comes from radio readback: a pilot repeats an instruction back, and a mismatch gets caught before anyone acts on it.
 
+## What It Does
 
+Send it an invoice, resume or contract as text, a PDF or a photo:
 
-## What This Does
-
-Feed it any document (invoice, resume, or contract), as text, a PDF, or a photo, and the agent:
-
-1. **Reads** — a PDF's own text layer when it has one; scanned pages and PNG/JPEG photos go to the vision model and are read again by a second model, and each page records which source produced its text and whether the two reads agreed
-2. **Ingests** — validates the document is processable
-3. **Classifies** — LLM determines document type + confidence score
-4. **Extracts** — specialist node fills a per-type schema with structured output; fields the document lacks come back null
-5. **Validates** — confidence gate checks for missing fields and for pages where the two reads disagree
-6. **Routes** — high confidence → auto-store, low confidence → human review
-7. **Stores** — packages clean JSON output ready for any database
-
-The human-in-the-loop pattern uses LangGraph's `interrupt()` — the pipeline literally pauses, saves all state, and waits for a human to approve or correct the extraction. Could be 5 seconds or 5 days.
+1. **Read.** A PDF page with a text layer is read directly. A scanned page or
+   a PNG/JPEG goes to a vision model, and a second model reads it again;
+   each page records where its text came from and whether the two reads
+   agreed.
+2. **Classify.** The model names the document type with a confidence. An
+   unknown type, or a confidence below 0.7, goes to review.
+3. **Extract.** A per-type schema is filled with structured output. A field
+   the document doesn't have comes back null.
+4. **Validate.** A document with every required field present and, for
+   scanned pages, both reads agreeing is stored. Anything else goes to
+   review, with the reasons.
+5. **Enrich.** A stored invoice gets one tool call: the model may look its
+   vendor up in a vendor table (a fixed stand-in in this repo).
+6. **Review.** LangGraph's `interrupt()` pauses the run and saves it to
+   Postgres. A reviewer approves, corrects or rejects it through `/review`,
+   from any worker, after any restart.
+7. **Return.** The API returns the extracted fields, the confidence, each
+   page's source, and the review decision. Writing them to a system of
+   record is left to the caller.
 
 ## Architecture
 
@@ -26,9 +34,9 @@ The human-in-the-loop pattern uses LangGraph's `interrupt()` — the pipeline li
 PDF / image → Read (text layer, or vision model for scans)
                     │
 Text ───────────────┴→ Ingest → Classify ─┬─→ Extract Invoice  ─┐
-                                           ├─→ Extract Resume   ─┼─→ Validate ─┬─→ Store Results
-                                           └─→ Extract Contract ─┘             │
-                                                                                └─→ Human Review → Store Results
+                              │            ├─→ Extract Resume   ─┼─→ Validate ─┬─→ Enrich ─→ Store Results
+                              │            └─→ Extract Contract ─┘             │
+                              └────────────────────────────────────────────────┴─→ Human Review → Store Results
 ```
 
 ## Quick Start
@@ -44,7 +52,7 @@ Text ───────────────┴→ Ingest → Classify ─
 # Clone and install
 git clone https://github.com/TerrellBlash/readback.git
 cd readback
-pip install -r requirements.txt
+pip install -r requirements-dev.txt   # requirements.txt alone to only run the server
 
 # Set your API key
 export OPENAI_API_KEY="sk-..."
@@ -104,34 +112,41 @@ Uploads are untrusted, so each size is checked before the work it would cost:
 
 Errors return a short message. Details go to the server log, not the client.
 
-### Submit Human Review
+### Review a Paused Document
+
+A response with `needs_review: true` lists the reasons in
+`review_context.issues`. Approve it, optionally with corrections:
 
 ```bash
 curl -X POST http://localhost:8000/review \
   -H "Content-Type: application/json" \
   -d '{
-    "thread_id": "YOUR_THREAD_ID_HERE",
+    "thread_id": "THREAD_ID_FROM_THE_RESPONSE",
     "approved": true,
-    "corrections": {"total_amount": 19593.25}
+    "corrections": {"due_date": "2024-04-15"}
   }'
 ```
+
+Corrections are checked against the document type's schema before the run
+resumes (422 for an unknown field or a wrong type), and the stored
+confidence is recomputed from the corrected fields. A review of an unknown
+thread is a 404, and of one that isn't waiting, a 409.
+`GET /status/{thread_id}` returns a document's current state.
 
 ### Run Tests
 
 ```bash
-pytest tests/test_pipeline.py -v
+pytest                       # offline: models are stubbed or scripted
+RUN_LIVE_TESTS=1 pytest      # also runs the few tests that call the OpenAI API
 ```
 
-#### Local Postgres for testing
-
-The checkpointer test that proves paused reviews survive a restart
-(`tests/test_checkpointer_restart.py`) needs a real Postgres instance —
-it's skipped automatically if `DATABASE_URL` isn't set. To run it:
+The Postgres tests (checkpointer setup, and paused reviews surviving a
+restart) are skipped unless `DATABASE_URL` is set:
 
 ```bash
 docker compose up -d postgres
 export DATABASE_URL=postgresql://docagent:docagent@localhost:5433/docagent
-pytest tests/test_checkpointer_restart.py -v
+pytest
 ```
 
 ## Deploy to Azure
@@ -169,24 +184,28 @@ Azure registry and no Azure database to pay for.
 readback/
 ├── app/
 │   ├── __init__.py
-│   ├── state.py          # State definitions
-│   ├── nodes.py          # All node functions (each does one job)
+│   ├── state.py          # Graph state
+│   ├── nodes.py          # Graph nodes: classify, extract, validate, review, enrich, store
 │   ├── schemas.py        # Extraction schemas per document type
-│   ├── llm.py            # Model selection (DOC_AGENT_MODEL, per-run override)
-│   ├── documents.py      # PDF/image to text: text layer first, vision model for scans
-│   ├── graph.py          # Graph wiring (connects nodes with edges), build_checkpointer()
-│   └── main.py           # FastAPI server (API endpoints)
+│   ├── llm.py            # Model selection, the second-read model, timeouts
+│   ├── documents.py      # PDF/image to text: text layer, vision read, second read
+│   ├── tools.py          # vendor_lookup, the enrich step's tool
+│   ├── graph.py          # Graph wiring and the Postgres checkpointer
+│   └── main.py           # FastAPI endpoints, API key, body limits
 ├── tests/
-│   ├── test_pipeline.py              # Full pipeline tests with sample docs
-│   ├── test_confidence.py            # Unit tests for extraction confidence scoring
-│   ├── test_extraction.py            # Schema-enforced extraction against a stub model
-│   ├── test_llm.py                   # Model selection and per-run override
-│   ├── test_documents.py             # PDF/image reading, page sources, limits
+│   ├── test_pipeline.py              # The whole graph against the real model (RUN_LIVE_TESTS=1)
+│   ├── test_review_api.py            # Review loop through the API, scripted model
+│   ├── test_read_check.py            # Second read: comparison, flags, refusals
+│   ├── test_api_auth.py              # API key check
 │   ├── test_api_file.py              # Upload endpoint: errors and page provenance
+│   ├── test_documents.py             # PDF/image reading, page sources, limits
+│   ├── test_extraction.py            # Schema-enforced extraction against a stub model
+│   ├── test_confidence.py            # Extraction confidence scoring
+│   ├── test_llm.py                   # Model selection and per-run override
 │   ├── test_scoring.py               # Eval field-comparison rules
 │   ├── test_eval_summary.py          # Eval routing and accuracy metrics
-│   ├── test_checkpointer_restart.py  # Proves paused reviews survive a worker restart (needs Postgres)
-│   └── test_checkpointer_infra.py    # LLM-free Postgres persistence and setup tests (needs Postgres)
+│   ├── test_checkpointer_restart.py  # Paused reviews survive a worker restart (needs Postgres)
+│   └── test_checkpointer_infra.py    # Postgres pool, setup lock, fresh database (needs Postgres)
 ├── evals/
 │   ├── README.md         # Dataset, scoring rules, metric definitions, limits
 │   ├── build_dataset.py  # Seeded synthetic dataset: 56 docs across text, PDFs, scans
@@ -197,45 +216,27 @@ readback/
 │   ├── data/             # The dataset and labels.json
 │   └── results/          # One JSON per run, plus a generated summary
 ├── .github/workflows/image.yml  # Builds and publishes the image on push to main
-├── Dockerfile            # Container config for Azure
-├── docker-compose.yml    # Local Postgres for development/testing only
-├── deploy.sh             # One-command Azure deployment
-├── requirements.txt
-└── README.md
+├── Dockerfile
+├── docker-compose.yml    # Local Postgres for tests
+├── deploy.sh             # Azure Container Apps deployment
+├── requirements.txt      # Runtime dependencies
+├── requirements-dev.txt  # Plus pytest and ruff
+└── pyproject.toml        # ruff settings
 ```
 
-## Key LangGraph Concepts Demonstrated
+## Paused Reviews and Postgres
 
-| Concept | Where It's Used |
-|---------|----------------|
-| **State design** | `state.py` — raw data, never formatted prompts |
-| **Node functions** | `nodes.py` — each function does one thing |
-| **Command routing** | `classify_document()` — LLM decides next node |
-| **Structured output** | `schemas.py` — every field required and nullable, so the model must state each one |
-| **Confidence gating** | `validate_extraction()` — auto-store vs human review |
-| **interrupt()** | `human_review()` — pause/resume across sessions |
-| **Retry policies** | `graph.py` — extraction nodes retry on failure |
-| **Checkpointing** | `graph.py` — `build_checkpointer()` picks Postgres or MemorySaver, enabling durable execution |
+`interrupt()` saves the paused run through the graph's checkpointer, so
+where a pause lives depends on `DATABASE_URL`:
 
-## Checkpointing & Persistence
-
-The pipeline's `human_review` step pauses the graph with LangGraph's
-`interrupt()` — state has to live somewhere for that pause to survive
-until a human responds. Where it lives depends on `DATABASE_URL`:
-
-- **`DATABASE_URL` set** — `build_checkpointer()` (in `app/graph.py`) builds
-  a `psycopg_pool.ConnectionPool` and a `PostgresSaver` on top of it. Every
-  worker process's `.setup()` call is idempotent, so all 4 uvicorn workers
-  can run it concurrently on startup. A review submitted to a different
-  worker than the one that paused it still resolves, and a full container
-  restart doesn't lose pending reviews.
-- **`DATABASE_URL` not set** — falls back to an in-memory `MemorySaver`,
-  logs a `WARNING`, and keeps running. This is fine for local development
-  and tests, but **not restart-safe**: a container restart or a request
-  landing on a different worker silently loses any paused review. Never
-  run it this way in a multi-worker deployment.
-
-For local Postgres setup, see "Local Postgres for testing" above.
+- **Set:** `build_checkpointer()` in `app/graph.py` builds a connection pool
+  and a `PostgresSaver`. A review sent to a different worker than the one
+  that paused it still resolves, and a container restart loses nothing. On
+  an empty database the 4 uvicorn workers would race to create the schema,
+  so an advisory lock lets one run the setup while the others wait.
+- **Unset:** an in-memory `MemorySaver`, with a warning in the log. Fine for
+  local development and tests; with more than one worker, or after a
+  restart, a paused review is lost.
 
 ## Evaluation
 
@@ -272,10 +273,11 @@ What the numbers say:
   errors. Disagreement between the two is the signal: with it, the run had no
   silent errors, on the main set or on the fresh poor scans it was never
   tuned on.
-- **The price is cost and reviews, not speed.** The reads run at the same
-  time, so the median document takes 0.3 seconds longer. The second read
-  costs about $0.0026 per scanned page, which raises this mix from $0.41 to
-  $1.77 per 1,000 documents. It sent 14 poor scans to review: 8 had a wrong
+- **The price is cost and reviews, more than speed.** The reads run at the
+  same time, so the median document took 0.4 seconds longer on the main set
+  and 2.2 seconds longer on the fresh poor scans, where every page is read
+  twice. The second read costs about $0.003 per scanned page, which raises
+  this mix from $0.41 to $1.77 per 1,000 documents. It sent 14 poor scans to review: 8 had a wrong
   field, and 6 differed only in words outside the extracted fields (signer
   names, a year, an hourly rate) or in gpt-6.1-sol's own misread.
 - **gpt-4o-mini declines some poor scans.** It refused to transcribe 6 of
@@ -290,9 +292,12 @@ changes, not a production accuracy figure.
 ## Known Limitations
 
 - **Two models can misread the same way.** The second read only catches a
-  misread the other model doesn't share. It didn't happen on these 23 poor
-  scans, but in the experiment both models read invoice 91630 as 91830; that
-  page was flagged only because they disagreed on its dates.
+  misread the other model doesn't share. It happened once in the eval: on
+  res-06-poor both models read the (512) area code as (312), so the reads
+  agreed, and the document went to review only because its summary was
+  missing. In the experiment that chose the second read, both models read
+  invoice 91630 as 91830; that page was flagged only because they disagreed
+  on its dates.
 
 - **Some reviews aren't needed.** The two reads are compared word for word,
   so a difference in a signer's name sends a document to review even though
@@ -308,21 +313,11 @@ changes, not a production accuracy figure.
   `payment_terms` and goes to human review. Per-type optional fields would
   fix this.
 
-## Production Upgrades
+## Not Built Yet
 
-For a real production deployment, consider:
-
-- **Authentication**: Replace the single shared API key with per-client keys or OAuth
-- **Observability**: Connect LangSmith for tracing and debugging
-- **Streaming**: Add SSE endpoints to stream progress updates to a frontend
-
-## Tech Stack
-
-- **LangGraph** — agent orchestration with state machines
-- **LangChain** — LLM integration (OpenAI, swappable)
-- **FastAPI** — async API server
-- **Docker** — containerization
-- **Azure Container Apps** — cloud deployment
+- Per-client API keys or OAuth instead of one shared key.
+- Tracing (LangSmith or OpenTelemetry).
+- Writing results to a system of record, and a reviewer UI.
 
 ## License
 

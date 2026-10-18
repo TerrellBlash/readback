@@ -1,13 +1,5 @@
-# ============================================================
-# Local development / testing only.
-#
-# This brings up a disposable Postgres instance so the
-# Postgres-backed checkpointer (see app/graph.py:build_checkpointer)
-# and tests/test_checkpointer_restart.py have something real to talk
-# to. It is NOT what gets deployed — see deploy.sh / README.md for
-# how the deployed service points DATABASE_URL at a provisioned
-# instance such as Azure Database for PostgreSQL Flexible Server.
-# ============================================================
+# Local Postgres for development and tests (see README "Run Tests").
+# The deployed app uses its own database; see deploy.sh.
 services:
   postgres:
     image: postgres:16-alpine

@@ -1,0 +1,932 @@
+[
+  {
+    "id": "inv-03",
+    "format": "pdf_scan",
+    "dpi": 115,
+    "reads": {
+      "luna1": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91630\nInvoice Date: 23 Apr 2026\nDue Date: June 7, 2026\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription                      Qty   Unit Price   Amount\nWarehouse storage (pallet-month)   31    $23.51       $728.81\nSoftware subscription - annual seat 17  $304.30      $5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com",
+      "luna2": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91630\nInvoice Date: 23 Apr 2026\nDue Date: June 7, 2026\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription                      Qty   Unit Price   Amount\nWarehouse storage (pallet-month)   31     $23.51     $728.81\nSoftware subscription - annual seat 17   $304.30   $5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com",
+      "sol": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91630\nInvoice Date: 23 Apr 2026\nDue Date: June 7, 2026\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription\tQty\tUnit Price\tAmount\nWarehouse storage (pallet-month)\t31\t$23.51\t$728.81\nSoftware subscription - annual seat\t17\t$304.30\t$5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com",
+      "luna_marked": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91630\nInvoice Date: 23 Apr 2026\nDue Date: June 7, 2026\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription                     Qty  Unit Price  Amount\nWarehouse storage (pallet-month)  31    $23.51     $728.81\nSoftware subscription - annual seat  17  $304.30  $5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com",
+      "luna_med": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91630\nInvoice Date: 23 Apr 2026\nDue Date: June 7, 2026\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription                       Qty   Unit Price   Amount\nWarehouse storage (pallet-month)    31    $23.51       $728.81\nSoftware subscription - annual seat 17    $304.30      $5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com"
+    },
+    "costs": {
+      "luna1": 0.00015772,
+      "luna2": 0.00015772,
+      "sol": 0.006382,
+      "luna_marked": 0.0003221,
+      "luna_med": 0.0004241
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "inv-06",
+    "format": "pdf_scan",
+    "dpi": 115,
+    "reads": {
+      "luna1": "INVOICE\n--------------------------------\nFrom: Quartzline Printing, 39 Press Avenue, Raleigh, NC 27601\nTo: Granite State Credit Union\nInvoice #: INV-2025-5398\nIssued: Sep 18, 2025\nPayment due: October 3, 2025\n\nItems:\n1. Electrical inspection - 1 x $506.18 = $506.18\n\nSubtotal ........ $506.18\nTax ............. $25.31\nTOTAL ........... $531.49",
+      "luna2": "INVOICE\n--------------------\nFrom: Quartzline Printing, 39 Press Avenue, Raleigh, NC 27601\nTo: Granite State Credit Union\nInvoice #: INV-2025-5398\nIssued: Sep 18, 2025\nPayment due: October 3, 2025\n\nItems:\n1. Electrical inspection - 1 x $506.18 = $506.18\n\nSubtotal ........ $506.18\nTax ............. $25.31\nTOTAL ........... $531.49",
+      "sol": "INVOICE\n----------------------------------------\nFrom: Quartzline Printing, 39 Press Avenue, Raleigh, NC 27601\nTo: Granite State Credit Union\nInvoice #: INV-2025-5398\nIssued: Sep 18, 2025\nPayment due: October 3, 2025\n\nItems:\n1. Electrical inspection - 1 x $506.18 = $506.18\n\nSubtotal ........ $506.18\nTax .............. $25.31\nTOTAL ............ $531.49",
+      "luna_marked": "INVOICE\n____________________\nFrom: Quartzline Printing, 39 Press Avenue, Raleigh, NC 27601\nTo: Granite State Credit Union\nInvoice #: INV-2025-5398\nIssued: Sep. 18, 2025\nPayment due: October 3, 2025\n\nItems:\n1. Electrical inspection - 1 x $506.18 = $506.18\n\nSubtotal ........ $506.18\nTax ............. $25.31\nTOTAL ........... $531.49",
+      "luna_med": "INVOICE\n--------------------------------\nFrom: Quartzline Printing, 39 Press Avenue, Raleigh, NC 27601\nTo: Granite State Credit Union\nInvoice #: INV-2025-5398\nIssued: Sep 18, 2025\nPayment due: October 3, 2025\n\nItems:\n1. Electrical inspection - 1 x $506.18 = $506.18\n\nSubtotal ........ $506.18\nTax ............ $25.31\nTOTAL ............ $531.49"
+    },
+    "costs": {
+      "luna1": 0.000292,
+      "luna2": 0.00013072,
+      "sol": 0.006942,
+      "luna_marked": 0.00029560000000000003,
+      "luna_med": 0.0005516000000000001
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "inv-09",
+    "format": "pdf_scan",
+    "dpi": 115,
+    "reads": {
+      "luna1": "Tidewater Electrical Inc.\n77 Harbor Drive\nNorfolk, VA 23510\n\nINVOICE\n\nInvoice Number: TI-10167\nInvoice Date: Mar 2, 2025\nDue Date: 01 May 2025\nPayment Terms: Net 60\n\nBill To:\nAcme Corporation\n\nDescription                         Qty   Unit Price   Amount\nWarehouse storage (pallet-month)     21       14.68     308.28\nSoftware subscription - annual seat  25      389.77   9,744.25\nFreight - LTL shipment                4      404.11   1,616.44\n\nSubtotal: 11,668.97\nTax (5%): 583.45\nTotal Due: 12,252.42\n\nThank you for your business. Questions? billing@tidewater.example.com",
+      "luna2": "Tidewater Electrical Inc.\n77 Harbor Drive\nNorfolk, VA 23510\n\nINVOICE\n\nInvoice Number: TI-10167\nInvoice Date: Mar 2, 2025\nDue Date: 01 May 2025\nPayment Terms: Net 60\n\nBill To:\nAcme Corporation\n\nDescription                         Qty   Unit Price   Amount\nWarehouse storage (pallet-month)     21       14.68     308.28\nSoftware subscription - annual seat  25      389.77   9,744.25\nFreight - LTL shipment                4      404.11   1,616.44\n\nSubtotal: 11,668.97\nTax (5%): 583.45\nTotal Due: 12,252.42\n\nThank you for your business. Questions? billing@tidewater.example.com",
+      "sol": "Tidewater Electrical Inc.\n77 Harbor Drive\nNorfolk, VA 23510\n\nINVOICE\n\nInvoice Number: TI-10167\nInvoice Date: Mar 2, 2025\nDue Date: 01 May 2025\nPayment Terms: Net 60\n\nBill To:\nAcme Corporation\n\nDescription Qty Unit Price Amount\nWarehouse storage (pallet-month) 21 14.68 308.28\nSoftware subscription - annual seat 25 389.77 9,744.25\nFreight - LTL shipment 4 404.11 1,616.44\n\nSubtotal: 11,668.97\nTax (5%): 583.45\nTotal Due: 12,252.42\n\nThank you for your business. Questions? billing@tidewater.example.com",
+      "luna_marked": "Tidewater Electrical Inc.\n77 Harbor Drive\nNorfolk, VA 23510\n\nINVOICE\n\nInvoice Number: TI-10167\nInvoice Date: Mar 2, 2025\nDue Date: 01 May 2025\nPayment Terms: Net 60\n\nBill To:\nAcme Corporation\n\nDescription                          Qty   Unit Price   Amount\nWarehouse storage (pallet-month)       21       14.68    308.28\nSoftware subscription - annual seat   25      389.77  9,744.25\nFreight - LTL shipment                 4      404.11  1,616.44\n\nSubtotal: 11,668.97\nTax (5%): 583.45\nTotal Due: 12,252.42\n\nThank you for your business. Questions? billing@tidewater.example.com",
+      "luna_med": "Tidewater Electrical Inc.\n77 Harbor Drive\nNorfolk, VA 23510\n\nINVOICE\n\nInvoice Number: TI-10167\nInvoice Date: Mar 2, 2025\nDue Date: 01 May 2025\nPayment Terms: Net 60\n\nBill To:\nAcme Corporation\n\nDescription                         Qty   Unit Price   Amount\nWarehouse storage (pallet-month)     21    14.68        308.28\nSoftware subscription - annual seat  25    389.77       9,744.25\nFreight - LTL shipment               4    404.11       1,616.44\n\nSubtotal: 11,668.97\nTax (5%): 583.45\nTotal Due: 12,252.42\n\nThank you for your business. Questions? billing@tidewater.example.com"
+    },
+    "costs": {
+      "luna1": 0.000331,
+      "luna2": 0.00016972,
+      "sol": 0.006512,
+      "luna_marked": 0.00033360000000000003,
+      "luna_med": 0.0004506
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "inv-12",
+    "format": "pdf_scan",
+    "dpi": 115,
+    "reads": {
+      "luna1": "INVOICE\n--------------------------------\nFrom: Kestrel Office Partners Ltd, 8 Bishopsgate, London EC2N 4BQ, UK\nTo: Pinecrest Hotel Group\nInvoice #: INV-2025-4409\nIssued: Oct 23, 2025\nPayment due: December 7, 2025\n\nItems:\n1. Electrical inspection - 1 x GBP 352.52 = GBP 352.52\n2. On-site support visit - 4 x GBP 278.68 = GBP 1,114.72\n\nSubtotal ........ GBP 1,467.24\nTax ............. GBP 293.45\nTOTAL ........... GBP 1,760.69",
+      "luna2": "INVOICE\n----------------------------------------\nFrom: Kestrel Office Partners Ltd, 8 Bishopsgate, London EC2N 4BQ, UK\nTo: Pinecrest Hotel Group\nInvoice #: INV-2025-4409\nIssued: Oct 23, 2025\nPayment due: December 7, 2025\n\nItems:\n1. Electrical inspection - 1 x GBP 352.52 = GBP 352.52\n2. On-site support visit - 4 x GBP 278.68 = GBP 1,114.72\n\nSubtotal ........ GBP 1,467.24\nTax ............. GBP 293.45\nTOTAL ........... GBP 1,760.69",
+      "sol": "INVOICE\n----------------------------------------\nFrom: Kestrel Office Partners Ltd, 8 Bishopsgate, London EC2N 4BQ, UK\nTo: Pinecrest Hotel Group\nInvoice #: INV-2025-4409\nIssued: Oct 23, 2025\nPayment due: December 7, 2025\n\nItems:\n1. Electrical inspection - 1 x GBP 352.52 = GBP 352.52\n2. On-site support visit - 4 x GBP 278.68 = GBP 1,114.72\n\nSubtotal ........ GBP 1,467.24\nTax ............. GBP 293.45\nTOTAL ........... GBP 1,760.69",
+      "luna_marked": "INVOICE\n--------------------------------\nFrom: Kestrel Office Partners Ltd, 8 Bishopsgate, London EC2N 4BQ, UK\nTo: Pinecrest Hotel Group\nInvoice #: INV-2025-4409\nIssued: Oct 23, 2025\nPayment due: December 7, 2025\n\nItems:\n1. Electrical inspection - 1 x GBP 352.52 = GBP 352.52\n2. On-site support visit - 4 x GBP 278.68 = GBP 1,114.72\n\nSubtotal ........ GBP 1,467.24\nTax ............. GBP 293.45\nTOTAL ........... GBP 1,760.69",
+      "luna_med": "INVOICE\n----------------------------------------\nFrom: Kestrel Office Partners Ltd, 8 Bishopsgate, London EC2N 4BQ, UK\nTo: Pinecrest Hotel Group\nInvoice #: INV-2025-4409\nIssued: Oct 23, 2025\nPayment due: December 7, 2025\n\nItems:\n1. Electrical inspection - 1 x GBP 352.52 = GBP 352.52\n2. On-site support visit - 4 x GBP 278.68 = GBP 1,114.72\n\nSubtotal ........ GBP 1,467.24\nTax ............ GBP 293.45\nTOTAL .......... GBP 1,760.69"
+    },
+    "costs": {
+      "luna1": 0.000312,
+      "luna2": 0.00015072,
+      "sol": 0.006252,
+      "luna_marked": 0.0003146,
+      "luna_med": 0.0005386
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "res-03",
+    "format": "pdf_scan",
+    "dpi": 115,
+    "reads": {
+      "luna1": "PRIYA NATARAJAN\nSoftware Engineer\nSeattle, WA | priya.natarajan@example.com | (404) 555-0111\n\nSUMMARY\nSoftware Engineer with 12 years of experience turning messy operational data into reliable\nreporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPython, Spark, Airflow, Pandas, Terraform, FastAPI\n\nEXPERIENCE\nSoftware Engineer - Cardinal Insurance Co. (2023 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nMachine Learning Engineer - Ironwood Retail Group (2021 - 2023)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Information Systems - Arizona State University (2009)",
+      "luna2": "PRIYA NATARAJAN\nSoftware Engineer\nSeattle, WA | priya.natarajan@example.com | (404) 555-0111\n\nSUMMARY\nSoftware Engineer with 12 years of experience turning messy operational data into reliable\nreporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPython, Spark, Airflow, Pandas, Terraform, FastAPI\n\nEXPERIENCE\nSoftware Engineer - Cardinal Insurance Co. (2023 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nMachine Learning Engineer - Ironwood Retail Group (2021 - 2023)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Information Systems - Arizona State University (2009)",
+      "sol": "PRIYA NATARAJAN\nSoftware Engineer\nSeattle, WA | priya.natarajan@example.com | (404) 555-0111\n\nSUMMARY\nSoftware Engineer with 12 years of experience turning messy operational data into reliable\nreporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPython, Spark, Airflow, Pandas, Terraform, FastAPI\n\nEXPERIENCE\nSoftware Engineer - Cardinal Insurance Co. (2023 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nMachine Learning Engineer - Ironwood Retail Group (2021 - 2023)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Information Systems - Arizona State University (2009)",
+      "luna_marked": "PRIYA NATARAJAN\nSoftware Engineer\nSeattle, WA | priya.natarajan@example.com | (404) 555-0111\n\nSUMMARY\nSoftware Engineer with 12 years of experience turning messy operational data into reliable\nreporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPython, Spark, Airflow, Pandas, Terraform, FastAPI\n\nEXPERIENCE\nSoftware Engineer - Cardinal Insurance Co. (2023 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nMachine Learning Engineer - Ironwood Retail Group (2021 - 2023)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Information Systems - Arizona State University (2009)",
+      "luna_med": "PRIYA NATARAJAN\nSoftware Engineer\nSeattle, WA | priya.natarajan@example.com | (404) 555-0111\n\nSUMMARY\nSoftware Engineer with 12 years of experience turning messy operational data into reliable\nreporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPython, Spark, Airflow, Pandas, Terraform, FastAPI\n\nEXPERIENCE\nSoftware Engineer - Cardinal Insurance Co. (2023 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nMachine Learning Engineer - Ironwood Retail Group (2021 - 2023)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Information Systems - Arizona State University (2009)"
+    },
+    "costs": {
+      "luna1": 0.000329,
+      "luna2": 0.00016772,
+      "sol": 0.006592,
+      "luna_marked": 0.00033160000000000004,
+      "luna_med": 0.00043910000000000005
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "res-06",
+    "format": "pdf_scan",
+    "dpi": 115,
+    "reads": {
+      "luna1": "JORDAN KIM\nMachine Learning Engineer\nChicago, IL | jordan.kim@example.com | (512) 555-0134\n\nSKILLS\nTerraform, Docker, PostgreSQL, LangChain, PyTorch, AWS\n\nEXPERIENCE\nData Analyst - Polaris Payments (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nData Analyst - Bayside Mutual (2021 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.A. in Economics - University of Texas at Austin (2009)\nM.S. in Statistics - North Carolina State University (2010)",
+      "luna2": "JORDAN KIM\nMachine Learning Engineer\nChicago, IL | jordan.kim@example.com | (512) 555-0134\n\nSKILLS\nTerraform, Docker, PostgreSQL, LangChain, PyTorch, AWS\n\nEXPERIENCE\nData Analyst - Polaris Payments (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nData Analyst - Bayside Mutual (2021 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.A. in Economics - University of Texas at Austin (2009)\nM.S. in Statistics - North Carolina State University (2010)",
+      "sol": "JORDAN KIM\nMachine Learning Engineer\nChicago, IL | jordan.kim@example.com | (512) 555-0134\n\nSKILLS\nTerraform, Docker, PostgreSQL, LangChain, PyTorch, AWS\n\nEXPERIENCE\nData Analyst - Polaris Payments (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nData Analyst - Bayside Mutual (2021 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.A. in Economics - University of Texas at Austin (2009)\nM.S. in Statistics - North Carolina State University (2010)",
+      "luna_marked": "JORDAN KIM\nMachine Learning Engineer\nChicago, IL | jordan.kim@example.com | (512) 555-0134\n\nSKILLS\nTerraform, Docker, PostgreSQL, LangChain, PyTorch, AWS\n\nEXPERIENCE\nData Analyst - Polaris Payments (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nData Analyst - Bayside Mutual (2021 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.A. in Economics - University of Texas at Austin (2009)\nM.S. in Statistics - North Carolina State University (2010)",
+      "luna_med": "JORDAN KIM\nMachine Learning Engineer\nChicago, IL | jordan.kim@example.com | (512) 555-0134\n\nSKILLS\nTerraform, Docker, PostgreSQL, LangChain, PyTorch, AWS\n\nEXPERIENCE\nData Analyst - Polaris Payments (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nData Analyst - Bayside Mutual (2021 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.A. in Economics - University of Texas at Austin (2009)\nM.S. in Statistics - North Carolina State University (2010)"
+    },
+    "costs": {
+      "luna1": 0.0003195,
+      "luna2": 0.00015821999999999999,
+      "sol": 0.006402,
+      "luna_marked": 0.0003221,
+      "luna_med": 0.0004156
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "res-09",
+    "format": "pdf_scan",
+    "dpi": 115,
+    "reads": {
+      "luna1": "HANNAH LINDQVIST\nOperations Manager\nMinneapolis, MN | hannah.lindqvist@example.com | (312) 555-0181\n\nSUMMARY\nOperations Manager with 12 years of experience turning messy operational data into\nreliable reporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPostgreSQL, Python, Kubernetes, Pandas, Airflow, Spark\n\nEXPERIENCE\nSoftware Engineer - Riverstone Bank (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nOperations Manager - Lumen Freight (2020 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Applied Mathematics - University of Colorado Boulder (2010)\nM.S. in Statistics - North Carolina State University (2008)",
+      "luna2": "HANNAH LINDQVIST\nOperations Manager\nMinneapolis, MN | hannah.lindqvist@example.com | (312) 555-0181\n\nSUMMARY\nOperations Manager with 12 years of experience turning messy operational data into\nreliable reporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPostgreSQL, Python, Kubernetes, Pandas, Airflow, Spark\n\nEXPERIENCE\nSoftware Engineer - Riverstone Bank (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nOperations Manager - Lumen Freight (2020 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Applied Mathematics - University of Colorado Boulder (2010)\nM.S. in Statistics - North Carolina State University (2008)",
+      "sol": "HANNAH LINDQVIST\nOperations Manager\nMinneapolis, MN | hannah.lindqvist@example.com | (312) 555-0181\n\nSUMMARY\nOperations Manager with 12 years of experience turning messy operational data into\nreliable reporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPostgreSQL, Python, Kubernetes, Pandas, Airflow, Spark\n\nEXPERIENCE\nSoftware Engineer - Riverstone Bank (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nOperations Manager - Lumen Freight (2020 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Applied Mathematics - University of Colorado Boulder (2010)\nM.S. in Statistics - North Carolina State University (2008)",
+      "luna_marked": "HANNAH LINDQVIST\nOperations Manager\nMinneapolis, MN | hannah.lindqvist@example.com | (312) 555-0181\n\nSUMMARY\nOperations Manager with 12 years of experience turning messy operational data into\nreliable reporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPostgreSQL, Python, Kubernetes, Pandas, Airflow, Spark\n\nEXPERIENCE\nSoftware Engineer - Riverstone Bank (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nOperations Manager - Lumen Freight (2020 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Applied Mathematics - University of Colorado Boulder (2010)\nM.S. in Statistics - North Carolina State University (2008)",
+      "luna_med": "HANNAH LINDQVIST\nOperations Manager\nMinneapolis, MN | hannah.lindqvist@example.com | (312) 555-0181\n\nSUMMARY\nOperations Manager with 12 years of experience turning messy operational data into\nreliable reporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPostgreSQL, Python, Kubernetes, Pandas, Airflow, Spark\n\nEXPERIENCE\nSoftware Engineer - Riverstone Bank (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nOperations Manager - Lumen Freight (2020 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Applied Mathematics - University of Colorado Boulder (2010)\nM.S. in Statistics - North Carolina State University (2008)"
+    },
+    "costs": {
+      "luna1": 0.0003375,
+      "luna2": 0.00017622,
+      "sol": 0.006762,
+      "luna_marked": 0.0003401,
+      "luna_med": 0.0004516
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "con-03",
+    "format": "pdf_scan",
+    "dpi": 115,
+    "reads": {
+      "luna1": "SOFTWARE LICENSE AGREEMENT\n\nThis Software License Agreement (the \"Agreement\") is made as of December 31, 2025 (the\n\"Effective Date\") by and between Silverleaf Catering LLC, a Texas company (\"Licensor\"),\nand Meridian Facility Services, a Colorado company (\"Licensee\").\n\n1. SCOPE. Licensor grants Licensee a non-exclusive, non-transferable license to use the\nsoftware for internal business purposes on up to 250 named users.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Dec 31, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Licensee shall pay an annual license fee of $12,000, due within thirty (30)\ndays of the Effective Date and of each anniversary.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 15 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nSilverleaf Catering LLC\nBy: Grace Park\n\nMeridian Facility Services\nBy: Laura Chen",
+      "luna2": "SOFTWARE LICENSE AGREEMENT\n\nThis Software License Agreement (the \"Agreement\") is made as of December 31, 2025 (the\n\"Effective Date\") by and between Silverleaf Catering LLC, a Texas company (\"Licensor\"),\nand Meridian Facility Services, a Colorado company (\"Licensee\").\n\n1. SCOPE. Licensor grants Licensee a non-exclusive, non-transferable license to use the\nsoftware for internal business purposes on up to 250 named users.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Dec 31, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Licensee shall pay an annual license fee of $12,000, due within thirty (30)\ndays of the Effective Date and of each anniversary.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 15 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nSilverleaf Catering LLC\nBy: Grace Park\n\nMeridian Facility Services\nBy: Laura Chen",
+      "sol": "SOFTWARE LICENSE AGREEMENT\n\nThis Software License Agreement (the \"Agreement\") is made as of December 31, 2025 (the\n\"Effective Date\") by and between Silverleaf Catering LLC, a Texas company (\"Licensor\"),\nand Meridian Facility Services, a Colorado company (\"Licensee\").\n\n1. SCOPE. Licensor grants Licensee a non-exclusive, non-transferable license to use the\nsoftware for internal business purposes on up to 250 named users.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Dec 31, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Licensee shall pay an annual license fee of $12,000, due within thirty (30)\ndays of the Effective Date and of each anniversary.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 15 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nSilverleaf Catering LLC\nBy: Grace Park\n\nMeridian Facility Services\nBy: Laura Chen",
+      "luna_marked": "SOFTWARE LICENSE AGREEMENT\n\nThis Software License Agreement (the \"Agreement\") is made as of December 31, 2025 (the\n\"Effective Date\") by and between Silverleaf Catering LLC, a Texas company (\"Licensor\"),\nand Meridian Facility Services, a Colorado company (\"Licensee\").\n\n1. SCOPE. Licensor grants Licensee a non-exclusive, non-transferable license to use the\nsoftware for internal business purposes on up to 250 named users.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Dec 31, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Licensee shall pay an annual license fee of $12,000, due within thirty (30)\ndays of the Effective Date and of each anniversary.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 15 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nSilverleaf Catering LLC\nBy: Grace Park\n\nMeridian Facility Services\nBy: Laura Chen",
+      "luna_med": "SOFTWARE LICENSE AGREEMENT\n\nThis Software License Agreement (the \"Agreement\") is made as of December 31, 2025 (the\n\"Effective Date\") by and between Silverleaf Catering LLC, a Texas company (\"Licensor\"),\nand Meridian Facility Services, a Colorado company (\"Licensee\").\n\n1. SCOPE. Licensor grants Licensee a non-exclusive, non-transferable license to use the\nsoftware for internal business purposes on up to 250 named users.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Dec 31, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Licensee shall pay an annual license fee of $12,000, due within thirty (30)\ndays of the Effective Date and of each anniversary.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 15 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nSilverleaf Catering LLC\nBy: Grace Park\n\nMeridian Facility Services\nBy: Laura Chen"
+    },
+    "costs": {
+      "luna1": 0.0004465,
+      "luna2": 0.00028522000000000004,
+      "sol": 0.008942,
+      "luna_marked": 0.0004491,
+      "luna_med": 0.0006846
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "con-06",
+    "format": "pdf_scan",
+    "dpi": 115,
+    "reads": {
+      "luna1": "MASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \"Agreement\") is made as of 29 Mar 2025 (the \"Effective\nDate\") by and between Vantage Point Consulting, a Ohio company (\"Provider\"), and Tidewater\nElectrical Inc., a Illinois company (\"Client\").\n\n1. SCOPE. Provider shall perform the services described in each Statement of Work signed\nby both parties, with the skill and care of a qualified professional.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Mar 29, 2028, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Client shall pay Provider the fees set out in each Statement of Work. Provider\nwill invoice monthly, and Client shall pay each invoice within thirty (30) days of\nreceipt.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nVantage Point Consulting\nBy: Kevin O'Neill\n\nTidewater Electrical Inc.\nBy: Thomas Webb",
+      "luna2": "MASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \"Agreement\") is made as of 29 Mar 2025 (the \"Effective\nDate\") by and between Vantage Point Consulting, a Ohio company (\"Provider\"), and Tidewater\nElectrical Inc., a Illinois company (\"Client\").\n\n1. SCOPE. Provider shall perform the services described in each Statement of Work signed\nby both parties, with the skill and care of a qualified professional.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Mar 29, 2028, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Client shall pay Provider the fees set out in each Statement of Work. Provider\nwill invoice monthly, and Client shall pay each invoice within thirty (30) days of\nreceipt.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nVantage Point Consulting\nBy: Kevin O'Neill\n\nTidewater Electrical Inc.\nBy: Thomas Webb",
+      "sol": "MASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \"Agreement\") is made as of 29 Mar 2025 (the \"Effective\nDate\") by and between Vantage Point Consulting, a Ohio company (\"Provider\"), and Tidewater\nElectrical Inc., a Illinois company (\"Client\").\n\n1. SCOPE. Provider shall perform the services described in each Statement of Work signed\nby both parties, with the skill and care of a qualified professional.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Mar 29, 2028, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Client shall pay Provider the fees set out in each Statement of Work. Provider\nwill invoice monthly, and Client shall pay each invoice within thirty (30) days of\nreceipt.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nVantage Point Consulting\nBy: Kevin O'Neill\n\nTidewater Electrical Inc.\nBy: Thomas Webb",
+      "luna_marked": "MASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \"Agreement\") is made as of 29 Mar 2025 (the \"Effective\nDate\") by and between Vantage Point Consulting, a Ohio company (\"Provider\"), and Tidewater\nElectrical Inc., a Illinois company (\"Client\").\n\n1. SCOPE. Provider shall perform the services described in each Statement of Work signed\nby both parties, with the skill and care of a qualified professional.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Mar 29, 2028, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Client shall pay Provider the fees set out in each Statement of Work. Provider\nwill invoice monthly, and Client shall pay each invoice within thirty (30) days of\nreceipt.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nVantage Point Consulting\nBy: Kevin O'Neill\n\nTidewater Electrical Inc.\nBy: Thomas Webb",
+      "luna_med": "MASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \"Agreement\") is made as of 29 Mar 2025 (the \"Effective\nDate\") by and between Vantage Point Consulting, a Ohio company (\"Provider\"), and Tidewater\nElectrical Inc., a Illinois company (\"Client\").\n\n1. SCOPE. Provider shall perform the services described in each Statement of Work signed\nby both parties, with the skill and care of a qualified professional.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Mar 29, 2028, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Client shall pay Provider the fees set out in each Statement of Work. Provider\nwill invoice monthly, and Client shall pay each invoice within thirty (30) days of\nreceipt.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nVantage Point Consulting\nBy: Kevin O'Neill\n\nTidewater Electrical Inc.\nBy: Thomas Webb"
+    },
+    "costs": {
+      "luna1": 0.0004485,
+      "luna2": 0.00028722000000000003,
+      "sol": 0.008982,
+      "luna_marked": 0.0004511,
+      "luna_med": 0.0006921000000000001
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "con-09",
+    "format": "pdf_scan",
+    "dpi": 115,
+    "reads": {
+      "luna1": "COMMERCIAL LEASE AGREEMENT\n\nThis Commercial Lease Agreement (the \"Agreement\") is made as of 04 Nov 2025 (the\n\"Effective Date\") by and between Northwind Analytics Inc., a Delaware company\n(\"Landlord\"), and Brightline Logistics LLC, a Colorado company (\"Tenant\").\n\n1. SCOPE. Landlord leases to Tenant approximately 4,800 square feet of office space for\ngeneral office use, with access to shared parking.\n\n2. TERM. This Agreement begins on the Effective Date and ends on November 4, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Tenant shall pay monthly rent of $3,300, due on the first day of each month,\nand a security deposit equal to two months' rent on signing.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Texas, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Thomas Webb\n\nBrightline Logistics LLC\nBy: Fatima Noor",
+      "luna2": "COMMERCIAL LEASE AGREEMENT\n\nThis Commercial Lease Agreement (the \"Agreement\") is made as of 04 Nov 2025 (the\n\"Effective Date\") by and between Northwind Analytics Inc., a Delaware company\n(\"Landlord\"), and Brightline Logistics LLC, a Colorado company (\"Tenant\").\n\n1. SCOPE. Landlord leases to Tenant approximately 4,800 square feet of office space for\ngeneral office use, with access to shared parking.\n\n2. TERM. This Agreement begins on the Effective Date and ends on November 4, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Tenant shall pay monthly rent of $3,300, due on the first day of each month,\nand a security deposit equal to two months' rent on signing.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Texas, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Thomas Webb\n\nBrightline Logistics LLC\nBy: Fatima Noor",
+      "sol": "COMMERCIAL LEASE AGREEMENT\n\nThis Commercial Lease Agreement (the \"Agreement\") is made as of 04 Nov 2025 (the\n\"Effective Date\") by and between Northwind Analytics Inc., a Delaware company\n(\"Landlord\"), and Brightline Logistics LLC, a Colorado company (\"Tenant\").\n\n1. SCOPE. Landlord leases to Tenant approximately 4,800 square feet of office space for\ngeneral office use, with access to shared parking.\n\n2. TERM. This Agreement begins on the Effective Date and ends on November 4, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Tenant shall pay monthly rent of $3,300, due on the first day of each month,\nand a security deposit equal to two months' rent on signing.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Texas, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Thomas Webb\n\nBrightline Logistics LLC\nBy: Fatima Noor",
+      "luna_marked": "COMMERCIAL LEASE AGREEMENT\n\nThis Commercial Lease Agreement (the \"Agreement\") is made as of 04 Nov 2025 (the\n\"Effective Date\") by and between Northwind Analytics Inc., a Delaware company\n(\"Landlord\"), and Brightline Logistics LLC, a Colorado company (\"Tenant\").\n\n1. SCOPE. Landlord leases to Tenant approximately 4,800 square feet of office space for\ngeneral office use, with access to shared parking.\n\n2. TERM. This Agreement begins on the Effective Date and ends on November 4, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Tenant shall pay monthly rent of $3,300, due on the first day of each month,\nand a security deposit equal to two months' rent on signing.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Texas, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Thomas Webb\n\nBrightline Logistics LLC\nBy: Fatima Noor",
+      "luna_med": "COMMERCIAL LEASE AGREEMENT\n\nThis Commercial Lease Agreement (the \"Agreement\") is made as of 04 Nov 2025 (the\n\"Effective Date\") by and between Northwind Analytics Inc., a Delaware company\n(\"Landlord\"), and Brightline Logistics LLC, a Colorado company (\"Tenant\").\n\n1. SCOPE. Landlord leases to Tenant approximately 4,800 square feet of office space for\ngeneral office use, with access to shared parking.\n\n2. TERM. This Agreement begins on the Effective Date and ends on November 4, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Tenant shall pay monthly rent of $3,300, due on the first day of each month,\nand a security deposit equal to two months' rent on signing.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Texas, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Thomas Webb\n\nBrightline Logistics LLC\nBy: Fatima Noor"
+    },
+    "costs": {
+      "luna1": 0.0004475,
+      "luna2": 0.00028622,
+      "sol": 0.008962,
+      "luna_marked": 0.00045010000000000004,
+      "luna_med": 0.0006891
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "unk-03",
+    "format": "pdf_scan",
+    "dpi": 115,
+    "reads": {
+      "luna1": "BUILDING NOTICE\nTo all tenants of 500 Lake Shore Drive\n\nThe north elevator will be out of service for scheduled maintenance from Monday through\nWednesday next week. The south elevator and both stairwells remain open. Deliveries should\nuse the loading dock entrance on Grand Avenue. Thank you for your patience.\n\nProperty Management Office",
+      "luna2": "BUILDING NOTICE\nTo all tenants of 500 Lake Shore Drive\n\nThe north elevator will be out of service for scheduled maintenance from Monday through\nWednesday next week. The south elevator and both stairwells remain open. Deliveries should\nuse the loading dock entrance on Grand Avenue. Thank you for your patience.\n\nProperty Management Office",
+      "sol": "BUILDING NOTICE\nTo all tenants of 500 Lake Shore Drive\n\nThe north elevator will be out of service for scheduled maintenance from Monday through\nWednesday next week. The south elevator and both stairwells remain open. Deliveries should\nuse the loading dock entrance on Grand Avenue. Thank you for your patience.\n\nProperty Management Office",
+      "luna_marked": "BUILDING NOTICE\nTo all tenants of 500 Lake Shore Drive\n\nThe north elevator will be out of service for scheduled maintenance from Monday through\nWednesday next week. The south elevator and both stairwells remain open. Deliveries should\nuse the loading dock entrance on Grand Avenue. Thank you for your patience.\n\nProperty Management Office",
+      "luna_med": "BUILDING NOTICE\nTo all tenants of 500 Lake Shore Drive\n\nThe north elevator will be out of service for scheduled maintenance from Monday through\nWednesday next week. The south elevator and both stairwells remain open. Deliveries should\nuse the loading dock entrance on Grand Avenue. Thank you for your patience.\n\nProperty Management Office"
+    },
+    "costs": {
+      "luna1": 0.0002735,
+      "luna2": 0.00011221999999999999,
+      "sol": 0.005482,
+      "luna_marked": 0.00027610000000000004,
+      "luna_med": 0.00031860000000000005
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "inv-03-poor",
+    "format": "pdf_scan_poor",
+    "dpi": 80,
+    "reads": {
+      "luna1": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91830\nInvoice Date: 23 Apr 2025\nDue Date: June 7, 2025\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription                 Qty   Unit Price   Amount\nWarehouse storage (pallet-month)  31   $23.51   $728.81\nSoftware subscription - annual seat  17   $304.30   $5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com",
+      "luna2": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91830\nInvoice Date: 23 Apr 2025\nDue Date: June 7, 2025\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription                         Qty   Unit Price   Amount\nWarehouse storage (pallet-month)     31    $23.51       $728.81\nSoftware subscription - annual seat  17    $304.30      $5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com",
+      "sol": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91830\nInvoice Date: 23 Apr 2026\nDue Date: June 7, 2026\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription\tQty\tUnit Price\tAmount\nWarehouse storage (pallet-month)\t31\t$23.51\t$728.81\nSoftware subscription - annual seat\t17\t$304.30\t$5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com",
+      "luna_marked": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91830\nInvoice Date: 23 Apr 2025\nDue Date: June 7, 2025\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription                         Qty   Unit Price   Amount\nWarehouse storage (pallet-month)     31    $23.51       $728.81\nSoftware subscription - annual seat  17    $304.30      $5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com",
+      "luna_med": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91830\nInvoice Date: 23 Apr 2025\nDue Date: June 7, 2025\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription                         Qty   Unit Price   Amount\nWarehouse storage (pallet-month)     31    $23.51       $728.81\nSoftware subscription - annual seat  17    $304.30      $5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com"
+    },
+    "costs": {
+      "luna1": 0.0003195,
+      "luna2": 0.00015821999999999999,
+      "sol": 0.007462,
+      "luna_marked": 0.0003221,
+      "luna_med": 0.0005171
+    },
+    "errors": {
+      "luna1": [
+        "2026",
+        "2026",
+        "91630",
+        "+2025",
+        "+2025",
+        "+91830"
+      ],
+      "luna2": [
+        "2026",
+        "2026",
+        "91630",
+        "+2025",
+        "+2025",
+        "+91830"
+      ],
+      "sol": [
+        "91630",
+        "+91830"
+      ],
+      "luna_marked": [
+        "2026",
+        "2026",
+        "91630",
+        "+2025",
+        "+2025",
+        "+91830"
+      ],
+      "luna_med": [
+        "2026",
+        "2026",
+        "91630",
+        "+2025",
+        "+2025",
+        "+91830"
+      ]
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [
+      "2025",
+      "2025",
+      "+2026",
+      "+2026"
+    ],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "inv-06-poor",
+    "format": "pdf_scan_poor",
+    "dpi": 80,
+    "reads": {
+      "luna1": "INVOICE\n____________\nFrom: Quartzline Printing, 39 Press Avenue, Raleigh, NC 27601\nTo: Granite State Credit Union\nInvoice #: INV-2025-5398\nIssued: Sep 18, 2025\nPayment due: October 3, 2025\n\nItems:\n1. Electrical inspection - 1 x $506.18 = $506.18\n\nSubtotal ........ $506.18\nTax ............. $25.31\nTOTAL ........... $531.49",
+      "luna2": "INVOICE\n__________\nFrom: Quartizine Printing, 39 Press Avenue, Raleigh, NC 27601\nTo: Granite State Credit Union\nInvoice #: INV-2025-5398\nIssued: Sep 18, 2025\nPayment due: October 3, 2025\n\nItems:\n1. Electrical inspection - 1 x $506.18 = $506.18\n\nSubtotal ______ $506.18\nTax ______ $25.31\nTOTAL ______ $531.49",
+      "sol": "INVOICE\n________________________\nFrom: Quartzline Printing, 39 Press Avenue, Raleigh, NC 27601\nTo: Granite State Credit Union\nInvoice #: INV-2025-5398\nIssued: Sep 18, 2025\nPayment due: October 3, 2025\n\nItems:\n1. Electrical inspection - 1 x $506.18 = $506.18\n\nSubtotal ____ $506.18\nTax ______ $25.31\nTOTAL _____ $531.49",
+      "luna_marked": "INVOICE\n____________________________\nFrom: Quartzline Printing, 39 Press Avenue, Raleigh, NC 27601\nTo: Granite State Credit Union\nInvoice #: INV-2025-5398\nIssued: Sep 18, 2025\nPayment due: October 3, 2025\n\nItems:\n1. Electrical inspection - 1 x $506.18 = $506.18\n\nSubtotal _____ $506.18\nTax _________ $25.31\nTOTAL _______ $531.49",
+      "luna_med": "INVOICE\n\nFrom: Quartzline Printing, 39 Press Avenue, Raleigh, NC 27601\nTo: Granite State Credit Union\nInvoice #: INV-2025-5398\nIssued: Sep 18, 2025\nPayment due: October 3, 2025\n\nItems:\n1. Electrical inspection - 1 x $506.18 = $506.18\n\nSubtotal $506.18\nTax $25.31\nTOTAL $531.49"
+    },
+    "costs": {
+      "luna1": 0.000292,
+      "luna2": 0.00013022,
+      "sol": 0.006342,
+      "luna_marked": 0.0002951,
+      "luna_med": 0.0005191
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [
+        "quartzline",
+        "+quartizine"
+      ],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [
+      "quartzline",
+      "+quartizine"
+    ],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "inv-09-poor",
+    "format": "pdf_scan_poor",
+    "dpi": 80,
+    "reads": {
+      "luna1": "Telemaster Electrical Inc.\n77 Harbor Drive\nNorfolk, VA 23510\n\nINVOICE\n\nInvoice Number: 71-10187\nInvoice Date: Mar 2, 2025\nDue Date: 01 May 2025\nPayment Terms: Net 60\n\nBill To:\nAcme Corporation\n\nDescription                    Qty    Unit Price    Amount\nWarehouse storage (pallet-month) 21     14.68         308.28\nSoftware subscription - annual seat 25  389.77        9,744.25\nFreight - LTL shipment          4      404.11        1,616.44\n\nSubtotal: 11,668.97\nTax (5%): 583.45\nTotal Due: 12,252.42\n\nThank you for your business. Questions? billing@telemaster-example.com",
+      "luna2": "Thompson Electrical Inc.\n77 Harbor Drive\nNorfolk, VA 23510\n\nINVOICE\n\nInvoice Number: TI-10187\nInvoice Date: Mar 2, 2025\nDue Date: 01 May 2025\nPayment Terms: Net 60\n\nBill To:\nAcme Corporation\n\nDescription                         Qty    Unit Price    Amount\nWarehouse storage (pallet-months)    21        14.68      308.28\nSoftware subscription - annual tier  25       389.77    9,744.25\nFreight - LTL shipment                4       404.11    1,616.44\n\nSubtotal: 11,668.97\nTax (5%): 583.45\nTotal Due: 12,252.42\n\nThank you for your business. Questions? billing@thompsonelectric.example.com",
+      "sol": "Tidewater Electrical Inc.\n77 Harbor Drive\nNorfolk, VA 23510\n\nINVOICE\n\nInvoice Number: TI-10167\nInvoice Date: Mar 2, 2025\nDue Date: 01 May 2025\nPayment Terms: Net 60\n\nBill To:\nAcme Corporation\n\nDescription    Qty    Unit Price    Amount\nWarehouse storage (pallet-month)    21    14.68    308.28\nSoftware subscription - annual seat    25    389.77    9,744.25\nFreight - LTL shipment    4    404.11    1,616.44\n\nSubtotal: 11,668.97\nTax (5%): 583.45\nTotal Due: 12,252.42\n\nThank you for your business. Questions? billing@tidewater.example.com",
+      "luna_marked": "Telesphere Electrical Inc.\n77 Harbor Drive\nNorfolk, VA 23510\n\nINVOICE\n\nInvoice Number: 71-10187\nInvoice Date: Mar 2, 2025\nDue Date: 01 May 2025\nPayment Terms: Net 60\n\nBill To:\nAcme Corporation\n\nDescription                         Qty   Unit Price   Amount\nWarehouse storage (pallet-months)    21       14.68      308.28\nSoftware subscription - annual tier  25      389.77    9,744.25\nFreight - LTL shipment                4      404.11    1,616.44\n\nSubtotal: 11,668.97\nTax (5%): 583.45\nTotal Due: 12,252.42\n\nThank you for your business. Questions? billing@telesphere-example.com",
+      "luna_med": "Thalesia Electrical Inc.\n77 Harbor Drive\nNorfolk, VA 23510\n\nINVOICE\n\nInvoice Number: TI-10187\nInvoice Date: Mar 2, 2025\nDue Date: 01 May 2025\nPayment Terms: Net 60\n\nBill To:\nAcme Corporation\n\nDescription                         Qty   Unit Price   Amount\nWarehouse storage (pallet-month)     21    14.68        308.28\nSoftware subscription - annual seat 25    389.77       9,744.25\nFreight - LTL shipment               4    404.11       1,616.44\n\nSubtotal: 11,668.97\nTax (5%): 583.45\nTotal Due: 12,252.42\n\nThank you for your business. Questions? billing@thalesiaelectric.example.com"
+    },
+    "costs": {
+      "luna1": 0.00033,
+      "luna2": 0.00017122,
+      "sol": 0.007782,
+      "luna_marked": 0.0003346,
+      "luna_med": 0.0009876
+    },
+    "errors": {
+      "luna1": [
+        "10167",
+        "ti",
+        "tidewater",
+        "tidewater",
+        "+10187",
+        "+71",
+        "+telemaster",
+        "+telemaster"
+      ],
+      "luna2": [
+        "10167",
+        "month",
+        "seat",
+        "tidewater",
+        "tidewater",
+        "+10187",
+        "+months",
+        "+thompson",
+        "+thompsonelectric",
+        "+tier"
+      ],
+      "sol": [],
+      "luna_marked": [
+        "10167",
+        "month",
+        "seat",
+        "ti",
+        "tidewater",
+        "tidewater",
+        "+10187",
+        "+71",
+        "+months",
+        "+telesphere",
+        "+telesphere",
+        "+tier"
+      ],
+      "luna_med": [
+        "10167",
+        "tidewater",
+        "tidewater",
+        "+10187",
+        "+thalesia",
+        "+thalesiaelectric"
+      ]
+    },
+    "luna1_vs_luna2": [
+      "71",
+      "month",
+      "seat",
+      "telemaster",
+      "telemaster",
+      "+months",
+      "+thompson",
+      "+thompsonelectric",
+      "+ti",
+      "+tier"
+    ],
+    "luna1_vs_sol": [
+      "10187",
+      "71",
+      "telemaster",
+      "telemaster",
+      "+10167",
+      "+ti",
+      "+tidewater",
+      "+tidewater"
+    ],
+    "marked": false,
+    "luna1_vs_med": [
+      "71",
+      "telemaster",
+      "telemaster",
+      "+thalesia",
+      "+thalesiaelectric",
+      "+ti"
+    ]
+  },
+  {
+    "id": "inv-12-poor",
+    "format": "pdf_scan_poor",
+    "dpi": 80,
+    "reads": {
+      "luna1": "INVOICE\n__________\nFrom: Kestrel Office Partners Ltd, 8 Bishopsgate, London EC2N 4BQ, UK\nTo: Pinecrest Hotel Group\nInvoice #: INV-2025-4409\nIssued: Oct 23, 2025\nPayment due: December 7, 2025\n\nItems:\n1. Electrical inspection - 1 x GBP 352.52 = GBP 352.52\n2. On-site support visit - 4 x GBP 278.68 = GBP 1,114.72\n\nSubtotal ______ GBP 1,467.24\nTax _________ GBP 293.45\nTOTAL _______ GBP 1,760.69",
+      "luna2": "INVOICE\n____________________\nFrom: Kestrel Office Partners Ltd, 8 Bishopsgate, London EC2N 4BQ, UK\nTo: Pinecrest Hotel Group\nInvoice #: INV-2025-4409\nIssued: Oct 23, 2025\nPayment due: December 7, 2025\n\nItems:\n1. Electrical inspection - 1 x GBP 352.52 = GBP 352.52\n2. On-site support visit - 4 x GBP 278.68 = GBP 1,114.72\n\nSubtotal ______ GBP 1,467.24\nTax ________ GBP 293.45\nTOTAL _______ GBP 1,760.69",
+      "sol": "INVOICE\n________________________\nFrom: Kestrel Office Partners Ltd, 8 Bishopsgate, London EC2N 4BQ, UK\nTo: Pinecrest Hotel Group\nInvoice #: INV-2025-4409\nIssued: Oct 23, 2025\nPayment due: December 7, 2025\n\nItems:\n1. Electrical inspection - 1 x GBP 352.52 = GBP 352.52\n2. On-site support visit - 4 x GBP 278.68 = GBP 1,114.72\n\nSubtotal ____ GBP 1,467.24\nTax ______ GBP 293.45\nTOTAL _____ GBP 1,760.69",
+      "luna_marked": "INVOICE\nFrom: Kestrel Office Partners Ltd, 8 Bishopsgate, London EC2N 4BQ, UK\nTo: Pinecrest Hotel Group\nInvoice #: INV-2025-4408\nIssued: Oct 23, 2025\nPayment due: December 7, 2025\n\nItems:\n1. Electrical inspection - 1 x GBP 352.52 = GBP 352.52\n2. On-site support visit - 4 x GBP 278.68 = GBP 1,114.72\n\nSubtotal ______ GBP 1,467.24\nTax ______ GBP 293.45\nTOTAL ______ GBP 1,760.69",
+      "luna_med": "INVOICE\nFrom: Kestrel Office Partners Ltd, 8 Bishopsgate, London EC2N 4BQ, UK\nTo: Pinecrest Hotel Group\nInvoice #: INV-2025-4409\nIssued: Oct 23, 2025\nPayment due: December 7, 2025\n\nItems:\n1. Electrical inspection - 1 x GBP 352.52 = GBP 352.52\n2. On-site support visit - 4 x GBP 278.68 = GBP 1,114.72\n\nSubtotal _____ GBP 1,467.24\nTax _______ GBP 293.45\nTOTAL _______ GBP 1,760.69"
+    },
+    "costs": {
+      "luna1": 0.000312,
+      "luna2": 0.00015122,
+      "sol": 0.006692,
+      "luna_marked": 0.0003126,
+      "luna_med": 0.0005051
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [
+        "4409",
+        "+4408"
+      ],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "res-03-poor",
+    "format": "pdf_scan_poor",
+    "dpi": 80,
+    "reads": {
+      "luna1": "PRIYA NATARAJAN\nSoftware Engineer\nSeattle, WA | priya.natarajan@example.com | (404) 555-0111\n\nSUMMARY\nSoftware Engineer with 12 years of experience turning messy operational data into reliable\nreporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPython, Spark, Airflow, Pandas, Terraform, FastAPI\n\nEXPERIENCE\nSoftware Engineer \u2022 Cascade Insurance Co. (2023 - Present)\n\u2022 Built dashboards and pipelines used by finance and operations teams\n\u2022 Cut manual reporting time by automating weekly data pulls\n\nMachine Learning Engineer \u2022 Ironwood Retail Group (2021 - 2023)\n\u2022 Built dashboards and pipelines used by finance and operations teams\n\u2022 Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Information Systems - Arizona State University (2009)",
+      "luna2": "PRIYA NATARAJAN\nSoftware Engineer\nSeattle, WA | priya.natarajan@example.com | (404) 555-0111\n\nSUMMARY\nSoftware Engineer with 12 years of experience turning messy operational data into reliable\nreporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPython, SQL, Airflow, Pandas, Terraform, FastAPI\n\nEXPERIENCE\nSoftware Engineer \u2022 Cardinal Insurance Co. (2023 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nMachine Learning Engineer \u2022 Ironwood Retail Group (2021 - 2023)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Information Systems \u2022 Arizona State University (2009)",
+      "sol": "PRIYA NATARAJAN\nSoftware Engineer\nSeattle, WA | priya.natarajan@example.com | (404) 555-0111\n\nSUMMARY\nSoftware Engineer with 12 years of experience turning messy operational data into reliable\nreporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPython, Spark, Airflow, Pandas, Terraform, FastAPI\n\nEXPERIENCE\nSoftware Engineer - Cardinal Insurance Co. (2023 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nMachine Learning Engineer - Ironwood Retail Group (2021 - 2023)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Information Systems - Arizona State University (2009)",
+      "luna_marked": "PRIYA NATARAJAN\nSoftware Engineer\nSeattle, WA | priya.natarajan@example.com | (404) 555-0111\n\nSUMMARY\nSoftware Engineer with 12 years of experience turning messy operational data into reliable\nreporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPython, SQL, Airflow, Pandas, Terraform, FastAPI\n\nEXPERIENCE\nSoftware Engineer \u00b7 Cardinal Insurance Co. (2023 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nMachine Learning Engineer \u00b7 Ironwood Retail Group (2021 - 2023)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Information Systems \u00b7 Arizona State University (2009)",
+      "luna_med": "PRIYA NATARAJAN\nSoftware Engineer\nSeattle, WA | priya.natarajan@example.com | (404) 555-0111\n\nSUMMARY\nSoftware Engineer with 12 years of experience turning messy operational data into reliable\nreporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPython, Spark, Airflow, Pandas, Terraform, FastAPI\n\nEXPERIENCE\nSoftware Engineer \u2022 Central Insurance Co. (2023 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nMachine Learning Engineer \u2022 Ironwood Retail Group (2021 - 2023)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Information Systems - Arizona State University (2009)"
+    },
+    "costs": {
+      "luna1": 0.000329,
+      "luna2": 0.00016772,
+      "sol": 0.007342,
+      "luna_marked": 0.00033160000000000004,
+      "luna_med": 0.0005041000000000001
+    },
+    "errors": {
+      "luna1": [
+        "cardinal",
+        "+cascade"
+      ],
+      "luna2": [
+        "spark",
+        "+sql"
+      ],
+      "sol": [],
+      "luna_marked": [
+        "spark",
+        "+sql"
+      ],
+      "luna_med": [
+        "cardinal",
+        "+central"
+      ]
+    },
+    "luna1_vs_luna2": [
+      "cascade",
+      "spark",
+      "+cardinal",
+      "+sql"
+    ],
+    "luna1_vs_sol": [
+      "cascade",
+      "+cardinal"
+    ],
+    "marked": false,
+    "luna1_vs_med": [
+      "cascade",
+      "+central"
+    ]
+  },
+  {
+    "id": "res-06-poor",
+    "format": "pdf_scan_poor",
+    "dpi": 80,
+    "reads": {
+      "luna1": "JORDAN KIM\nMachine Learning Engineer\nChicago, IL | jordan.kim@example.com | (312) 555-0134\n\nSKILLS\nTerraform, Docker, PostgreSQL, LangChain, PyTorch, AWS\n\nEXPERIENCE\nData Analyst - Polaris Payments (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nData Analyst - Bayside Mutual (2021 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.A. in Economics - University of Texas at Austin (2008)\nM.S. in Statistics - North Carolina State University (2010)",
+      "luna2": "JORDAN KIM\nMachine Learning Engineer\nChicago, IL | jordan.kim@example.com | (312) 555-0134\n\nSKILLS\nTerraform, Docker, PostgreSQL, LangChain, PyTorch, AWS\n\nEXPERIENCE\nData Analyst - Polaris Payments (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nData Analyst - Bayside Mutual (2021 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.A. in Economics - University of Texas at Austin (2008)\nM.S. in Statistics - North Carolina State University (2010)",
+      "sol": "JORDAN KIM\nMachine Learning Engineer\nChicago, IL | jordan.kim@example.com | (512) 555-0134\n\nSKILLS\nTerraform, Docker, PostgreSQL, LangChain, PyTorch, AWS\n\nEXPERIENCE\nData Analyst - Polaris Payments (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nData Analyst - Bayside Mutual (2021 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.A. in Economics - University of Texas at Austin (2008)\nM.S. in Statistics - North Carolina State University (2010)",
+      "luna_marked": "JORDAN KIM\nMachine Learning Engineer\nChicago, IL | jordan.kim@example.com | (312) 555-0134\n\nSKILLS\nTerraform, Docker, PostgreSQL, LangChain, PyTorch, AWS\n\nEXPERIENCE\nData Analyst - Polaris Payments (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nData Analyst - Bayside Mutual (2021 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.A. in Economics - University of Texas at Austin (2008)\nM.S. in Statistics - North Carolina State University (2010)",
+      "luna_med": "JORDAN KIM\nMachine Learning Engineer\nChicago, IL | jordan.kim@example.com | (312) 555-0134\n\nSKILLS\nTerraform, Docker, PostgreSQL, LangChain, PyTorch, AWS\n\nEXPERIENCE\nData Analyst - Polaris Payments (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nData Analyst - Bayside Mutual (2021 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.A. in Economics - University of Texas at Austin (2008)\nM.S. in Statistics - North Carolina State University (2010)"
+    },
+    "costs": {
+      "luna1": 0.0003195,
+      "luna2": 0.0003195,
+      "sol": 0.006402,
+      "luna_marked": 0.0003221,
+      "luna_med": 0.00047910000000000004
+    },
+    "errors": {
+      "luna1": [
+        "2009",
+        "512",
+        "+2008",
+        "+312"
+      ],
+      "luna2": [
+        "2009",
+        "512",
+        "+2008",
+        "+312"
+      ],
+      "sol": [
+        "2009",
+        "+2008"
+      ],
+      "luna_marked": [
+        "2009",
+        "512",
+        "+2008",
+        "+312"
+      ],
+      "luna_med": [
+        "2009",
+        "512",
+        "+2008",
+        "+312"
+      ]
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [
+      "312",
+      "+512"
+    ],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "res-09-poor",
+    "format": "pdf_scan_poor",
+    "dpi": 80,
+    "reads": {
+      "luna1": "HANNAH LINDQVIST\nOperations Manager\nMinneapolis, MN | hannah.lindqvist@example.com | (612) 555-0181\n\nSUMMARY\nOperations Manager with 12 years of experience turning messy operational data into\nreliable reporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPostgreSQL, Python, Kubernetes, Pandas, Airflow, Spark\n\nEXPERIENCE\nSoftware Engineer - Riverstone Bank (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nOperations Manager - Lumen Freight (2020 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Applied Mathematics - University of Colorado Boulder (2010)\nM.S. in Statistics - North Carolina State University (2008)",
+      "luna2": "HANNAH LINDQVIST\nOperations Manager\nMinneapolis, MN | hannah.lindqvist@example.com | (312) 555-0181\n\nSUMMARY\nOperations Manager with 12 years of experience turning messy operational data into\nreliable reporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPostgreSQL, Python, Kubernetes, Pandas, Airflow, Spark\n\nEXPERIENCE\nSoftware Engineer - Riverstone Bank (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nOperations Manager - Lumen Freight (2020 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Applied Mathematics - University of Colorado Boulder (2010)\nM.S. in Statistics - North Carolina State University (2008)",
+      "sol": "HANNAH LINDQVIST\nOperations Manager\nMinneapolis, MN | hannah.lindqvist@example.com | (312) 555-0181\n\nSUMMARY\nOperations Manager with 12 years of experience turning messy operational data into\nreliable reporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPostgreSQL, Python, Kubernetes, Pandas, Airflow, Spark\n\nEXPERIENCE\nSoftware Engineer - Riverstone Bank (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nOperations Manager - Lumen Freight (2020 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Applied Mathematics - University of Colorado Boulder (2010)\nM.S. in Statistics - North Carolina State University (2008)",
+      "luna_marked": "HANNAH LINDQVIST\nOperations Manager\nMinneapolis, MN | hannah.lindqvist@example.com | (312) 555-0181\n\nSUMMARY\nOperations Manager with 12 years of experience turning messy operational data into\nreliable reporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPostgreSQL, Python, Kubernetes, Pandas, Airflow, Spark\n\nEXPERIENCE\nSoftware Engineer - Riverstone Bank (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nOperations Manager - Lumen Freight (2020 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Applied Mathematics - University of Colorado Boulder (2010)\nM.S. in Statistics - North Carolina State University (2008)",
+      "luna_med": "HANNAH LINDQVIST\nOperations Manager\nMinneapolis, MN | hannah.lindqvist@example.com | (612) 555-0181\n\nSUMMARY\nOperations Manager with 12 years of experience turning messy operational data into\nreliable reporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPostgreSQL, Python, Kubernetes, Pandas, Airflow, Spark\n\nEXPERIENCE\nSoftware Engineer - Riverstone Bank (2024 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nOperations Manager - Lumen Freight (2020 - 2024)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Applied Mathematics - University of Colorado Boulder (2010)\nM.S. in Statistics - North Carolina State University (2008)"
+    },
+    "costs": {
+      "luna1": 0.0003375,
+      "luna2": 0.00017622,
+      "sol": 0.006762,
+      "luna_marked": 0.0003401,
+      "luna_med": 0.0005046
+    },
+    "errors": {
+      "luna1": [
+        "312",
+        "+612"
+      ],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": [
+        "312",
+        "+612"
+      ]
+    },
+    "luna1_vs_luna2": [
+      "612",
+      "+312"
+    ],
+    "luna1_vs_sol": [
+      "612",
+      "+312"
+    ],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "con-03-poor",
+    "format": "pdf_scan_poor",
+    "dpi": 80,
+    "reads": {
+      "luna1": "SOFTWARE LICENSE AGREEMENT\n\nThis Software License Agreement (the \u201cAgreement\u201d) is made as of December 31, 2025 (the\n\u201cEffective Date\u201d) by and between Silverleaf Catering LLC, a Texas company (\u201cLicensor\u201d),\nand Meridian Facility Services, a Colorado company (\u201cLicensee\u201d).\n\n1. SCOPE. Licensor grants Licensee a non-exclusive, non-transferable license to use the\nSoftware for internal business purposes on up to 250 named users.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Dec 31, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Licensee shall pay an annual license fee of $12,000, due within thirty (30)\ndays of the Effective Date and of each anniversary.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 15 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nSilverleaf Catering LLC\nBy: Oscar Pan\n\nMeridian Facility Services\nBy: Laura Chen",
+      "luna2": "SOFTWARE LICENSE AGREEMENT\n\nThis Software License Agreement (the \u201cAgreement\u201d) is made as of December 31, 2025 (the\n\u201cEffective Date\u201d) by and between Silverleaf Catering LLC, a Texas company (\u201cLicensor\u201d),\nand Meridian Facility Services, a Colorado company (\u201cLicensee\u201d).\n\n1. SCOPE. Licensor grants Licensee a non-exclusive, non-transferable license to use the\nsoftware for internal business purposes on up to 250 named users.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Dec 31, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Licensee shall pay an annual license fee of $12,000, due within thirty (30)\ndays of the Effective Date and of each anniversary.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 15 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nSilverleaf Catering LLC\nBy: Oscar Pan\n\nMeridian Facility Services\nBy: Laura Chen",
+      "sol": "SOFTWARE LICENSE AGREEMENT\n\nThis Software License Agreement (the \"Agreement\") is made as of December 31, 2025 (the\n\"Effective Date\") by and between Silverleaf Catering LLC, a Texas company (\"Licensor\"),\nand Meridian Facility Services, a Colorado company (\"Licensee\").\n\n1. SCOPE. Licensor grants Licensee a non-exclusive, non-transferable license to use the\nsoftware for internal business purposes on up to 250 named users.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Dec 31, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Licensee shall pay an annual license fee of $12,000, due within thirty (30)\ndays of the Effective Date and of each anniversary.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 15 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nSilverleaf Catering LLC\nBy: Grace Park\n\nMeridian Facility Services\nBy: Laura Chen",
+      "luna_marked": "SOFTWARE LICENSE AGREEMENT\n\nThis Software License Agreement (the \u201cAgreement\u201d) is made as of December 31, 2025 (the\n\u201cEffective Date\u201d) by and between Silverleaf Catering LLC, a Texas company (\u201cLicensor\u201d),\nand Meridian Facility Services, a Colorado company (\u201cLicensee\u201d).\n\n1. SCOPE. Licensor grants Licensee a non-exclusive, non-transferable license to use the\nsoftware for internal business purposes for up to 250 named users.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Dec 31, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Licensee shall pay an annual license fee of $12,000, due within thirty (30)\ndays of the Effective Date and of each anniversary.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 15 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nSilverleaf Catering LLC\nBy: Oscar Pan\n\nMeridian Facility Services\nBy: Laura Chen",
+      "luna_med": "SOFTWARE LICENSE AGREEMENT\n\nThis Software License Agreement (the \"Agreement\") is made as of December 31, 2025 (the\n\"Effective Date\") by and between Silverleaf Catering LLC, a Texas company (\"Licensor\"),\nand Meridian Facility Services, a Colorado company (\"Licensee\").\n\n1. SCOPE. Licensor grants Licensee a non-exclusive, non-transferable license to use the\nsoftware for internal business purposes for up to 250 named users.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Dec 31, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Licensee shall pay an annual license fee of $12,000, due within thirty (30)\ndays of the Effective Date and of each anniversary.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 15 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nSilverleaf Catering LLC\nBy: Oscar Pan\n\nMeridian Facility Services\nBy: Laura Chen"
+    },
+    "costs": {
+      "luna1": 0.000447,
+      "luna2": 0.000447,
+      "sol": 0.009162,
+      "luna_marked": 0.00044960000000000003,
+      "luna_med": 0.0010700999999999998
+    },
+    "errors": {
+      "luna1": [
+        "grace",
+        "park",
+        "+oscar",
+        "+pan"
+      ],
+      "luna2": [
+        "grace",
+        "park",
+        "+oscar",
+        "+pan"
+      ],
+      "sol": [],
+      "luna_marked": [
+        "grace",
+        "on",
+        "park",
+        "+for",
+        "+oscar",
+        "+pan"
+      ],
+      "luna_med": [
+        "grace",
+        "on",
+        "park",
+        "+for",
+        "+oscar",
+        "+pan"
+      ]
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [
+      "oscar",
+      "pan",
+      "+grace",
+      "+park"
+    ],
+    "marked": false,
+    "luna1_vs_med": [
+      "on",
+      "+for"
+    ]
+  },
+  {
+    "id": "con-06-poor",
+    "format": "pdf_scan_poor",
+    "dpi": 80,
+    "reads": {
+      "luna1": "MASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \u201cAgreement\u201d) is made as of 29 Mar 2025 (the \u201cEffective\nDate\u201d) by and between Vantage Point Consulting, a Ohio company (\u201cProvider\u201d), and Tidewater\nElectrical Inc., a Illinois company (\u201cClient\u201d).\n\n1. SCOPE. Provider shall perform the services described in each Statement of Work signed\nby both parties, with the skill and care of a qualified professional.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Mar 29, 2028, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Client shall pay Provider the fees set out in each Statement of Work. Provider\nwill invoice monthly, and Client shall pay each invoice within thirty (30) days of\nreceipt.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nVantage Point Consulting\nBy: Kevin O\u2019Neil\n\nTidewater Electrical Inc.\nBy: Thomas Webb",
+      "luna2": "MASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \u201cAgreement\u201d) is made as of 29 Mar 2025 (the \u201cEffective\nDate\u201d) by and between Vantage Point Consulting, a Ohio company (\u201cProvider\u201d), and Tidewater\nElectrical Inc., a Illinois company (\u201cClient\u201d).\n\n1. SCOPE. Provider shall perform the services described in each Statement of Work signed\nby both parties, with the skill and care of a qualified professional.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Mar 29, 2028, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Client shall pay Provider the fees set out in each Statement of Work. Provider\nwill invoice monthly, and Client shall pay each invoice within thirty (30) days of\nreceipt.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nVantage Point Consulting\nBy: Kevin O\u2019Neil\n\nTidewater Electrical Inc.\nBy: Thomas Webb",
+      "sol": "MASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \u201cAgreement\u201d) is made as of 29 Mar 2025 (the \u201cEffective\nDate\u201d) by and between Vantage Point Consulting, a Ohio company (\u201cProvider\u201d), and Tidewater\nElectrical Inc., a Illinois company (\u201cClient\u201d).\n\n1. SCOPE. Provider shall perform the services described in each Statement of Work signed\nby both parties, with the skill and care of a qualified professional.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Mar 29, 2028, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Client shall pay Provider the fees set out in each Statement of Work. Provider\nwill invoice monthly, and Client shall pay each invoice within thirty (30) days of\nreceipt.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nVantage Point Consulting\nBy: Kevin O\u2019Neill\n\nTidewater Electrical Inc.\nBy: Thomas Webb",
+      "luna_marked": "MASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \u201cAgreement\u201d) is made as of 29 Mar 2025 (the \u201cEffective\nDate\u201d) by and between Vantage Point Consulting, a Ohio company (\u201cProvider\u201d), and Tidewater\nElectrical Inc., a Illinois company (\u201cClient\u201d).\n\n1. SCOPE. Provider shall perform the services described in each Statement of Work signed\nby both parties, with the skill and care of a qualified professional.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Mar 29, 2028, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Client shall pay Provider the fees set out in each Statement of Work. Provider\nwill invoice monthly, and Client shall pay each invoice within thirty (30) days of\nreceipt.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nVantage Point Consulting\nBy: Kevin O\u2019Neil\n\nTidewater Electrical Inc.\nBy: Thomas Webb",
+      "luna_med": "MASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \"Agreement\") is made as of 29 Mar 2025 (the \"Effective\nDate\") by and between Vantage Point Consulting, a Ohio company (\"Provider\"), and Tidewater\nElectrical Inc., a Illinois company (\"Client\").\n\n1. SCOPE. Provider shall perform the services described in each Statement of Work signed\nby both parties, with the skill and care of a qualified professional.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Mar 29, 2028, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Client shall pay Provider the fees set out in each Statement of Work. Provider\nwill invoice monthly, and Client shall pay each invoice within thirty (30) days of\nreceipt.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nVantage Point Consulting\nBy: Kevin O'Neil\n\nTidewater Electrical Inc.\nBy: Thomas Webb"
+    },
+    "costs": {
+      "luna1": 0.0004485,
+      "luna2": 0.00028722000000000003,
+      "sol": 0.008982,
+      "luna_marked": 0.0004511,
+      "luna_med": 0.0008606
+    },
+    "errors": {
+      "luna1": [
+        "neill",
+        "+neil"
+      ],
+      "luna2": [
+        "neill",
+        "+neil"
+      ],
+      "sol": [],
+      "luna_marked": [
+        "neill",
+        "+neil"
+      ],
+      "luna_med": [
+        "neill",
+        "+neil"
+      ]
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [
+      "neil",
+      "+neill"
+    ],
+    "marked": false,
+    "luna1_vs_med": []
+  },
+  {
+    "id": "con-09-poor",
+    "format": "pdf_scan_poor",
+    "dpi": 80,
+    "reads": {
+      "luna1": "COMMERCIAL LEASE AGREEMENT\n\nThis Commercial Lease Agreement (the \u201cAgreement\u201d) is made as of 04 Nov 2025 (the\n\u201cEffective Date\u201d) by and between Northwind Analytics Inc., a Delaware company\n(\u201cLandlord\u201d), and Brightline Logistics LLC, a Colorado company (\u201cTenant\u201d).\n\n1. SCOPE. Landlord leases to Tenant approximately 4,800 square feet of office space for\ngeneral office use, with access to shared parking.\n\n2. TERM. This Agreement begins on the Effective Date and ends on November 4, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Tenant shall pay monthly rent of $5,200, due on the first day of each month,\nand a security deposit equal to two months\u2019 rent on signing.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Texas, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Thomas Wilde\n\nBrightline Logistics LLC\nBy: Fatima Noor",
+      "luna2": "COMMERCIAL LEASE AGREEMENT\n\nThis Commercial Lease Agreement (the \u201cAgreement\u201d) is made as of 04 Nov 2025 (the\n\u201cEffective Date\u201d) by and between Northwind Analytics Inc., a Delaware company\n(\u201cLandlord\u201d), and Brightline Logistics LLC, a Colorado company (\u201cTenant\u201d).\n\n1. SCOPE. Landlord leases to Tenant approximately 4,000 square feet of office space for\ngeneral office use, with access to shared parking.\n\n2. TERM. This Agreement begins on the Effective Date and ends on November 4, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Tenant shall pay monthly rent of $5,000, due on the first day of each month,\nand a security deposit equal to two months\u2019 rent on signing.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Texas, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Thomas Wilde\n\nBrightline Logistics LLC\nBy: Fatima Noor",
+      "sol": "COMMERCIAL LEASE AGREEMENT\n\nThis Commercial Lease Agreement (the \"Agreement\") is made as of 04 Nov 2025 (the\n\"Effective Date\") by and between Northwind Analytics Inc., a Delaware company\n(\"Landlord\"), and Brightline Logistics LLC, a Colorado company (\"Tenant\").\n\n1. SCOPE. Landlord leases to Tenant approximately 4,800 square feet of office space for\ngeneral office use, with access to shared parking.\n\n2. TERM. This Agreement begins on the Effective Date and ends on November 4, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Tenant shall pay monthly rent of $5,300, due on the first day of each month,\nand a security deposit equal to two months' rent on signing.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Texas, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Thomas Webb\n\nBrightline Logistics LLC\nBy: Fatima Noor",
+      "luna_marked": "COMMERCIAL LEASE AGREEMENT\n\nThis Commercial Lease Agreement (the \u201cAgreement\u201d) is made as of 04 Nov 2025 (the\n\u201cEffective Date\u201d) by and between Northwind Analytics Inc., a Delaware company\n(\u201cLandlord\u201d), and Brightline Logistics LLC, a Colorado company (\u201cTenant\u201d).\n\n1. SCOPE. Landlord leases to Tenant approximately 4,500 square feet of office space for\ngeneral office use, with access to shared parking.\n\n2. TERM. This Agreement begins on the Effective Date and ends on November 4, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Tenant shall pay monthly rent of $5,500, due on the first day of each month,\nand a security deposit equal to two months\u2019 rent on signing.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Texas, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Thomas Wilde\n\nBrightline Logistics LLC\nBy: Fatima Noor",
+      "luna_med": "COMMERCIAL LEASE AGREEMENT\n\nThis Commercial Lease Agreement (the \"Agreement\") is made as of 04 Nov 2025 (the\n\"Effective Date\") by and between Northwind Analytics Inc., a Delaware company\n(\"Landlord\"), and Brightline Logistics LLC, a Colorado company (\"Tenant\").\n\n1. SCOPE. Landlord leases to Tenant approximately 4,000 square feet of office space for\ngeneral office use, with access to shared parking.\n\n2. TERM. This Agreement begins on the Effective Date and ends on November 4, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Tenant shall pay monthly rent of $5,300, due on the first day of each month,\nand a security deposit equal to two months' rent on signing.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Texas, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Thomas Wilde\n\nBrightline Logistics LLC\nBy: Fatima Noor"
+    },
+    "costs": {
+      "luna1": 0.000448,
+      "luna2": 0.00028672,
+      "sol": 0.008962,
+      "luna_marked": 0.0004506,
+      "luna_med": 0.0007071
+    },
+    "errors": {
+      "luna1": [
+        "3",
+        "300",
+        "webb",
+        "+200",
+        "+5",
+        "+wilde"
+      ],
+      "luna2": [
+        "3",
+        "300",
+        "800",
+        "webb",
+        "+000",
+        "+000",
+        "+5",
+        "+wilde"
+      ],
+      "sol": [
+        "3",
+        "+5"
+      ],
+      "luna_marked": [
+        "3",
+        "300",
+        "800",
+        "webb",
+        "+5",
+        "+500",
+        "+500",
+        "+wilde"
+      ],
+      "luna_med": [
+        "3",
+        "800",
+        "webb",
+        "+000",
+        "+5",
+        "+wilde"
+      ]
+    },
+    "luna1_vs_luna2": [
+      "200",
+      "800",
+      "+000",
+      "+000"
+    ],
+    "luna1_vs_sol": [
+      "200",
+      "wilde",
+      "+300",
+      "+webb"
+    ],
+    "marked": false,
+    "luna1_vs_med": [
+      "200",
+      "800",
+      "+000",
+      "+300"
+    ]
+  },
+  {
+    "id": "unk-03-poor",
+    "format": "pdf_scan_poor",
+    "dpi": 80,
+    "reads": {
+      "luna1": "BUILDING NOTICE\nTo all tenants of 500 Lake Shore Drive\n\nThe north elevator will be out of service for scheduled maintenance from Monday through\nWednesday next week. The south elevator and both stairwells remain open. Deliveries should\nuse the loading dock entrance on Grand Avenue. Thank you for your patience.\n\nProperty Management Office",
+      "luna2": "BUILDING NOTICE\nTo all tenants of 500 Lake Shore Drive\n\nThe north elevator will be out of service for scheduled maintenance from Monday through\nWednesday next week. The south elevator and both stairwells remain open. Deliveries should\nuse the loading dock entrance on Grand Avenue. Thank you for your patience.\n\nProperty Management Office",
+      "sol": "BUILDING NOTICE\nTo all tenants of 500 Lake Shore Drive\n\nThe north elevator will be out of service for scheduled maintenance from Monday through\nWednesday next week. The south elevator and both stairwells remain open. Deliveries should\nuse the loading dock entrance on Grand Avenue. Thank you for your patience.\n\nProperty Management Office",
+      "luna_marked": "BUILDING NOTICE\nTo all tenants of 500 Lake Shore Drive\n\nThe north elevator will be out of service for scheduled maintenance from Monday through\nWednesday next week. The south elevator and both stairwells remain open. Deliveries should\nuse the loading dock entrance on Grand Avenue. Thank you for your patience.\n\nProperty Management Office",
+      "luna_med": "BUILDING NOTICE\nTo all tenants of 500 Lake Shore Drive\n\nThe north elevator will be out of service for scheduled maintenance from Monday through\nWednesday next week. The south elevator and both stairwells remain open. Deliveries should\nuse the loading dock entrance on Grand Avenue. Thank you for your patience.\n\nProperty Management Office"
+    },
+    "costs": {
+      "luna1": 0.0002735,
+      "luna2": 0.00011221999999999999,
+      "sol": 0.005482,
+      "luna_marked": 0.00027610000000000004,
+      "luna_med": 0.0003351
+    },
+    "errors": {
+      "luna1": [],
+      "luna2": [],
+      "sol": [],
+      "luna_marked": [],
+      "luna_med": []
+    },
+    "luna1_vs_luna2": [],
+    "luna1_vs_sol": [],
+    "marked": false,
+    "luna1_vs_med": []
+  }
+]

@@ -109,7 +109,7 @@ flagged those 8:
 
 | Check | Misreads caught (of 8) | False alarms | Extra cost per scanned page |
 |---|---|---|---|
-| gpt-6-luna reads the page twice | 4 | 1 | $0.0003 |
+| gpt-6-luna reads the page twice | 4 | 1 | $0.0002 |
 | gpt-6-luna again at reasoning effort medium | 4 | 0 | $0.0006 |
 | gpt-6.1-sol reads it; any disagreement goes to review | 8 | 0 | $0.0073 |
 | every page under 100 DPI goes to review | 8 | 3 | $0 |
@@ -120,7 +120,11 @@ and no model marked anything as uncertain. The 100 DPI cutoff only looks
 good because it splits this dataset's two scan qualities; the usual 150 DPI
 rule would send every scan to review. The gpt-6.1-sol read was chosen, and
 the 12 held-out poor scans were added to measure it fairly. In the full
-runs it cost about $0.0026 per page, less than the experiment's estimate.
+runs it cost about $0.003 per page, less than the experiment's estimate.
+
+The script and every read are in [experiments/](experiments/);
+`python -m evals.experiments.second_read --summary` prints this table from
+the saved reads without calling the API.
 
 ## Limits
 
