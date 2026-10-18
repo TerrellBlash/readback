@@ -13,24 +13,23 @@ saw the pause happen, can still read and resume it because the paused
 state lives in Postgres, not in either process's memory.
 
 Needs a real Postgres instance, so it's skipped unless DATABASE_URL is
-set. See README.md "Local Postgres for testing".
+set. See README.md "Run Tests". The model is scripted, so
+it needs no API key.
 
 Run with: pytest tests/test_checkpointer_restart.py -v
 """
 
 import os
+import uuid
 
 import pytest
 from langgraph.types import Command
 
+import app.nodes as nodes
 from app.graph import build_graph, close_checkpointer
+from tests.scripted_model import ScriptedModel
 
-# Same kind of deliberately ambiguous text used in tests/test_pipeline.py's
-# TestHumanReviewFlow — vague enough that classify_document can't be
-# confident, so it routes to human_review instead of a specialist extractor.
-AMBIGUOUS_DOCUMENT_TEXT = (
-    "Hello, this is just a random note. Nothing special here."
-)
+AMBIGUOUS_DOCUMENT_TEXT = "Hello, this is just a random note. Nothing special here."
 
 requires_postgres = pytest.mark.skipif(
     not os.environ.get("DATABASE_URL"),
@@ -39,7 +38,7 @@ requires_postgres = pytest.mark.skipif(
 
 
 @requires_postgres
-def test_second_graph_instance_sees_pending_interrupt_after_restart():
+def test_second_graph_instance_sees_pending_interrupt_after_restart(monkeypatch):
     """A second, independent build_graph() call must see the first's pause.
 
     Why this matters: app/graph.py's build_checkpointer() only persists
@@ -50,7 +49,10 @@ def test_second_graph_instance_sees_pending_interrupt_after_restart():
     halves, a MemorySaver would pass it too — reusing the object is
     exactly the bug this test needs to catch.
     """
-    thread_id = "test-checkpointer-restart-001"
+    # The classifier calls this unknown, so the run pauses at human_review.
+    model = ScriptedModel(doc_type="unknown", confidence=0.9)
+    monkeypatch.setattr(nodes, "get_llm", lambda config=None: model)
+    thread_id = f"test-restart-{uuid.uuid4()}"
     config = {"configurable": {"thread_id": thread_id}}
 
     # --- "Worker process #1": pauses at human_review ---
@@ -97,7 +99,8 @@ def test_second_graph_instance_sees_pending_interrupt_after_restart():
         config,
     )
 
-    assert result.get("processing_status") in ("complete", "failed")
+    assert result["processing_status"] == "complete"
+    assert result["final_output"]["human_approved"] is True
     final_state = second_graph.get_state(config)
     assert not final_state.next, "Pipeline should have finished, nothing pending."
 

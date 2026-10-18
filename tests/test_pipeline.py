@@ -1,20 +1,30 @@
 """
-TESTS — Prove It Works
-========================
-These tests run the ACTUAL graph with sample documents.
-Each test shows the full flow from ingest to completion.
+TESTS — the whole graph against the real model
+================================================
+Why these matter: the offline tests prove the wiring with a scripted model;
+only a real model shows the prompts and schemas actually get the values
+out. Each test checks a value printed in the document, so a prompt or
+schema change that breaks extraction fails here.
 
-Run with: pytest tests/test_pipeline.py -v
+The live tests call the OpenAI API and cost a few cents, so they run only
+with RUN_LIVE_TESTS=1 and OPENAI_API_KEY set:
+
+    RUN_LIVE_TESTS=1 pytest tests/test_pipeline.py -v
+
+All names, companies and numbers are fictional.
 """
 
+import uuid
+
 import pytest
-from app.graph import build_graph, close_checkpointer
+from langgraph.checkpoint.memory import MemorySaver
 from langgraph.types import Command
 
+from app.graph import build_graph
+from app.nodes import UnprocessableDocumentError
+from tests.markers import live
 
-# --- Sample Documents ---
-
-SAMPLE_INVOICE = """
+INVOICE = """
 INVOICE #INV-2024-0847
 
 From: CloudTech Solutions LLC
@@ -35,248 +45,101 @@ Line Items:
 Subtotal: $18,100.00
 Tax (8.25%): $1,493.25
 Total: $19,593.25
-
-Payment Method: Wire Transfer
-Bank: Silicon Valley Bank
-Account: XXXX-XXXX-4521
 """
 
-SAMPLE_RESUME = """
-TERRELL WASHINGTON
-Software Engineer | AI/ML Specialist
-Atlanta, GA | terrell.w@email.com | (404) 555-0199
+RESUME = """
+DANA WHITFIELD
+Data Engineer
+Denver, CO | dana.whitfield@example.com | (303) 555-0148
 
 SUMMARY
-Full-stack software engineer with 8+ years of experience in fintech 
-and mortgage software. Currently pursuing AI Engineering certification 
-with focus on production ML pipelines and agentic systems.
+Data engineer with six years of experience building batch and streaming
+pipelines for logistics companies.
 
 SKILLS
-Python, Swift, TypeScript, React, SwiftUI, LangGraph, LangChain,
-Machine Learning, Computer Vision, iOS Development, FastAPI, Docker
+Python, SQL, Spark, Airflow, dbt, Kafka, PostgreSQL
 
 EXPERIENCE
-Senior Software Engineer — Truist Financial (2020-2024)
-- Led migration of mortgage processing system to cloud architecture
-- Built ML pipeline for automated document classification (94% accuracy)
-- Reduced loan processing time by 40% through intelligent automation
+Senior Data Engineer, Northwind Freight (2021-2025)
+- Moved nightly shipment reporting from cron scripts to Airflow
 
-Software Engineer — Infosys (2016-2020)  
-- Developed fintech solutions for Fortune 500 banking clients
-- Implemented real-time fraud detection using decision tree models
-- Managed team of 4 junior developers
+Data Engineer, Bluebird Logistics (2019-2021)
+- Built the Kafka feed for real-time truck locations
 
 EDUCATION
-B.S. Computer Science — Georgia Tech (2016)
-IBM AI Engineering Professional Certificate — Coursera (2024, in progress)
+B.S. Information Systems, Front Range State University (2019)
 """
 
-SAMPLE_CONTRACT = """
-NON-DISCLOSURE AGREEMENT
+CONTRACT = """
+SERVICES AGREEMENT
 
-This Non-Disclosure Agreement ("Agreement") is entered into as of 
-March 1, 2024 ("Effective Date") by and between:
+This Services Agreement is entered into as of March 1, 2024 by and between
+Harbor Analytics Inc., a Delaware corporation ("Provider"), and Juniper
+Retail LLC, a New York limited liability company ("Client").
 
-Party A: TechStartup Inc., a Delaware corporation ("Disclosing Party")
-Party B: Venture Capital Partners LLC, a New York LLC ("Receiving Party")
-
-1. CONFIDENTIAL INFORMATION
-The Receiving Party agrees to hold in confidence all proprietary 
-information disclosed by the Disclosing Party, including but not 
-limited to: technical data, trade secrets, business plans, and 
-financial information.
-
-2. TERM
-This Agreement shall remain in effect for a period of two (2) years 
-from the Effective Date, expiring on March 1, 2026.
-
-3. OBLIGATIONS
-The Receiving Party shall not disclose any Confidential Information 
-to third parties without prior written consent.
-
-4. GOVERNING LAW
-This Agreement shall be governed by the laws of the State of Delaware.
-
-5. TERMINATION
-Either party may terminate this Agreement with 30 days written notice.
-
-Signed:
-_________________          _________________
-TechStartup Inc.           Venture Capital Partners LLC
+1. SERVICES. Provider will deliver monthly sales forecasting reports.
+2. PAYMENT. Client will pay $4,000 per month, due within 30 days of invoice.
+3. TERM. This Agreement runs until February 28, 2026.
+4. TERMINATION. Either party may terminate on 30 days' written notice.
+5. GOVERNING LAW. This Agreement is governed by the laws of the State of Delaware.
 """
+
+NOTE = "Hello, this is just a random note. Nothing special here."
 
 
 @pytest.fixture
-def graph():
-    """Build a fresh graph for each test.
+def run():
+    """Run a document through a fresh graph; returns (graph, config, result)."""
+    graph = build_graph(MemorySaver())
 
-    When DATABASE_URL is set (e.g. running the full suite alongside
-    test_checkpointer_restart.py, per the README), this opens a real
-    Postgres connection pool per test function — close it on teardown so
-    a full test run doesn't accumulate one pool per test.
-    """
-    g = build_graph()
-    yield g
-    close_checkpointer(g.checkpointer)
+    def _run(text: str):
+        config = {"configurable": {"thread_id": str(uuid.uuid4())}}
+        result = graph.invoke({"document_text": text, "document_filename": "document.txt",
+                               "document_source": "test"}, config)
+        return graph, config, result
 
-
-class TestInvoiceProcessing:
-    """Test the full invoice pipeline."""
-
-    def test_invoice_classifies_correctly(self, graph):
-        """An invoice should be classified as 'invoice' with high confidence."""
-        config = {"configurable": {"thread_id": "test-invoice-001"}}
-        result = graph.invoke(
-            {
-                "document_text": SAMPLE_INVOICE,
-                "document_filename": "invoice_march_2024.pdf",
-                "document_source": "email_attachment",
-            },
-            config,
-        )
-        assert result["classification"]["doc_type"] == "invoice"
-        assert result["classification"]["confidence"] >= 0.7
-
-    def test_invoice_extracts_total(self, graph):
-        """Should extract the total amount from an invoice."""
-        config = {"configurable": {"thread_id": "test-invoice-002"}}
-        result = graph.invoke(
-            {
-                "document_text": SAMPLE_INVOICE,
-                "document_filename": "invoice.pdf",
-                "document_source": "test",
-            },
-            config,
-        )
-        if result.get("extraction"):
-            fields = result["extraction"]["fields"]
-            # The total should be somewhere in the extraction
-            assert "total_amount" in fields or "total" in fields
+    return _run
 
 
-class TestResumeProcessing:
-    """Test the full resume pipeline."""
-
-    def test_resume_classifies_correctly(self, graph):
-        config = {"configurable": {"thread_id": "test-resume-001"}}
-        result = graph.invoke(
-            {
-                "document_text": SAMPLE_RESUME,
-                "document_filename": "terrell_resume.pdf",
-                "document_source": "upload",
-            },
-            config,
-        )
-        assert result["classification"]["doc_type"] == "resume"
-
-    def test_resume_extracts_name(self, graph):
-        config = {"configurable": {"thread_id": "test-resume-002"}}
-        result = graph.invoke(
-            {
-                "document_text": SAMPLE_RESUME,
-                "document_filename": "resume.pdf",
-                "document_source": "test",
-            },
-            config,
-        )
-        if result.get("extraction"):
-            fields = result["extraction"]["fields"]
-            assert "full_name" in fields
+def test_an_empty_document_is_refused_before_any_model_call(run):
+    with pytest.raises(UnprocessableDocumentError):
+        run("   ")
 
 
-class TestContractProcessing:
-    """Test the full contract pipeline."""
-
-    def test_contract_classifies_correctly(self, graph):
-        config = {"configurable": {"thread_id": "test-contract-001"}}
-        result = graph.invoke(
-            {
-                "document_text": SAMPLE_CONTRACT,
-                "document_filename": "nda_techstartup.pdf",
-                "document_source": "legal_team",
-            },
-            config,
-        )
-        assert result["classification"]["doc_type"] == "contract"
+@live
+def test_invoice_total_is_read_exactly(run):
+    _, _, result = run(INVOICE)
+    assert result["classification"]["doc_type"] == "invoice"
+    fields = result["extraction"]["fields"]
+    assert fields["total_amount"] == pytest.approx(19593.25)
+    assert fields["invoice_number"] == "INV-2024-0847"
 
 
-class TestHumanReviewFlow:
-    """Test the human-in-the-loop interrupt and resume."""
-
-    def test_low_confidence_triggers_review(self, graph):
-        """A vague document should trigger human review."""
-        config = {"configurable": {"thread_id": "test-review-001"}}
-
-        # Send a deliberately ambiguous document
-        result = graph.invoke(
-            {
-                "document_text": "Hello, this is just a random note. Nothing special here.",
-                "document_filename": "mystery.txt",
-                "document_source": "unknown",
-            },
-            config,
-        )
-
-        # Should be paused at human review (interrupt)
-        # The result will contain __interrupt__ if paused
-        state = graph.get_state(config)
-        # Either it completed (classified as unknown, went to review)
-        # or it's interrupted waiting for human input
-        assert state is not None
-
-    def test_human_approval_completes_pipeline(self, graph):
-        """After human approves, the pipeline should complete."""
-        config = {"configurable": {"thread_id": "test-review-002"}}
-
-        # Start with ambiguous doc
-        graph.invoke(
-            {
-                "document_text": "Hello, this is just a random note.",
-                "document_filename": "mystery.txt",
-                "document_source": "unknown",
-            },
-            config,
-        )
-
-        # Check if it's waiting for review
-        state = graph.get_state(config)
-        if state and state.next:
-            # Resume with human approval
-            result = graph.invoke(
-                Command(resume={"approved": True, "corrections": {}}),
-                config,
-            )
-            assert result.get("processing_status") in ["complete", "failed"]
+@live
+def test_resume_contact_details_are_read(run):
+    _, _, result = run(RESUME)
+    assert result["classification"]["doc_type"] == "resume"
+    fields = result["extraction"]["fields"]
+    assert fields["full_name"].lower() == "dana whitfield"
+    assert fields["email"] == "dana.whitfield@example.com"
 
 
-class TestEdgeCases:
-    """Test error handling and edge cases."""
+@live
+def test_contract_parties_and_law_are_read(run):
+    _, _, result = run(CONTRACT)
+    assert result["classification"]["doc_type"] == "contract"
+    fields = result["extraction"]["fields"]
+    assert fields["governing_law"] and "delaware" in fields["governing_law"].lower()
+    party_names = " ".join(str(party) for party in fields["parties"]).lower()
+    assert "harbor analytics" in party_names and "juniper retail" in party_names
 
-    def test_empty_document_raises_error(self, graph):
-        """An empty document should be rejected at ingest."""
-        config = {"configurable": {"thread_id": "test-edge-001"}}
-        with pytest.raises(Exception):
-            graph.invoke(
-                {
-                    "document_text": "",
-                    "document_filename": "empty.pdf",
-                    "document_source": "test",
-                },
-                config,
-            )
 
-    def test_full_pipeline_produces_output(self, graph):
-        """A valid document should produce a final_output dict."""
-        config = {"configurable": {"thread_id": "test-edge-002"}}
-        result = graph.invoke(
-            {
-                "document_text": SAMPLE_INVOICE,
-                "document_filename": "test_invoice.pdf",
-                "document_source": "test",
-            },
-            config,
-        )
-        # Should either complete or be at human review
-        assert result.get("processing_status") in [
-            "complete", "reviewing", "validated", "failed"
-        ]
+@live
+def test_a_note_pauses_for_review_and_approval_completes_it(run):
+    graph, config, result = run(NOTE)
+    assert result["processing_status"] == "reviewing"
+    assert graph.get_state(config).next == ("human_review",)
+
+    resumed = graph.invoke(Command(resume={"approved": True, "corrections": {}}), config)
+    assert resumed["processing_status"] == "complete"
+    assert resumed["final_output"]["human_approved"] is True

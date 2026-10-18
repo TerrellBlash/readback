@@ -147,7 +147,8 @@ def test_scanned_upload_is_read_twice_and_a_disagreement_reaches_the_graph(clien
 
 
 def test_a_page_the_model_declines_is_422(client, graph, monkeypatch):
-    monkeypatch.setattr(main, "vision_transcriber", lambda: lambda image, mime_type: "I'm sorry, but I can't assist with that.")
+    refusal = "I'm sorry, but I can't assist with that."
+    monkeypatch.setattr(main, "vision_transcriber", lambda: lambda image, mime_type: refusal)
     response = upload(client, "scan.pdf", scanned_pdf(INVOICE_TEXT, seed=1))
     assert response.status_code == 422
     assert "declined" in response.text

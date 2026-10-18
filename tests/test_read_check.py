@@ -24,9 +24,8 @@ from langchain_core.language_models.fake_chat_models import FakeMessagesListChat
 from langchain_core.messages import AIMessage
 
 from app import llm
-from app.documents import DocumentError, document_to_text
+from app.documents import DocumentError, PageCheck, document_to_text
 from app.nodes import validate_extraction
-from app.documents import PageCheck
 from evals.pdfgen import scanned_pdf, text_pdf
 
 PAGE = "INVOICE 91630\nInvoice Date: 2026-04-23\nTotal Due: $6,197.01"

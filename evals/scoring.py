@@ -216,7 +216,7 @@ def _match_line_items(expected: Any, actual: Any, _: str) -> bool:
         return False
     want = sorted(_amount(item["total"]) for item in expected)
     got = sorted(_amount(item["total"]) for item in actual)
-    return all(abs(a - b) <= 0.01 for a, b in zip(want, got))
+    return all(abs(a - b) <= 0.01 for a, b in zip(want, got, strict=False))
 
 
 def _match_names(expected: Any, actual: Any, key: str) -> bool:

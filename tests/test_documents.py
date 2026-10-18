@@ -13,7 +13,6 @@ Run with: pytest tests/test_documents.py -v
 """
 
 import io
-import os
 import subprocess
 import sys
 import textwrap
@@ -23,7 +22,6 @@ import pytest
 from PIL import Image
 
 import app.documents as documents
-
 from app.documents import (
     MAX_IMAGE_SIDE,
     MAX_PAGES,
@@ -33,6 +31,7 @@ from app.documents import (
     vision_transcriber,
 )
 from evals.pdfgen import LINES_PER_PAGE, scanned_pdf, text_pdf
+from tests.markers import live
 
 INVOICE_TEXT = "INVOICE INV-1001\nVendor: Acme Corp\nTotal due: $1,250.00"
 PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
@@ -209,7 +208,7 @@ def test_decompression_bomb_is_a_document_error(monkeypatch):
         document_to_text(image_bytes((100, 100), "PNG"), RecordingTranscriber())
 
 
-@pytest.mark.skipif(not os.environ.get("OPENAI_API_KEY"), reason="needs OPENAI_API_KEY")
+@live
 def test_vision_model_reads_a_scanned_invoice():
     document = document_to_text(scanned_pdf(INVOICE_TEXT, seed=7), vision_transcriber())
     assert document.pages[0].source == "vision"

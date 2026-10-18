@@ -1,16 +1,13 @@
 """
-GRAPH WIRING — Connecting the Stops
-=====================================
-This is where we tell LangGraph:
-  "Start here, then go here, end here."
+Graph wiring and the checkpointer that persists paused reviews.
 
-Most of the routing happens INSIDE the nodes via Command objects.
-Here we only define:
-  1. The entry point (START → ingest)
-  2. The mandatory sequential edges (ingest → classify)
-  3. The exit point (store_results → END)
+Only the fixed edges are declared here (START -> ingest -> classify, and
+store_results -> END). Every branch is a Command returned by the node that
+makes the decision; see app/nodes.py.
 
-The nodes themselves handle all the branching decisions.
+Nodes have no retry policy of their own: the OpenAI client already retries
+rate limits, timeouts and server errors twice (see app/llm.py), and a
+graph-level retry on top would multiply a 90-second timeout ninefold.
 """
 
 import logging
@@ -18,23 +15,23 @@ import os
 import time
 
 from langgraph.checkpoint.memory import MemorySaver
-from langgraph.graph import StateGraph, START, END
-from langgraph.types import RetryPolicy
+from langgraph.graph import END, START, StateGraph
 
-from app.state import DocAgentState
 from app.nodes import (
-    ingest_document,
     classify_document,
+    enrich_extraction,
+    extract_contract,
     extract_invoice,
     extract_resume,
-    extract_contract,
-    validate_extraction,
     human_review,
+    ingest_document,
     store_results,
-    enrich_extraction,
+    validate_extraction,
 )
+from app.state import DocAgentState
 
 logger = logging.getLogger(__name__)
+
 
 
 def build_checkpointer():
@@ -55,10 +52,10 @@ def build_checkpointer():
     which is fine for local development and tests, but NOT fine for a
     multi-worker or restart-prone deployment.
 
-    This function always returns a usable checkpointer; it never raises.
-
     - Returns: a `PostgresSaver` when `DATABASE_URL` is configured,
         otherwise a `MemorySaver`.
+    - Throws: psycopg errors or `PoolTimeout` when `DATABASE_URL` is set
+        but the database can't be reached.
     """
     database_url = os.environ.get("DATABASE_URL")
 
@@ -73,10 +70,10 @@ def build_checkpointer():
 
     # Imported lazily so environments without DATABASE_URL (and without
     # these optional dependencies installed) never need them.
-    from psycopg_pool import ConnectionPool
+    from langgraph.checkpoint.postgres import PostgresSaver
     from psycopg import Connection
     from psycopg.rows import DictRow, dict_row
-    from langgraph.checkpoint.postgres import PostgresSaver
+    from psycopg_pool import ConnectionPool
 
     # check= tests each connection before handing it out and replaces a
     # dead one. Serverless Postgres (Neon) closes every connection when it
@@ -85,6 +82,7 @@ def build_checkpointer():
     pool: ConnectionPool[Connection[DictRow]] = ConnectionPool(
         conninfo=database_url,
         kwargs={"autocommit": True, "row_factory": dict_row},
+        open=True,
         check=ConnectionPool[Connection[DictRow]].check_connection,
     )
     checkpointer = PostgresSaver(pool)
@@ -106,7 +104,7 @@ def build_checkpointer():
     # CREATE INDEX CONCURRENTLY, which waits for every running statement to
     # finish, and a blocked pg_advisory_lock call is a running statement.
     # The index build and the waiting workers would then wait on each other
-    # forever, which is what hung the first deploy against a new database.
+    # forever.
     _SETUP_LOCK_KEY = 0x646F6361  # arbitrary fixed key, spells "doca"
     with pool.connection() as conn:
         while True:
@@ -119,11 +117,9 @@ def build_checkpointer():
         finally:
             conn.execute("SELECT pg_advisory_unlock(%s)", (_SETUP_LOCK_KEY,))
 
-    # Stashed under a prefixed name (not a PostgresSaver attribute) so
-    # close_checkpointer() can shut the pool down on app shutdown. Without
-    # this, every build_graph() call — including the second graph each
-    # restart test builds — leaks a live connection pool.
-    setattr(checkpointer, "_doc_agent_pool", pool)
+    # PostgresSaver doesn't own the pool, so keep a reference for
+    # close_checkpointer(); otherwise every build_graph() leaks a pool.
+    checkpointer._doc_agent_pool = pool
 
     logger.info("Persistent Postgres checkpointing is active (DATABASE_URL configured).")
 
@@ -162,55 +158,25 @@ def build_graph(checkpointer=None):
     """
     workflow = StateGraph(DocAgentState)
 
-    # --- ADD NODES ---
-    # Each node is a function that takes state and returns updates.
     workflow.add_node("ingest", ingest_document)
     workflow.add_node("classify", classify_document)
-
-    # Extraction nodes — each specialist gets a retry policy
-    # because LLM calls can be flaky (rate limits, timeouts)
-    workflow.add_node(
-        "extract_invoice",
-        extract_invoice,
-        retry_policy=RetryPolicy(max_attempts=3),
-    )
-    workflow.add_node(
-        "extract_resume",
-        extract_resume,
-        retry_policy=RetryPolicy(max_attempts=3),
-    )
-    workflow.add_node(
-        "extract_contract",
-        extract_contract,
-        retry_policy=RetryPolicy(max_attempts=3),
-    )
-
+    workflow.add_node("extract_invoice", extract_invoice)
+    workflow.add_node("extract_resume", extract_resume)
+    workflow.add_node("extract_contract", extract_contract)
     workflow.add_node("validate_extraction", validate_extraction)
+    workflow.add_node("enrich_extraction", enrich_extraction)
     workflow.add_node("human_review", human_review)
     workflow.add_node("store_results", store_results)
-    workflow.add_node("enrich_extraction", enrich_extraction)
 
-    # --- ADD EDGES ---
-    # Only the "always go here next" connections.
-    # Branching is handled by Command objects inside nodes.
     workflow.add_edge(START, "ingest")
     workflow.add_edge("ingest", "classify")
-    # classify → extract_* (handled by Command in classify_document)
-    # extract_* → validate (handled by Command in extract functions)
-    # validate → store OR human_review (handled by Command in validate)
-    # human_review → store (handled by Command in human_review)
     workflow.add_edge("store_results", END)
 
-    # --- COMPILE ---
-    # The checkpointer enables interrupt() to pause and resume. When the
-    # caller doesn't supply one, build_checkpointer() picks Postgres
-    # (DATABASE_URL set) or MemorySaver (local/test fallback) for us.
+    # interrupt() needs a checkpointer to save the paused run.
     if checkpointer is None:
         checkpointer = build_checkpointer()
-    graph = workflow.compile(checkpointer=checkpointer)
-
-    return graph
+    return workflow.compile(checkpointer=checkpointer)
 
 
-# Pre-built graph instance for the API server
+# The API server's graph, built once per worker process.
 graph = build_graph()

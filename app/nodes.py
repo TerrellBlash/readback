@@ -1,13 +1,10 @@
 """
 Graph nodes.
 
-Every node is a Python function that:
-  1. Reads the current state
-  2. Does its ONE job
-  3. Returns what changed
-
-Some nodes also say WHERE TO GO NEXT using Command objects.
-That's how the graph branches, e.g. low confidence routes to human review.
+Each node reads the state and returns the slice it changed. Nodes that
+branch return a Command naming the next node, so the routing lives next
+to the decision that drives it: classify picks the extractor, validate
+picks auto-store or human review.
 """
 
 import json
@@ -20,55 +17,52 @@ from langgraph.types import Command, interrupt
 from app.llm import get_llm
 from app.schemas import EXTRACTION_SCHEMAS, REQUIRED_FIELDS
 from app.state import DocAgentState, DocumentClassification, ExtractionResult
+from app.tools import vendor_lookup
 
 logger = logging.getLogger(__name__)
+
+# Below this classifier confidence, a person confirms the document type
+# before any extraction runs.
+CLASSIFICATION_THRESHOLD = 0.7
+
 
 class UnprocessableDocumentError(ValueError):
     """The document can't be processed as sent; the client should fix it."""
 
 
-# ============================================================
-# NODE 1: INGEST
-# Ingest: validates the input document
-# ============================================================
 def ingest_document(state: DocAgentState) -> dict:
     """
-    First stop: reject empty or unusable input before any LLM call.
+    Reject empty or unusable input before any model call.
+
+    - Parameter state: graph state; reads document_text.
+    - Returns: the status update.
+    - Throws: UnprocessableDocumentError when the text has fewer than 10
+        non-blank characters.
     """
     doc_text = state.get("document_text", "")
 
-    if not doc_text or len(doc_text.strip()) < 10:
-        raise UnprocessableDocumentError(
-            "Document is empty or too short to process. "
-            "Please provide actual document content."
-        )
+    if len(doc_text.strip()) < 10:
+        raise UnprocessableDocumentError("No readable text found in the document")
 
-    logger.info(
-        f"Ingested document: {state.get('document_filename', 'unknown')} "
-        f"({len(doc_text)} chars)"
-    )
+    logger.info("Ingested %r (%d chars)", state.get("document_filename", "unknown"), len(doc_text))
 
     return {"processing_status": "ingested"}
 
 
-# ============================================================
-# NODE 2: CLASSIFY
-# Classify: determines document type
-# and decides which specialist to send it to
-# ============================================================
 def classify_document(
     state: DocAgentState, config: RunnableConfig
 ) -> Command[Literal["extract_invoice", "extract_resume", "extract_contract", "human_review"]]:
     """
-    Uses an LLM to figure out: is this an invoice, resume, or contract?
-    Then ROUTES to the right extraction specialist.
-    
-    The LLM's structured classification picks the next node; unknown
-    types or confidence below 0.7 route to human review.
+    Classify the document and route it to that type's extractor.
+
+    - Parameter state: graph state; reads the text, filename and source.
+    - Parameter config: the run config, passed to get_llm.
+    - Returns: a Command to the type's extractor, or to human_review when
+        the type is unknown or the classifier's confidence is below
+        CLASSIFICATION_THRESHOLD.
     """
     structured_llm = get_llm(config).with_structured_output(DocumentClassification)
 
-    # Format the prompt ON DEMAND (not stored in state)
     prompt = f"""Analyze this document and classify it.
 
 Document filename: {state.get('document_filename', 'unknown')}
@@ -85,20 +79,23 @@ Provide your confidence (0.0 to 1.0), the language, and a one-line summary.
     doc_type = classification["doc_type"]
     confidence = classification["confidence"]
 
-    logger.info(f"Classified as: {doc_type} (confidence: {confidence:.2f})")
+    logger.info("Classified as %s (confidence %.2f)", doc_type, confidence)
 
-    # --- ROUTING DECISION ---
-    # If we're not confident enough OR it's unknown, ask a human
-    if doc_type == "unknown" or confidence < 0.7:
+    if doc_type == "unknown" or confidence < CLASSIFICATION_THRESHOLD:
+        issue = (
+            "Not an invoice, resume or contract"
+            if doc_type == "unknown"
+            else f"Classified as {doc_type} with low confidence ({confidence:.2f})"
+        )
         return Command(
             update={
                 "classification": classification,
-                "processing_status": "classified",
+                "validation_issues": [issue],
+                "processing_status": "reviewing",
             },
             goto="human_review",
         )
 
-    # Otherwise, route to the right specialist
     route_map = {
         "invoice": "extract_invoice",
         "resume": "extract_resume",
@@ -114,10 +111,6 @@ Provide your confidence (0.0 to 1.0), the language, and a one-line summary.
     )
 
 
-# ============================================================
-# NODE 3: EXTRACT (invoice, resume, contract)
-# Each node fills its document type's schema from app/schemas.py
-# ============================================================
 _EXTRACTION_ROLES = {
     "invoice": "You are an expert invoice processor.",
     "resume": "You are an expert resume parser.",
@@ -177,7 +170,6 @@ def _extract(
         fields=fields,
         confidence=confidence,
         missing_fields=missing,
-        raw_text_used=state["document_text"][:500],
     )
     return Command(
         update={"extraction": extraction, "processing_status": "extracted"},
@@ -244,10 +236,6 @@ def compute_extraction_confidence(
     return confidence, missing
 
 
-# ============================================================
-# NODE 4: VALIDATE
-# Validate: gates extraction on required-field completeness
-# ============================================================
 def _page_check_issues(pages: list[dict]) -> list[str]:
     """
     Review issues for vision pages whose second read didn't confirm the first.
@@ -276,31 +264,26 @@ def validate_extraction(
     state: DocAgentState,
 ) -> Command[Literal["enrich_extraction", "human_review"]]:
     """
-    Check if the extraction is good enough to store automatically,
-    or if a human needs to review it.
-    
-    This is the CONFIDENCE GATE — the decision point that makes
-    this pipeline production-grade instead of a toy demo.
+    Decide whether the extraction can be stored without a person looking.
+
+    A document passes only with every required field present and, for
+    scanned pages, both reads agreeing. Anything else goes to review.
+
+    - Parameter state: graph state; reads extraction and document_pages.
+    - Returns: a Command to enrich_extraction when it passes, otherwise to
+        human_review with the issues the reviewer should check.
     """
     extraction = state.get("extraction")
     issues = []
 
     if not extraction:
-        issues.append("No extraction result found")
         return Command(
-            update={
-                "validation_passed": False,
-                "validation_issues": issues,
-                "processing_status": "reviewing",
-            },
+            update={"validation_issues": ["No extraction result found"], "processing_status": "reviewing"},
             goto="human_review",
         )
 
-    # confidence is derived entirely from missing_fields (see
-    # compute_extraction_confidence), so a separate `confidence < threshold`
-    # check would always fire exactly when this one does — never
-    # independently. One real signal, one check; the confidence number
-    # still rides along in the message for a human reviewer's benefit.
+    # Confidence is computed from missing_fields alone, so a separate
+    # threshold on it would fire exactly when this check does.
     if extraction["missing_fields"]:
         issues.append(
             f"Missing fields: {', '.join(extraction['missing_fields'])} "
@@ -312,54 +295,38 @@ def validate_extraction(
     # so the missing-fields check above can't see it.
     issues.extend(_page_check_issues(state.get("document_pages") or []))
 
-    # --- THE CONFIDENCE GATE ---
-    passed = len(issues) == 0
-
-    if passed:
-        logger.info("Validation passed — auto-storing results")
+    if not issues:
+        logger.info("Validation passed; storing without review")
         return Command(
-            update={
-                "validation_passed": True,
-                "validation_issues": [],
-                "processing_status": "validated",
-            },
+            update={"validation_issues": [], "processing_status": "validated"},
             goto="enrich_extraction",
         )
-    else:
-        logger.info(f"Validation failed ({len(issues)} issues) — sending to human review")
-        return Command(
-            update={
-                "validation_passed": False,
-                "validation_issues": issues,
-                "processing_status": "reviewing",
-            },
-            goto="human_review",
-        )
+    logger.info("Validation found %d issues; sending to review", len(issues))
+    return Command(
+        update={"validation_issues": issues, "processing_status": "reviewing"},
+        goto="human_review",
+    )
 
 
-# ============================================================
-# NODE 5: HUMAN REVIEW
-# Human review: interrupt() pauses until a reviewer responds
-# ============================================================
 def human_review(
     state: DocAgentState,
 ) -> Command[Literal["store_results"]]:
     """
-    This is where interrupt() does its magic.
-    
-    The graph STOPS here. Saves everything. Goes to sleep.
-    Could be 5 seconds or 5 days — doesn't matter.
-    When a human responds, it wakes up and continues
-    EXACTLY where it left off.
-    
-    interrupt() MUST be the first thing in the function.
-    Any code before it will re-run when the graph resumes.
-    """
-    # Gather context for the human reviewer
-    classification = state.get("classification", {})
-    extraction = state.get("extraction", {})
+    Pause until a reviewer responds, then apply their decision.
 
-    # === PAUSE HERE ===
+    interrupt() saves the state through the checkpointer and stops the run;
+    /review resumes it, possibly in another worker or after a restart. On
+    resume the node runs again from the top, so nothing before interrupt()
+    may have side effects.
+
+    - Parameter state: graph state.
+    - Returns: a Command to store_results. Approval applies any corrections
+        and recomputes confidence from the corrected fields; rejection marks
+        the document failed.
+    """
+    classification = state.get("classification") or {}
+    extraction = state.get("extraction") or {}
+
     human_decision = interrupt({
         "message": "Document needs human review",
         "document_filename": state.get("document_filename", "unknown"),
@@ -370,59 +337,36 @@ def human_review(
         },
         "issues": state.get("validation_issues", []),
         "document_pages": state.get("document_pages"),
-        "action_needed": "Please review and approve/correct the extraction",
+        "action_needed": "Approve, correct or reject the extraction",
     })
-    # === RESUMES HERE when human responds ===
 
-    approved = human_decision.get("approved", False)
-    corrections = human_decision.get("corrections", {})
-
-    if approved:
-        # If human provided corrections, merge them
-        if corrections and state.get("extraction"):
-            updated_fields = {**state["extraction"]["fields"], **corrections}
-            updated_extraction = {**state["extraction"], "fields": updated_fields}
-            return Command(
-                update={
-                    "human_approved": True,
-                    "human_corrections": corrections,
-                    "extraction": updated_extraction,
-                    "processing_status": "validated",
-                },
-                goto="store_results",
-            )
-        else:
-            return Command(
-                update={
-                    "human_approved": True,
-                    "processing_status": "validated",
-                },
-                goto="store_results",
-            )
-    else:
-        # Human rejected — mark as failed
+    if not human_decision.get("approved", False):
         return Command(
-            update={
-                "human_approved": False,
-                "processing_status": "failed",
-            },
+            update={"human_approved": False, "processing_status": "failed"},
             goto="store_results",
         )
 
+    update = {"human_approved": True, "processing_status": "validated"}
+    corrections = human_decision.get("corrections") or {}
+    if corrections and extraction:
+        fields = {**extraction["fields"], **corrections}
+        confidence, missing = compute_extraction_confidence(classification.get("doc_type"), fields)
+        update["extraction"] = {**extraction, "fields": fields, "confidence": confidence, "missing_fields": missing}
+        update["human_corrections"] = corrections
+    return Command(update=update, goto="store_results")
 
-# ============================================================
-# NODE 6: STORE RESULTS
-# Store: packages the final output
-# ============================================================
+
 def store_results(state: DocAgentState) -> dict:
     """
-    Final stop: package the extraction into a clean output.
-    
-    In production, this would write to a database.
-    For now, we structure it as JSON ready to be stored anywhere.
+    Assemble the final output returned by the API and kept in the
+    checkpoint. Writing it to a system of record is left to the caller.
+
+    - Parameter state: graph state.
+    - Returns: final_output, and processing_status "complete" or "failed".
     """
-    extraction = state.get("extraction", {})
-    classification = state.get("classification", {})
+    extraction = state.get("extraction") or {}
+    classification = state.get("classification") or {}
+    status = "failed" if state.get("processing_status") == "failed" else "complete"
 
     final_output = {
         "document_filename": state.get("document_filename", "unknown"),
@@ -433,27 +377,15 @@ def store_results(state: DocAgentState) -> dict:
         "document_pages": state.get("document_pages"),
         "human_reviewed": state.get("human_approved") is not None,
         "human_approved": state.get("human_approved"),
-        "processing_status": (
-            "complete" if state.get("processing_status") != "failed" else "failed"
-        ),
+        "human_corrections": state.get("human_corrections"),
+        "processing_status": status,
     }
 
-    logger.info(
-        f"Stored results for {final_output['document_filename']} "
-        f"(type: {final_output['document_type']}, "
-        f"status: {final_output['processing_status']})"
-    )
-
-    return {
-        "final_output": final_output,
-        "processing_status": final_output["processing_status"],
-    }
+    logger.info("Stored %r (type %s, status %s)", final_output["document_filename"],
+                final_output["document_type"], status)
+    return {"final_output": final_output, "processing_status": status}
 
 
-# ============================================================
-# NODE 6: ENRICH EXTRACTION
-# Enrich: optional LLM-decided vendor lookup tool call
-# ============================================================
 def enrich_extraction(
     state: DocAgentState, config: RunnableConfig
 ) -> Command[Literal["store_results"]]:
@@ -467,8 +399,6 @@ def enrich_extraction(
     Either way, this node routes to store_results. It never changes
     which nodes run; its only discretion is whether to call the tool.
     """
-    from app.tools import vendor_lookup
-
     extraction = state.get("extraction") or {}
     fields = extraction.get("fields", {})
 
@@ -485,12 +415,10 @@ def enrich_extraction(
     response = llm_with_tools.invoke(prompt)
 
     enrichment = None
-    tool_calls = getattr(response, "tool_calls", None) or []
-    if tool_calls:
-        call = tool_calls[0]
-        vendor_name = call["args"].get("vendor_name", "")
+    if response.tool_calls:
+        vendor_name = response.tool_calls[0]["args"].get("vendor_name", "")
         enrichment = vendor_lookup.invoke({"vendor_name": vendor_name})
-        logger.info(f"enrich_extraction: looked up vendor '{vendor_name}'")
+        logger.info("enrich_extraction: looked up vendor %r", vendor_name)
     else:
         logger.info("enrich_extraction: no vendor lookup needed")
 

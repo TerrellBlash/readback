@@ -24,7 +24,7 @@ import statistics
 import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from functools import partial
 from pathlib import Path
 
@@ -205,7 +205,8 @@ def markdown_report(results: list[dict]) -> str:
     routing = ["| Run | Auto-stored | Silent errors | Auto-store precision | Straight-through "
                "| Review catch rate | p50 / p95 seconds | Cost per 1,000 docs | Errors |",
                "|---|---|---|---|---|---|---|---|---|"]
-    holdout = ["| Run | Fields correct | Auto-stored | Silent errors | Straight-through | Pages flagged by check | Cost per 1,000 docs |",
+    holdout = ["| Run | Fields correct | Auto-stored | Silent errors | Straight-through "
+               "| Pages flagged by check | Cost per 1,000 docs |",
                "|---|---|---|---|---|---|---|"]
     silent = ["Documents stored without review that had something wrong.", ""]
     for result in results:
@@ -272,7 +273,7 @@ def main() -> None:
         holdout_records = [r for r in records if r["split"] == "holdout"]
         result = {"run": run, "model": model,
                   "reasoning_effort": effort if is_reasoning_model(model) else None, "check_model": check,
-                  "run_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                  "run_at": datetime.now(UTC).isoformat(timespec="seconds"),
                   "summary": summarize(main_records),
                   "holdout_summary": summarize(holdout_records) if holdout_records else None,
                   "documents": records}

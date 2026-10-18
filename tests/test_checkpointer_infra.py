@@ -1,22 +1,14 @@
 """
 TESTS — Postgres checkpointer persistence, isolated from the LLM
 ====================================================================
-test_checkpointer_restart.py proves restart-survival through the real
-pipeline, but that means it also needs a working OPENAI_API_KEY, because
-classify_document calls the LLM before the graph ever reaches
-human_review. If that key is missing or invalid, this whole guarantee
-goes unverified along with it.
-
-This file tests the same mechanism — build_checkpointer(), the advisory
-lock around .setup(), and persistence across two independent instances —
-with a two-line synthetic graph that pauses immediately. No LLM call, no
-API key, no dependency on app.nodes at all. If this passes, the
-checkpointer plumbing itself is proven; only the LLM-dependent routing
-around it (covered separately by test_checkpointer_restart.py) remains
-to be verified once a real OPENAI_API_KEY is available.
+These test the checkpointer itself with a two-line graph that pauses
+immediately: the connection pool, the advisory lock around .setup() on a
+fresh database, a database that drops idle connections, and persistence
+across two independent instances. test_checkpointer_restart.py covers the
+same guarantee through the real pipeline.
 
 Needs a real Postgres instance, so it's skipped unless DATABASE_URL is
-set. See README.md "Local Postgres for testing".
+set. See README.md "Run Tests".
 
 Run with: pytest tests/test_checkpointer_infra.py -v
 """
@@ -25,7 +17,7 @@ import os
 from typing import TypedDict
 
 import pytest
-from langgraph.graph import StateGraph, START, END
+from langgraph.graph import END, START, StateGraph
 from langgraph.types import Command, interrupt
 
 from app.graph import build_checkpointer, close_checkpointer
@@ -134,7 +126,7 @@ def test_paused_review_survives_the_database_dropping_idle_connections():
         graph.invoke({"value": "start"}, config)
 
         # Kill every pooled connection from outside, as a suspend would.
-        pool = getattr(checkpointer, "_doc_agent_pool")
+        pool = checkpointer._doc_agent_pool
         pool.wait()
         with psycopg.connect(os.environ["DATABASE_URL"], autocommit=True) as admin:
             admin.execute(

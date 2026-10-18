@@ -1,25 +1,16 @@
 """
-TOOLS — Things the LLM Can Call
-=================================
-A tool is a function the LLM can choose to invoke to get information
-it does not already have. The LLM does not run the code itself; it
-emits a request to call the tool, our node runs the function, and the
-result goes back to the LLM.
+The vendor_lookup tool for enrich_extraction.
 
-This file holds one tool: vendor_lookup. It is a deterministic fake
-(no network) so the behavior is reproducible for course work. In a
-real system this would hit a vendor database or an external API.
-
-Used by the enrich_extraction node (Unit 2). The LLM decides whether
-a given document warrants a vendor lookup; invoices usually do,
-resumes do not.
+The model decides whether to call it; invoices with a named vendor usually
+get a lookup, resumes and contracts don't. The vendor table below is a
+fixed stand-in so runs are reproducible; a deployment would replace it with
+its vendor master data.
 """
 
 from langchain_core.tools import tool
 
-
-# A tiny fake "vendor database." Keys are lowercased vendor names.
-_FAKE_VENDOR_DB = {
+# Keys are lowercased vendor names.
+_VENDORS = {
     "acme corp": {
         "address": "100 Industrial Way, Springfield, IL 62701",
         "tax_id": "12-3456789",
@@ -55,7 +46,7 @@ def vendor_lookup(vendor_name: str) -> dict:
         is unknown, returns a record marked as not found.
     """
     key = vendor_name.strip().lower()
-    record = _FAKE_VENDOR_DB.get(key)
+    record = _VENDORS.get(key)
     if record is None:
         return {
             "address": None,

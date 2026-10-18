@@ -276,7 +276,8 @@ def make_contract(rng: random.Random, index: int, absent: str | None) -> tuple[s
                         f"notice, or immediately if the other party materially breaches this Agreement and does "
                         f"not cure the breach within {cure} days of written notice."),
         ("LIMITATION OF LIABILITY", "Neither party is liable for indirect or consequential damages. Each party's "
-                                    "total liability is capped at the fees paid in the twelve months before the claim."),
+                                    "total liability is capped at the fees paid in the twelve months "
+                                    "before the claim."),
     ]
     if absent != "governing_law":
         sections.append(("GOVERNING LAW", f"This Agreement is governed by the laws of the State of {law}, without "
