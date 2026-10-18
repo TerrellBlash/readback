@@ -247,11 +247,11 @@ second read was picked. Every run's per-document output is in
 
 | Run | Silent errors, main set (44) | Silent errors, fresh poor scans (12) | Stored without review when it should be, main / fresh | Cost per 1,000 docs | p50 seconds |
 |---|---|---|---|---|---|
-| gpt-4o-mini | 3 | 4 | 77% / 75% | $1.56 | 3.7 |
-| gpt-6-luna | 3 | 8 | 100% / 100% | $0.41 | 4.7 |
-| **gpt-6-luna, read again by gpt-6.1-sol** | **0** | **0** | 84% / 25% | $1.77 | 5.0 |
-| gpt-6-luna, effort low | 2 | 9 | 100% / 100% | $0.55 | 5.8 |
-| gpt-6.1-sol | 3 | 2 | 100% / 100% | $7.25 | 9.8 |
+| gpt-4o-mini | 4 | 4 | 90% / 83% | $2.25 | 3.3 |
+| gpt-6-luna | 1 | 8 | 100% / 100% | $0.37 | 5.2 |
+| **gpt-6-luna, read again by gpt-6.1-sol** | **0** | **0** | 84% / 25% | $4.06 | 5.5 |
+| gpt-6-luna, effort low | 2 | 9 | 100% / 100% | $0.50 | 6.3 |
+| gpt-6.1-sol | 1 | 1 | 100% / 100% | $6.33 | 9.2 |
 
 A silent error is a document stored without review that had something
 wrong in it. Those are the expensive ones, because nobody looks at them.
@@ -261,9 +261,9 @@ What the numbers say:
 - **Clean input is solved.** On plain text, text PDFs and ordinary scans,
   every gpt-6 run extracted every field correctly, and the second read
   flagged none of the ordinary scans.
-- **Every silent error came from a poor scan.** A misread looks like a valid
-  value: 2026 read as 2025, invoice 91630 as 91830, a (312) area code as
-  (912). The confidence gate only checks that fields are present. On its
+- **Every gpt-6 silent error came from a poor scan.** A misread looks like a
+  valid value: 2026 read as 2025, invoice 91630 as 91830, a (312) area code
+  as (912). The confidence gate only checks that fields are present. On its
   own, gpt-6-luna stored 8 of the 12 fresh poor scans with a wrong field.
 - **A second model reading the page closes the gap.** Asking the same model
   again repeats its misreads, and even gpt-6.1-sol alone made silent
@@ -272,14 +272,15 @@ What the numbers say:
   tuned on.
 - **The price is cost and reviews, more than speed.** The reads run at the
   same time, so the median document took 0.4 seconds longer on the main set
-  and 2.2 seconds longer on the fresh poor scans, where every page is read
-  twice. The second read costs about $0.003 per scanned page, which raises
-  this mix from $0.41 to $1.77 per 1,000 documents. It sent 14 poor scans to review: 8 had a wrong
-  field, and 6 differed only in words outside the extracted fields (signer
-  names, a year, an hourly rate) or in gpt-6.1-sol's own misread.
-- **gpt-4o-mini declines some poor scans.** It refused to transcribe 6 of
-  them. These are now rejected as unreadable instead of processed as the
-  document's text, which is also why its cost fell.
+  and 2.6 seconds longer on the fresh poor scans, where every page is read
+  twice. The second read costs about $0.0076 per scanned page, which raises
+  this mix from $0.37 to $4.06 per 1,000 documents. Half the main set is
+  scans; a mostly digital workload pays far less. It flagged 15 poor
+  scans: 11 had a wrong field, and 4 differed only in words outside the
+  extracted fields (signer names, a year, an hourly rate).
+- **gpt-4o-mini declines some poor scans.** It refused to transcribe 3 of
+  them, which are rejected as unreadable instead of processed as the
+  document's text.
 
 The default is gpt-6-luna at effort none with the gpt-6.1-sol second read.
 Set `DOC_AGENT_CHECK_MODEL=off` to trade the protection for cost. These are
@@ -289,10 +290,10 @@ changes, not a production accuracy figure.
 ## Known Limitations
 
 - **Two models can misread the same way.** The second read only catches a
-  misread the other model doesn't share. It happened once in the eval: on
-  res-06-poor both models read the (512) area code as (312), so the reads
-  agreed, and the document went to review only because its summary was
-  missing. In the experiment that chose the second read, both models read
+  misread the other model doesn't share. In the eval it happened on one
+  document, in both rounds of runs: on res-06-poor both models read the
+  (512) area code as (312), so the reads agreed, and the document went to
+  review only because its summary was missing. In the experiment that chose the second read, both models read
   invoice 91630 as 91830; that page was flagged only because they disagreed
   on its dates.
 

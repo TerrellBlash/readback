@@ -120,7 +120,10 @@ and no model marked anything as uncertain. The 100 DPI cutoff only looks
 good because it splits this dataset's two scan qualities; the usual 150 DPI
 rule would send every scan to review. The gpt-6.1-sol read was chosen, and
 the 12 held-out poor scans were added to measure it fairly. In the full
-runs it cost about $0.003 per page, less than the experiment's estimate.
+runs it cost about $0.0076 per page, in line with the experiment. An
+earlier round of runs showed about $0.003; those requests were most likely
+served from OpenAI's prompt cache, since the same pages had been read hours
+before, and a new document never is.
 
 The script and every read are in [experiments/](experiments/);
 `python -m evals.experiments.second_read --summary` prints this table from

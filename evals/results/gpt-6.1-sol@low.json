@@ -3,43 +3,41 @@
   "model": "gpt-6.1-sol",
   "reasoning_effort": "low",
   "check_model": null,
-  "run_at": "2026-10-17T05:16:40+00:00",
+  "run_at": "2026-10-18T17:49:51+00:00",
   "summary": {
     "documents": 44,
     "errors": 0,
     "classification_accuracy": 1.0,
-    "field_accuracy": 0.9851190476190477,
+    "field_accuracy": 0.9910714285714286,
     "field_accuracy_by_format": {
       "text": 1.0,
       "pdf_text": 1.0,
       "pdf_scan": 1.0,
-      "pdf_scan_poor": 0.9404761904761905
+      "pdf_scan_poor": 0.9642857142857143
     },
     "field_accuracy_by_type": {
-      "invoice": 0.9930555555555556,
+      "invoice": 1.0,
       "resume": 0.96875,
-      "contract": 0.9895833333333334
+      "contract": 1.0
     },
     "field_outcomes": {
-      "correct": 331,
-      "wrong": 5
+      "correct": 333,
+      "wrong": 3
     },
     "absent_fields_left_empty": 1.0,
     "straight_through_rate": 1.0,
     "review_catch_rate": 1.0,
     "auto_stored": 31,
-    "silent_errors": 3,
+    "silent_errors": 1,
     "silent_error_ids": [
-      "inv-03-poor",
-      "res-03-poor",
-      "con-03-poor"
+      "res-03-poor"
     ],
-    "auto_store_precision": 0.9032258064516129,
-    "seconds_p50": 9.82,
-    "seconds_p95": 18.56,
-    "mean_input_tokens": 2633.2045454545455,
-    "mean_output_tokens": 424.9318181818182,
-    "cost_per_1000_docs_usd": 7.247127272727273,
+    "auto_store_precision": 0.967741935483871,
+    "seconds_p50": 9.24,
+    "seconds_p95": 16.2,
+    "mean_input_tokens": 2282.2954545454545,
+    "mean_output_tokens": 403.6363636363636,
+    "cost_per_1000_docs_usd": 6.332354545454545,
     "pages_checked": 0,
     "pages_flagged_by_check": 0,
     "pages_unchecked": 0
@@ -48,34 +46,33 @@
     "documents": 12,
     "errors": 0,
     "classification_accuracy": 1.0,
-    "field_accuracy": 0.97,
+    "field_accuracy": 0.99,
     "field_accuracy_by_format": {
-      "pdf_scan_poor": 0.97
+      "pdf_scan_poor": 0.99
     },
     "field_accuracy_by_type": {
-      "invoice": 0.9166666666666666,
+      "invoice": 0.9722222222222222,
       "resume": 1.0,
       "contract": 1.0
     },
     "field_outcomes": {
-      "correct": 97,
-      "wrong": 3
+      "correct": 99,
+      "wrong": 1
     },
     "absent_fields_left_empty": null,
     "straight_through_rate": 1.0,
     "review_catch_rate": null,
     "auto_stored": 12,
-    "silent_errors": 2,
+    "silent_errors": 1,
     "silent_error_ids": [
-      "inv-14",
       "inv-16"
     ],
-    "auto_store_precision": 0.8333333333333334,
-    "seconds_p50": 15.45,
-    "seconds_p95": 18.07,
-    "mean_input_tokens": 4115.416666666667,
-    "mean_output_tokens": 651.8333333333334,
-    "cost_per_1000_docs_usd": 10.211966666666665,
+    "auto_store_precision": 0.9166666666666666,
+    "seconds_p50": 14.35,
+    "seconds_p95": 22.21,
+    "mean_input_tokens": 3602,
+    "mean_output_tokens": 633.4166666666666,
+    "cost_per_1000_docs_usd": 9.000966666666667,
     "pages_checked": 0,
     "pages_flagged_by_check": 0,
     "pages_unchecked": 0
@@ -144,10 +141,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 5.59,
+      "seconds": 6.56,
       "input_tokens": 1048,
-      "output_tokens": 238,
-      "cost_usd": 0.004476
+      "output_tokens": 240,
+      "cost_usd": 0.004496
     },
     {
       "id": "inv-02",
@@ -222,10 +219,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 8.2,
-      "input_tokens": 1600,
-      "output_tokens": 303,
-      "cost_usd": 0.00623
+      "seconds": 7.75,
+      "input_tokens": 1086,
+      "output_tokens": 277,
+      "cost_usd": 0.004942
     },
     {
       "id": "inv-03",
@@ -243,10 +240,10 @@
         {
           "page": 1,
           "source": "vision",
-          "chars": 525
+          "chars": 527
         }
       ],
-      "text_read": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91630\nInvoice Date: 23 Apr 2026\nDue Date: June 7, 2026\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription                     Qty    Unit Price       Amount\nWarehouse storage (pallet-month)        31       $23.51       $728.81\nSoftware subscription - annual seat     17       $304.30     $5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com",
+      "text_read": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91630\nInvoice Date: 23 Apr 2026\nDue Date: June 7, 2026\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription                        Qty    Unit Price       Amount\nWarehouse storage (pallet-month)        31       $23.51       $728.81\nSoftware subscription - annual seat     17      $304.30     $5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com",
       "extracted": {
         "vendor_name": "Cobalt Peak Software",
         "invoice_number": "91630",
@@ -282,10 +279,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 9.78,
-      "input_tokens": 3769,
-      "output_tokens": 372,
-      "cost_usd": 0.0067208
+      "seconds": 10.49,
+      "input_tokens": 3389,
+      "output_tokens": 350,
+      "cost_usd": 0.0057408
     },
     {
       "id": "inv-04",
@@ -354,10 +351,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 7.94,
-      "input_tokens": 1595,
-      "output_tokens": 308,
-      "cost_usd": 0.00627
+      "seconds": 6.28,
+      "input_tokens": 1080,
+      "output_tokens": 282,
+      "cost_usd": 0.00498
     },
     {
       "id": "inv-05",
@@ -416,10 +413,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 4.91,
+      "seconds": 6.12,
       "input_tokens": 956,
-      "output_tokens": 177,
-      "cost_usd": 0.003682
+      "output_tokens": 180,
+      "cost_usd": 0.003712
     },
     {
       "id": "inv-06",
@@ -470,10 +467,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 14.0,
-      "input_tokens": 3613,
-      "output_tokens": 426,
-      "cost_usd": 0.0069488
+      "seconds": 8.27,
+      "input_tokens": 3279,
+      "output_tokens": 265,
+      "cost_usd": 0.0046708
     },
     {
       "id": "inv-07",
@@ -536,10 +533,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 7.05,
-      "input_tokens": 1550,
-      "output_tokens": 267,
-      "cost_usd": 0.00577
+      "seconds": 5.72,
+      "input_tokens": 1084,
+      "output_tokens": 244,
+      "cost_usd": 0.004608
     },
     {
       "id": "inv-08",
@@ -608,10 +605,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 7.39,
-      "input_tokens": 1508,
-      "output_tokens": 276,
-      "cost_usd": 0.005776
+      "seconds": 6.78,
+      "input_tokens": 1034,
+      "output_tokens": 255,
+      "cost_usd": 0.004618
     },
     {
       "id": "inv-09",
@@ -631,10 +628,10 @@
         {
           "page": 1,
           "source": "vision",
-          "chars": 537
+          "chars": 501
         }
       ],
-      "text_read": "Tidewater Electrical Inc.\n77 Harbor Drive\nNorfolk, VA 23510\n\nINVOICE\n\nInvoice Number: TI-10167\nInvoice Date: Mar 2, 2025\nDue Date: 01 May 2025\nPayment Terms: Net 60\n\nBill To:\nAcme Corporation\n\nDescription    Qty    Unit Price    Amount\nWarehouse storage (pallet-month)    21    14.68    308.28\nSoftware subscription - annual seat    25    389.77    9,744.25\nFreight - LTL shipment    4    404.11    1,616.44\n\nSubtotal: 11,668.97\nTax (5%): 583.45\nTotal Due: 12,252.42\n\nThank you for your business. Questions? billing@tidewater.example.com",
+      "text_read": "Tidewater Electrical Inc.\n77 Harbor Drive\nNorfolk, VA 23510\n\nINVOICE\n\nInvoice Number: TI-10167\nInvoice Date: Mar 2, 2025\nDue Date: 01 May 2025\nPayment Terms: Net 60\n\nBill To:\nAcme Corporation\n\nDescription Qty Unit Price Amount\nWarehouse storage (pallet-month) 21 14.68 308.28\nSoftware subscription - annual seat 25 389.77 9,744.25\nFreight - LTL shipment 4 404.11 1,616.44\n\nSubtotal: 11,668.97\nTax (5%): 583.45\nTotal Due: 12,252.42\n\nThank you for your business. Questions? billing@tidewater.example.com",
       "extracted": {
         "vendor_name": "Tidewater Electrical Inc.",
         "invoice_number": "TI-10167",
@@ -676,10 +673,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 9.26,
-      "input_tokens": 3435,
-      "output_tokens": 407,
-      "cost_usd": 0.0064028
+      "seconds": 9.24,
+      "input_tokens": 3411,
+      "output_tokens": 396,
+      "cost_usd": 0.0062448
     },
     {
       "id": "inv-10",
@@ -724,10 +721,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 5.87,
-      "input_tokens": 1239,
-      "output_tokens": 177,
-      "cost_usd": 0.004248
+      "seconds": 5.31,
+      "input_tokens": 900,
+      "output_tokens": 165,
+      "cost_usd": 0.00345
     },
     {
       "id": "inv-11",
@@ -802,10 +799,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 7.79,
-      "input_tokens": 1618,
-      "output_tokens": 291,
-      "cost_usd": 0.006146
+      "seconds": 7.03,
+      "input_tokens": 1108,
+      "output_tokens": 270,
+      "cost_usd": 0.004916
     },
     {
       "id": "inv-12",
@@ -862,10 +859,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 10.79,
-      "input_tokens": 3741,
-      "output_tokens": 371,
-      "cost_usd": 0.0066548
+      "seconds": 8.46,
+      "input_tokens": 3359,
+      "output_tokens": 347,
+      "cost_usd": 0.0056508
     },
     {
       "id": "res-01",
@@ -938,10 +935,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 10.19,
-      "input_tokens": 1774,
-      "output_tokens": 460,
-      "cost_usd": 0.008148
+      "seconds": 7.68,
+      "input_tokens": 1201,
+      "output_tokens": 323,
+      "cost_usd": 0.005632
     },
     {
       "id": "res-02",
@@ -1016,10 +1013,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 7.17,
+      "seconds": 7.08,
       "input_tokens": 1107,
-      "output_tokens": 261,
-      "cost_usd": 0.004824
+      "output_tokens": 267,
+      "cost_usd": 0.004884
     },
     {
       "id": "res-03",
@@ -1090,10 +1087,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 11.49,
-      "input_tokens": 4011,
-      "output_tokens": 476,
-      "cost_usd": 0.0082448
+      "seconds": 10.22,
+      "input_tokens": 3512,
+      "output_tokens": 450,
+      "cost_usd": 0.0069868000000000005
     },
     {
       "id": "res-04",
@@ -1168,10 +1165,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 9.0,
-      "input_tokens": 1785,
-      "output_tokens": 349,
-      "cost_usd": 0.00706
+      "seconds": 7.08,
+      "input_tokens": 1207,
+      "output_tokens": 325,
+      "cost_usd": 0.005664
     },
     {
       "id": "res-05",
@@ -1256,10 +1253,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 8.72,
-      "input_tokens": 1841,
-      "output_tokens": 368,
-      "cost_usd": 0.007362
+      "seconds": 8.69,
+      "input_tokens": 1229,
+      "output_tokens": 468,
+      "cost_usd": 0.007138
     },
     {
       "id": "res-06",
@@ -1338,10 +1335,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 10.19,
+      "seconds": 11.05,
       "input_tokens": 3474,
-      "output_tokens": 425,
-      "cost_usd": 0.006660800000000001
+      "output_tokens": 430,
+      "cost_usd": 0.0067108
     },
     {
       "id": "res-07",
@@ -1420,10 +1417,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 10.2,
-      "input_tokens": 1837,
-      "output_tokens": 510,
-      "cost_usd": 0.008774
+      "seconds": 6.95,
+      "input_tokens": 1227,
+      "output_tokens": 336,
+      "cost_usd": 0.005814
     },
     {
       "id": "res-08",
@@ -1503,10 +1500,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 8.93,
-      "input_tokens": 1713,
-      "output_tokens": 331,
-      "cost_usd": 0.006736
+      "seconds": 9.89,
+      "input_tokens": 1161,
+      "output_tokens": 300,
+      "cost_usd": 0.005322
     },
     {
       "id": "res-09",
@@ -1583,10 +1580,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 11.81,
-      "input_tokens": 4088,
-      "output_tokens": 528,
-      "cost_usd": 0.0089188
+      "seconds": 11.07,
+      "input_tokens": 3546,
+      "output_tokens": 489,
+      "cost_usd": 0.0074448000000000005
     },
     {
       "id": "con-01",
@@ -1619,14 +1616,14 @@
         "effective_date": "2026-02-27",
         "expiration_date": null,
         "key_terms": [
-          "Provider shall perform services described in Statements of Work signed by both parties with the skill and care of a qualified professional.",
-          "Client shall pay the fees specified in each Statement of Work.",
+          "Provider shall perform services described in each Statement of Work signed by both parties with the skill and care of a qualified professional.",
+          "The Agreement continues from the Effective Date until terminated under Section 6.",
           "Each party shall keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
           "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding on it.",
           "Neither party is liable for indirect or consequential damages. Each party's total liability is capped at the fees paid in the 12 months before the claim.",
-          "The Agreement replaces all earlier proposals and understandings on its subject."
+          "The Agreement constitutes the parties' entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
-        "payment_terms": "Fees are set out in each Statement of Work. Provider will invoice monthly, and Client shall pay each invoice within 30 days of receipt.",
+        "payment_terms": "Client shall pay the fees set out in each Statement of Work. Provider will invoice monthly, and Client shall pay each invoice within 30 days of receipt.",
         "termination_clause": "Either party may terminate for convenience on 30 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 15 days of written notice.",
         "governing_law": "State of Illinois, without regard to its conflict of laws rules."
       },
@@ -1640,10 +1637,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 7.4,
+      "seconds": 10.04,
       "input_tokens": 1405,
-      "output_tokens": 342,
-      "cost_usd": 0.00623
+      "output_tokens": 410,
+      "cost_usd": 0.00691
     },
     {
       "id": "con-02",
@@ -1682,14 +1679,15 @@
         "key_terms": [
           "Consultant shall provide data and reporting advisory services as requested by Company.",
           "Consultant shall not subcontract any work without written consent.",
-          "Each party shall keep the other party's confidential information secret, use it only to perform this Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into this Agreement and that performance will not breach any other agreement binding it.",
-          "Neither party is liable for indirect or consequential damages. Each party's total liability is capped at the fees paid in the 12 months before the claim.",
-          "This Agreement constitutes the parties' entire agreement on its subject and replaces all earlier proposals and understandings."
+          "Each party shall keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
+          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
+          "Neither party is liable for indirect or consequential damages.",
+          "Each party's total liability is capped at the fees paid in the twelve months before the claim.",
+          "The Agreement replaces all earlier proposals and understandings on its subject."
         ],
         "payment_terms": "Company shall pay Consultant 110 per hour, invoiced monthly and payable within 15 days of the invoice date.",
         "termination_clause": "Either party may terminate for convenience on 60 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 30 days of written notice.",
-        "governing_law": "State of Texas, without regard to its conflict of laws rules"
+        "governing_law": "State of Texas, without regard to its conflict of laws rules."
       },
       "outcomes": {
         "contract_type": "correct",
@@ -1701,10 +1699,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 10.35,
-      "input_tokens": 1939,
-      "output_tokens": 438,
-      "cost_usd": 0.008258
+      "seconds": 8.43,
+      "input_tokens": 1407,
+      "output_tokens": 410,
+      "cost_usd": 0.006914
     },
     {
       "id": "con-03",
@@ -1741,14 +1739,14 @@
         "effective_date": "2025-12-31",
         "expiration_date": "2026-12-31",
         "key_terms": [
-          "Licensor grants Licensee a non-exclusive, non-transferable license to use the software for internal business purposes for up to 250 named users.",
-          "Each party must keep the other's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding on it.",
-          "Neither party is liable for indirect or consequential damages; each party's total liability is capped at the fees paid in the twelve months before the claim.",
+          "Licensor grants Licensee a non-exclusive, non-transferable license to use the software for internal business purposes on up to 250 named users.",
+          "Each party must keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
+          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
+          "Neither party is liable for indirect or consequential damages. Each party's total liability is capped at the fees paid in the twelve months before the claim.",
           "The Agreement constitutes the entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
         "payment_terms": "Licensee must pay an annual license fee of 12000, due within 30 days of the Effective Date and of each anniversary.",
-        "termination_clause": "Either party may terminate for convenience on 90 days' written notice, or immediately if the other party materially breaches the Agreement and fails to cure within 15 days of written notice.",
+        "termination_clause": "Either party may terminate for convenience on 90 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 15 days of written notice.",
         "governing_law": "State of Georgia, without regard to its conflict of laws rules."
       },
       "outcomes": {
@@ -1761,10 +1759,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 17.36,
-      "input_tokens": 4351,
-      "output_tokens": 850,
-      "cost_usd": 0.012664799999999999
+      "seconds": 15.59,
+      "input_tokens": 3818,
+      "output_tokens": 828,
+      "cost_usd": 0.0113788
     },
     {
       "id": "con-04",
@@ -1797,13 +1795,12 @@
         "key_terms": [
           "Landlord leases approximately 4800 square feet of office space to Tenant for general office use, with access to shared parking.",
           "Each party must keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding on it.",
-          "Neither party is liable for indirect or consequential damages.",
-          "Each party's total liability is capped at the fees paid in the twelve months before the claim.",
-          "The Agreement replaces all earlier proposals and understandings on its subject."
+          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
+          "Neither party is liable for indirect or consequential damages; each party's total liability is capped at the fees paid in the twelve months before the claim.",
+          "The Agreement constitutes the entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
         "payment_terms": "Monthly rent of 4600 is due on the first day of each month. A security deposit equal to two months' rent is due on signing.",
-        "termination_clause": "Either party may terminate for convenience on 60 days' written notice, or immediately if the other party materially breaches the Agreement and fails to cure the breach within 15 days of written notice.",
+        "termination_clause": "Either party may terminate for convenience on 60 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 15 days of written notice.",
         "governing_law": "State of Ohio, without regard to its conflict of laws rules."
       },
       "outcomes": {
@@ -1816,10 +1813,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 10.97,
-      "input_tokens": 1963,
-      "output_tokens": 454,
-      "cost_usd": 0.008466
+      "seconds": 9.46,
+      "input_tokens": 1431,
+      "output_tokens": 415,
+      "cost_usd": 0.007012
     },
     {
       "id": "con-05",
@@ -1856,15 +1853,15 @@
         "effective_date": "2025-08-14",
         "expiration_date": "2027-08-14",
         "key_terms": [
-          "Supplier must deliver the products listed in Schedule A within 10 business days of each purchase order, packaged to prevent damage in transit.",
-          "Each party must keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
-          "Neither party is liable for indirect or consequential damages.",
-          "Each party's total liability is capped at the fees paid in the 12 months before the claim.",
-          "The Agreement constitutes the entire agreement on its subject and replaces all earlier proposals and understandings."
+          "Supplier shall deliver the products listed in Schedule A within 10 business days of each purchase order, packaged to prevent damage in transit.",
+          "Buyer shall pay for each delivery at the unit prices in Schedule A within 45 days of the invoice date.",
+          "Each party shall keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
+          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement by which it is bound.",
+          "Neither party is liable for indirect or consequential damages. Each party's total liability is capped at the fees paid in the 12 months before the claim.",
+          "The Agreement constitutes the parties' entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
-        "payment_terms": "Buyer must pay for each delivery at the unit prices in Schedule A within 45 days of the invoice date.",
-        "termination_clause": "Either party may terminate for convenience on 90 days' written notice, or immediately if the other party materially breaches the Agreement and fails to cure the breach within 30 days of written notice.",
+        "payment_terms": "Buyer shall pay for each delivery at the unit prices in Schedule A within 45 days of the invoice date.",
+        "termination_clause": "Either party may terminate for convenience on 90 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 30 days of written notice.",
         "governing_law": "State of Illinois, without regard to its conflict of laws rules."
       },
       "outcomes": {
@@ -1877,10 +1874,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 9.74,
-      "input_tokens": 1955,
-      "output_tokens": 432,
-      "cost_usd": 0.00823
+      "seconds": 9.29,
+      "input_tokens": 1425,
+      "output_tokens": 435,
+      "cost_usd": 0.0072
     },
     {
       "id": "con-06",
@@ -1917,14 +1914,15 @@
         "effective_date": "2025-03-29",
         "expiration_date": "2028-03-29",
         "key_terms": [
-          "Provider shall perform services described in Statements of Work signed by both parties, with the skill and care of a qualified professional.",
+          "Provider shall perform services described in each Statement of Work signed by both parties with the skill and care of a qualified professional.",
+          "Client shall pay Provider the fees set out in each Statement of Work.",
           "Each party shall keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
+          "Each party warrants that it has authority to enter into the Agreement and that performing it will not breach any other agreement binding on it.",
           "Neither party is liable for indirect or consequential damages. Each party's total liability is capped at the fees paid in the 12 months before the claim.",
-          "The Agreement constitutes the entire agreement on its subject and replaces all earlier proposals and understandings."
+          "The Agreement constitutes the parties' entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
-        "payment_terms": "Client shall pay the fees set out in each Statement of Work. Provider will invoice monthly, and Client shall pay each invoice within 30 days of receipt.",
-        "termination_clause": "Either party may terminate for convenience on 90 days' written notice, or immediately if the other party materially breaches the Agreement and fails to cure within 30 days of written notice.",
+        "payment_terms": "Fees are set out in each Statement of Work. Provider will invoice monthly, and Client shall pay each invoice within 30 days of receipt.",
+        "termination_clause": "Either party may terminate for convenience on 90 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 30 days of written notice.",
         "governing_law": "State of Georgia, without regard to its conflict of laws rules."
       },
       "outcomes": {
@@ -1937,10 +1935,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 15.2,
-      "input_tokens": 4359,
-      "output_tokens": 849,
-      "cost_usd": 0.0126708
+      "seconds": 15.38,
+      "input_tokens": 3826,
+      "output_tokens": 847,
+      "cost_usd": 0.0115848
     },
     {
       "id": "con-07",
@@ -1972,11 +1970,11 @@
         "expiration_date": "2026-04-12",
         "key_terms": [
           "Consultant shall provide data and reporting advisory services as requested by Company.",
-          "Consultant shall not subcontract work without written consent.",
+          "Consultant shall not subcontract any work without written consent.",
           "Each party shall keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
+          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding on it.",
           "Neither party is liable for indirect or consequential damages; each party's total liability is capped at the fees paid in the twelve months before the claim.",
-          "The Agreement constitutes the entire agreement on its subject and replaces all earlier proposals and understandings."
+          "The Agreement constitutes the parties' entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
         "payment_terms": "Company shall pay Consultant 215 per hour, invoiced monthly and payable within 15 days of the invoice date.",
         "termination_clause": "Either party may terminate for convenience on 60 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 15 days of written notice.",
@@ -1992,10 +1990,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 9.82,
-      "input_tokens": 1935,
-      "output_tokens": 416,
-      "cost_usd": 0.00803
+      "seconds": 9.06,
+      "input_tokens": 1407,
+      "output_tokens": 402,
+      "cost_usd": 0.006834
     },
     {
       "id": "con-08",
@@ -2036,8 +2034,8 @@
         "key_terms": [
           "Licensor grants Licensee a non-exclusive, non-transferable license to use the software for internal business purposes for up to 250 named users.",
           "Each party must keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into the Agreement and that its performance will not breach any other agreement binding it.",
-          "Neither party is liable for indirect or consequential damages; each party's total liability is capped at the fees paid in the twelve months before the claim.",
+          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding on it.",
+          "Neither party is liable for indirect or consequential damages. Each party's total liability is capped at the fees paid in the twelve months before the claim.",
           "The Agreement constitutes the parties' entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
         "payment_terms": "Licensee must pay an annual license fee of 29000, due within 30 days of the Effective Date and each anniversary.",
@@ -2054,10 +2052,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 7.54,
+      "seconds": 8.72,
       "input_tokens": 1369,
-      "output_tokens": 404,
-      "cost_usd": 0.006778
+      "output_tokens": 409,
+      "cost_usd": 0.006828
     },
     {
       "id": "con-09",
@@ -2096,12 +2094,12 @@
         "key_terms": [
           "Landlord leases approximately 4800 square feet of office space to Tenant for general office use, with access to shared parking.",
           "Each party must keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding on it.",
-          "Neither party is liable for indirect or consequential damages; each party's total liability is capped at the fees paid in the twelve months before the claim.",
+          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
+          "Neither party is liable for indirect or consequential damages. Each party's total liability is capped at the fees paid in the twelve months before the claim.",
           "The Agreement constitutes the entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
         "payment_terms": "Monthly rent of 3300 is due on the first day of each month. A security deposit equal to two months' rent is due on signing.",
-        "termination_clause": "Either party may terminate for convenience on 60 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 30 days of written notice.",
+        "termination_clause": "Either party may terminate for convenience on 60 days' written notice, or immediately if the other party materially breaches the Agreement and fails to cure within 30 days of written notice.",
         "governing_law": "State of Texas, without regard to its conflict of laws rules."
       },
       "outcomes": {
@@ -2114,10 +2112,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 19.63,
-      "input_tokens": 4357,
-      "output_tokens": 856,
-      "cost_usd": 0.0127368
+      "seconds": 17.46,
+      "input_tokens": 3822,
+      "output_tokens": 834,
+      "cost_usd": 0.0114468
     },
     {
       "id": "unk-01",
@@ -2135,7 +2133,7 @@
       "text_read": null,
       "extracted": null,
       "outcomes": {},
-      "seconds": 2.35,
+      "seconds": 2.73,
       "input_tokens": 260,
       "output_tokens": 42,
       "cost_usd": 0.00094
@@ -2162,10 +2160,10 @@
       "text_read": "Q3 PLANNING OFFSITE - NOTES\nAttendees: Laura, Kevin, Fatima, Grace\nDecisions\n- Move the weekly sync to Tuesdays at 10:00.\n- Pilot the new onboarding checklist with the October hires.\nAction items\n- Kevin: draft the onboarding checklist by Friday.\n- Grace: book the room for the November review.\n- Fatima: collect feedback from the support team.",
       "extracted": null,
       "outcomes": {},
-      "seconds": 2.09,
+      "seconds": 2.7,
       "input_tokens": 217,
-      "output_tokens": 44,
-      "cost_usd": 0.000874
+      "output_tokens": 48,
+      "cost_usd": 0.000914
     },
     {
       "id": "unk-03",
@@ -2189,10 +2187,10 @@
       "text_read": "BUILDING NOTICE\nTo all tenants of 500 Lake Shore Drive\n\nThe north elevator will be out of service for scheduled maintenance from Monday through\nWednesday next week. The south elevator and both stairwells remain open. Deliveries should\nuse the loading dock entrance on Grand Avenue. Thank you for your patience.\n\nProperty Management Office",
       "extracted": null,
       "outcomes": {},
-      "seconds": 4.49,
+      "seconds": 5.3,
       "input_tokens": 2591,
-      "output_tokens": 115,
-      "cost_usd": 0.0017948
+      "output_tokens": 114,
+      "cost_usd": 0.0017848
     },
     {
       "id": "inv-03-poor",
@@ -2210,13 +2208,13 @@
         {
           "page": 1,
           "source": "vision",
-          "chars": 490
+          "chars": 463
         }
       ],
-      "text_read": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91830\nInvoice Date: 23 Apr 2026\nDue Date: June 7, 2026\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription    Qty    Unit Price    Amount\nWarehouse storage (pallet-month)    31    $23.51    $728.81\nSoftware subscription - annual seat    17    $304.30    $5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com",
+      "text_read": "Cobalt Peak Software\n2200 Ridge Road\nBoise, ID 83702\n\nINVOICE\n\nInvoice Number: 91630\nInvoice Date: 23 Apr 2026\nDue Date: June 7, 2026\nPayment Terms: Net 45\n\nBill To:\nSummit Ridge Manufacturing\n\nDescription\tQty\tUnit Price\tAmount\nWarehouse storage (pallet-month)\t31\t$23.51\t$728.81\nSoftware subscription - annual seat\t17\t$304.30\t$5,173.10\n\nSubtotal: $5,901.91\nTax (5%): $295.10\nTotal Due: $6,197.01\n\nThank you for your business. Questions? billing@cobalt.example.com",
       "extracted": {
         "vendor_name": "Cobalt Peak Software",
-        "invoice_number": "91830",
+        "invoice_number": "91630",
         "invoice_date": "2026-04-23",
         "due_date": "2026-06-07",
         "line_items": [
@@ -2240,7 +2238,7 @@
       },
       "outcomes": {
         "vendor_name": "correct",
-        "invoice_number": "wrong",
+        "invoice_number": "correct",
         "invoice_date": "correct",
         "due_date": "correct",
         "line_items": "correct",
@@ -2249,10 +2247,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 14.78,
-      "input_tokens": 3769,
-      "output_tokens": 488,
-      "cost_usd": 0.0078808
+      "seconds": 9.9,
+      "input_tokens": 3385,
+      "output_tokens": 439,
+      "cost_usd": 0.0066228
     },
     {
       "id": "inv-06-poor",
@@ -2303,10 +2301,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 9.37,
-      "input_tokens": 3611,
-      "output_tokens": 320,
-      "cost_usd": 0.0058848
+      "seconds": 9.32,
+      "input_tokens": 3277,
+      "output_tokens": 324,
+      "cost_usd": 0.0052568
     },
     {
       "id": "inv-09-poor",
@@ -2371,10 +2369,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 10.7,
+      "seconds": 12.06,
       "input_tokens": 3435,
-      "output_tokens": 521,
-      "cost_usd": 0.0075428000000000005
+      "output_tokens": 505,
+      "cost_usd": 0.0073828
     },
     {
       "id": "inv-12-poor",
@@ -2431,10 +2429,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 11.18,
-      "input_tokens": 3739,
-      "output_tokens": 420,
-      "cost_usd": 0.0071408
+      "seconds": 10.24,
+      "input_tokens": 3357,
+      "output_tokens": 402,
+      "cost_usd": 0.006196800000000001
     },
     {
       "id": "res-03-poor",
@@ -2452,10 +2450,10 @@
         {
           "page": 1,
           "source": "vision",
-          "chars": 792
+          "chars": 788
         }
       ],
-      "text_read": "PRIYA NATARAJAN\nSoftware Engineer\nSeattle, WA | priya.natarajan@example.com | (604) 555-0111\n\nSUMMARY\nSoftware Engineer with 12 years of experience turning messy operational data into reliable\nreporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPython, Spark, Airflow, Pandas, Terraform, FastAPI\n\nEXPERIENCE\nSoftware Engineer - Crestford Insurance Co. (2023 - Present)\n- Built dashboards and pipelines used by finance and operations teams.\n- Cut manual reporting time by automating weekly data pulls.\n\nMachine Learning Engineer - Ironwood Retail Group (2021 - 2023)\n- Built dashboards and pipelines used by finance and operations teams.\n- Cut manual reporting time by automating weekly data pulls.\n\nEDUCATION\nB.S. in Information Systems - Arizona State University (2009)",
+      "text_read": "PRIYA NATARAJAN\nSoftware Engineer\nSeattle, WA | priya.natarajan@example.com | (604) 555-0111\n\nSUMMARY\nSoftware Engineer with 12 years of experience turning messy operational data into reliable\nreporting and automation. Comfortable owning projects end to end.\n\nSKILLS\nPython, Spark, Airflow, Pandas, Terraform, FastAPI\n\nEXPERIENCE\nSoftware Engineer - Crestleaf Insurance Co. (2023 - Present)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nMachine Learning Engineer - Ironwood Retail Group (2021 - 2023)\n- Built dashboards and pipelines used by finance and operations teams\n- Cut manual reporting time by automating weekly data pulls\n\nEDUCATION\nB.S. in Information Systems - Arizona State University (2009)",
       "extracted": {
         "full_name": "PRIYA NATARAJAN",
         "email": "priya.natarajan@example.com",
@@ -2472,18 +2470,18 @@
         ],
         "experience": [
           {
-            "company": "Crestford Insurance Co.",
+            "company": "Crestleaf Insurance Co.",
             "title": "Software Engineer",
             "start_date": "2023",
             "end_date": "Present",
-            "description": "Built dashboards and pipelines used by finance and operations teams.\nCut manual reporting time by automating weekly data pulls."
+            "description": "Built dashboards and pipelines used by finance and operations teams\nCut manual reporting time by automating weekly data pulls"
           },
           {
             "company": "Ironwood Retail Group",
             "title": "Machine Learning Engineer",
             "start_date": "2021",
             "end_date": "2023",
-            "description": "Built dashboards and pipelines used by finance and operations teams.\nCut manual reporting time by automating weekly data pulls."
+            "description": "Built dashboards and pipelines used by finance and operations teams\nCut manual reporting time by automating weekly data pulls"
           }
         ],
         "education": [
@@ -2505,10 +2503,10 @@
         "experience": "wrong",
         "education": "correct"
       },
-      "seconds": 18.56,
-      "input_tokens": 4016,
-      "output_tokens": 628,
-      "cost_usd": 0.009774799999999998
+      "seconds": 14.13,
+      "input_tokens": 3514,
+      "output_tokens": 592,
+      "cost_usd": 0.0084108
     },
     {
       "id": "res-06-poor",
@@ -2587,7 +2585,7 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 10.06,
+      "seconds": 9.93,
       "input_tokens": 3474,
       "output_tokens": 425,
       "cost_usd": 0.006660800000000001
@@ -2667,10 +2665,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 11.73,
-      "input_tokens": 4088,
-      "output_tokens": 527,
-      "cost_usd": 0.0089088
+      "seconds": 10.3,
+      "input_tokens": 3546,
+      "output_tokens": 489,
+      "cost_usd": 0.0074448000000000005
     },
     {
       "id": "con-03-poor",
@@ -2691,12 +2689,12 @@
           "chars": 1896
         }
       ],
-      "text_read": "SOFTWARE LICENSE AGREEMENT\n\nThis Software License Agreement (the \"Agreement\") is made as of December 31, 2025 (the\n\"Effective Date\") by and between Silvertail Catering LLC, a Texas company (\"Licensor\"),\nand Meridian Facility Services, a Colorado company (\"Licensee\").\n\n1. SCOPE. Licensor grants Licensee a non-exclusive, non-transferable license to use the\nsoftware for internal business purposes on up to 250 named users.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Dec 31, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Licensee shall pay an annual license fee of $12,000, due within thirty (30)\ndays of the Effective Date and of each anniversary.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 15 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nSilvertail Catering LLC\nBy: Grace Park\n\nMeridian Facility Services\nBy: Laura Chen",
+      "text_read": "SOFTWARE LICENSE AGREEMENT\n\nThis Software License Agreement (the \"Agreement\") is made as of December 31, 2025 (the\n\"Effective Date\") by and between Silverleaf Catering LLC, a Texas company (\"Licensor\"),\nand Meridian Facility Services, a Colorado company (\"Licensee\").\n\n1. SCOPE. Licensor grants Licensee a non-exclusive, non-transferable license to use the\nsoftware for internal business purposes on up to 250 named users.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Dec 31, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Licensee shall pay an annual license fee of $12,000, due within thirty (30)\ndays of the Effective Date and of each anniversary.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 15 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nSilverleaf Catering LLC\nBy: Grace Park\n\nMeridian Facility Services\nBy: Laura Chen",
       "extracted": {
         "contract_type": "Software License Agreement",
         "parties": [
           {
-            "name": "Silvertail Catering LLC",
+            "name": "Silverleaf Catering LLC",
             "role": "Licensor"
           },
           {
@@ -2707,20 +2705,19 @@
         "effective_date": "2025-12-31",
         "expiration_date": "2026-12-31",
         "key_terms": [
-          "Licensor grants Licensee a non-exclusive, non-transferable license to use the software for internal business purposes on up to 250 named users.",
+          "Licensor grants Licensee a non-exclusive, non-transferable license to use the software for internal business purposes for up to 250 named users.",
           "Each party must keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
-          "Neither party is liable for indirect or consequential damages.",
-          "Each party's total liability is capped at the fees paid in the twelve months before the claim.",
+          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding on it.",
+          "Neither party is liable for indirect or consequential damages. Each party's total liability is capped at the fees paid in the twelve months before the claim.",
           "The Agreement constitutes the parties' entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
         "payment_terms": "Licensee must pay an annual license fee of 12000, due within 30 days of the Effective Date and of each anniversary.",
-        "termination_clause": "Either party may terminate for convenience on 90 days' written notice, or immediately if the other party materially breaches the Agreement and fails to cure within 15 days of written notice.",
+        "termination_clause": "Either party may terminate for convenience on 90 days' written notice, or immediately if the other party materially breaches the Agreement and fails to cure the breach within 15 days of written notice.",
         "governing_law": "State of Georgia, without regard to its conflict of laws rules."
       },
       "outcomes": {
         "contract_type": "correct",
-        "parties": "wrong",
+        "parties": "correct",
         "effective_date": "correct",
         "expiration_date": "correct",
         "key_terms": "correct",
@@ -2728,10 +2725,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 17.37,
-      "input_tokens": 4361,
-      "output_tokens": 910,
-      "cost_usd": 0.0132848
+      "seconds": 16.2,
+      "input_tokens": 3818,
+      "output_tokens": 888,
+      "cost_usd": 0.0119788
     },
     {
       "id": "con-06-poor",
@@ -2752,7 +2749,7 @@
           "chars": 1937
         }
       ],
-      "text_read": "MASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \u201cAgreement\u201d) is made as of 29 Mar 2025 (the \u201cEffective\nDate\u201d) by and between Vantage Point Consulting, a Ohio company (\u201cProvider\u201d), and Tidewater\nElectrical Inc., a Illinois company (\u201cClient\u201d).\n\n1. SCOPE. Provider shall perform the services described in each Statement of Work signed\nby both parties, with the skill and care of a qualified professional.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Mar 29, 2028, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Client shall pay Provider the fees set out in each Statement of Work. Provider\nwill invoice monthly, and Client shall pay each invoice within thirty (30) days of\nreceipt.\n\n4. CONFIDENTIALITY. Each party shall keep the other party\u2019s confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days\u2019\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party\u2019s total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties\u2019 entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nVantage Point Consulting\nBy: Kevin O'Neill\n\nTidewater Electrical Inc.\nBy: Thomas Webb",
+      "text_read": "MASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \"Agreement\") is made as of 29 Mar 2025 (the \"Effective\nDate\") by and between Vantage Point Consulting, a Ohio company (\"Provider\"), and Tidewater\nElectrical Inc., a Illinois company (\"Client\").\n\n1. SCOPE. Provider shall perform the services described in each Statement of Work signed\nby both parties, with the skill and care of a qualified professional.\n\n2. TERM. This Agreement begins on the Effective Date and ends on Mar 29, 2028, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Client shall pay Provider the fees set out in each Statement of Work. Provider\nwill invoice monthly, and Client shall pay each invoice within thirty (30) days of\nreceipt.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Georgia, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nVantage Point Consulting\nBy: Kevin O'Neill\n\nTidewater Electrical Inc.\nBy: Thomas Webb",
       "extracted": {
         "contract_type": "Master Services Agreement",
         "parties": [
@@ -2768,15 +2765,15 @@
         "effective_date": "2025-03-29",
         "expiration_date": "2028-03-29",
         "key_terms": [
-          "Provider shall perform services described in each Statement of Work signed by both parties with the skill and care of a qualified professional.",
-          "Client shall pay the fees specified in each Statement of Work.",
-          "Each party shall keep the other party\u2019s confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
-          "Neither party is liable for indirect or consequential damages; each party\u2019s total liability is capped at the fees paid in the 12 months before the claim.",
-          "The Agreement constitutes the parties\u2019 entire agreement on its subject and replaces all earlier proposals and understandings."
+          "Provider shall perform the services described in each Statement of Work signed by both parties with the skill and care of a qualified professional.",
+          "Each party shall keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
+          "Each party warrants that it has authority to enter into the Agreement and that performing it will not breach any other agreement binding on it.",
+          "Neither party is liable for indirect or consequential damages.",
+          "Each party's total liability is capped at the fees paid in the twelve months before the claim.",
+          "The Agreement constitutes the parties' entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
-        "payment_terms": "Fees are set out in each Statement of Work. Provider invoices monthly, and Client must pay each invoice within 30 days of receipt.",
-        "termination_clause": "Either party may terminate for convenience on 90 days\u2019 written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 30 days of written notice.",
+        "payment_terms": "Client shall pay Provider the fees set out in each Statement of Work. Provider will invoice monthly, and Client shall pay each invoice within 30 days of receipt.",
+        "termination_clause": "Either party may terminate for convenience on 90 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 30 days of written notice.",
         "governing_law": "State of Georgia, without regard to its conflict of laws rules."
       },
       "outcomes": {
@@ -2789,10 +2786,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 20.38,
-      "input_tokens": 4383,
-      "output_tokens": 863,
-      "cost_usd": 0.0128588
+      "seconds": 14.67,
+      "input_tokens": 3826,
+      "output_tokens": 834,
+      "cost_usd": 0.0114548
     },
     {
       "id": "con-09-poor",
@@ -2813,7 +2810,7 @@
           "chars": 1888
         }
       ],
-      "text_read": "COMMERCIAL LEASE AGREEMENT\n\nThis Commercial Lease Agreement (the \"Agreement\") is made as of 04 Nov 2025 (the\n\"Effective Date\") by and between Northwind Analytics Inc., a Delaware company\n(\"Landlord\"), and Brightline Logistics LLC, a Colorado company (\"Tenant\").\n\n1. SCOPE. Landlord leases to Tenant approximately 4,800 square feet of office space for\ngeneral office use, with access to shared parking.\n\n2. TERM. This Agreement begins on the Effective Date and ends on November 4, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Tenant shall pay monthly rent of $5,200, due on the first day of each month,\nand a security deposit equal to two months' rent on signing.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Texas, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Thomas Webb\n\nBrightline Logistics LLC\nBy: Fatima Noor",
+      "text_read": "COMMERCIAL LEASE AGREEMENT\n\nThis Commercial Lease Agreement (the \"Agreement\") is made as of 04 Nov 2025 (the\n\"Effective Date\") by and between Northwind Analytics Inc., a Delaware company\n(\"Landlord\"), and Brightline Logistics LLC, a Colorado company (\"Tenant\").\n\n1. SCOPE. Landlord leases to Tenant approximately 4,800 square feet of office space for\ngeneral office use, with access to shared parking.\n\n2. TERM. This Agreement begins on the Effective Date and ends on November 4, 2026, unless\nterminated earlier under Section 6.\n\n3. PAYMENT. Tenant shall pay monthly rent of $3,200, due on the first day of each month,\nand a security deposit equal to two months' rent on signing.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Texas, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Thomas Webb\n\nBrightline Logistics LLC\nBy: Fatima Noor",
       "extracted": {
         "contract_type": "Commercial Lease Agreement",
         "parties": [
@@ -2830,14 +2827,14 @@
         "expiration_date": "2026-11-04",
         "key_terms": [
           "Landlord leases approximately 4800 square feet of office space to Tenant for general office use, with access to shared parking.",
-          "The lease ends on November 4, 2026, unless terminated earlier under Section 6.",
-          "Tenant must pay monthly rent and a security deposit equal to two months' rent on signing.",
-          "Each party must keep the other's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach another agreement binding on it.",
+          "The lease begins on the Effective Date and ends on November 4, 2026, unless terminated earlier under Section 6.",
+          "Tenant must pay monthly rent of 3200 on the first day of each month and a security deposit equal to two months' rent on signing.",
+          "Each party must keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
+          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
           "Neither party is liable for indirect or consequential damages; each party's total liability is capped at the fees paid in the twelve months before the claim.",
-          "The Agreement replaces all earlier proposals and understandings on its subject."
+          "The Agreement constitutes the entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
-        "payment_terms": "Monthly rent of 5200, due on the first day of each month; a security deposit equal to two months' rent is due on signing.",
+        "payment_terms": "Monthly rent of 3200 is due on the first day of each month. A security deposit equal to two months' rent is due on signing.",
         "termination_clause": "Either party may terminate for convenience on 60 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 30 days of written notice.",
         "governing_law": "State of Texas, without regard to its conflict of laws rules."
       },
@@ -2851,10 +2848,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 17.2,
-      "input_tokens": 4391,
-      "output_tokens": 917,
-      "cost_usd": 0.0134148
+      "seconds": 19.09,
+      "input_tokens": 3822,
+      "output_tokens": 896,
+      "cost_usd": 0.012066799999999999
     },
     {
       "id": "unk-03-poor",
@@ -2878,10 +2875,10 @@
       "text_read": "BUILDING NOTICE\nTo all tenants of 500 Lake Shore Drive\n\nThe north elevator will be out of service for scheduled maintenance from Monday through\nWednesday next week. The south elevator and both stairwells remain open. Deliveries should\nuse the loading dock entrance on Grand Avenue. Thank you for your patience.\n\nProperty Management Office",
       "extracted": null,
       "outcomes": {},
-      "seconds": 5.28,
+      "seconds": 4.27,
       "input_tokens": 2591,
-      "output_tokens": 115,
-      "cost_usd": 0.0017948
+      "output_tokens": 113,
+      "cost_usd": 0.0017748
     },
     {
       "id": "inv-13",
@@ -2899,10 +2896,10 @@
         {
           "page": 1,
           "source": "vision",
-          "chars": 634
+          "chars": 710
         }
       ],
-      "text_read": "Brightline Logistics LLC\n4100 Commerce Pkwy\nMemphis, TN 38118\n\nINVOICE\n\nInvoice Number: 45731\nInvoice Date: Nov 16, 2025\nDue Date: 16 Dec 2025\nPayment Terms: Net 30\n\nBill To:\nPinecrest Hotel Group\n\nDescription    Qty    Unit Price    Amount\nPrinter toner cartridge    4    $55.44    $221.76\nErgonomic office chair    4    $294.41    $1,177.64\nFreight - LTL shipment    2    $909.53    $1,819.06\nCatering - working lunch for 20    2    $333.41    $666.82\nOn-site support visit    1    $173.72    $173.72\n\nSubtotal: $4,059.00\nTax (5%): $202.95\nTotal Due: $4,261.95\n\nThank you for your business. Questions? billing@brightline.example.com",
+      "text_read": "Brightline Logistics LLC\n4100 Commerce Pkwy\nMemphis, TN 38118\n\nINVOICE\n\nInvoice Number: 45731\nInvoice Date: Nov 16, 2025\nDue Date: 16 Dec 2025\nPayment Terms: Net 30\n\nBill To:\nPinecrest Hotel Group\n\nDescription                         Qty   Unit Price   Amount\nPrinter toner cartridge             4     $55.44       $221.76\nErgonomic office chair              4     $294.41      $1,177.64\nFreight - LTL shipment              2     $909.53      $1,819.06\nCatering - working lunch for 20     2     $333.41      $666.82\nOn-site support visit               1     $173.72      $173.72\n\nSubtotal: $4,059.00\nTax (5%): $202.95\nTotal Due: $4,261.95\n\nThank you for your business. Questions? billing@brightline.example.com",
       "extracted": {
         "vendor_name": "Brightline Logistics LLC",
         "invoice_number": "45731",
@@ -2956,10 +2953,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 15.5,
-      "input_tokens": 4019,
-      "output_tokens": 620,
-      "cost_usd": 0.009700799999999999
+      "seconds": 14.35,
+      "input_tokens": 3509,
+      "output_tokens": 609,
+      "cost_usd": 0.0085708
     },
     {
       "id": "inv-14",
@@ -2977,15 +2974,15 @@
         {
           "page": 1,
           "source": "vision",
-          "chars": 495
+          "chars": 494
         }
       ],
-      "text_read": "INVOICE\n________________________\nFrom: Northwind Analytics Inc., 88 Market Street, Suite 400, Denver, CO 80202\nTo: Summit Ridge Manufacturing\nInvoice #: IVO-99887\nIssued: 2025-06-06\nPayment due: Jan 21, 2025\n\nItems:\n1. On-site support visit - 1 x $379.26 = $379.26\n2. Printer toner cartridge - 12 x $98.61 = $1,183.32\n3. Warehouse storage (pallet-month) - 31 x $22.10 = $685.10\n4. Freight - LTL shipment - 2 x $688.29 = $1,376.58\n\nSubtotal ____ $3,624.26\nTax ______ $181.21\nTOTAL _____ $3,805.47",
+      "text_read": "INVOICE\n________________________\nFrom: Northwind Analytics Inc., 88 Market Street, Suite 400, Denver, CO 80202\nTo: Summit Ridge Manufacturing\nInvoice #: NO-99887\nIssued: 2025-06-06\nPayment due: Jun 21, 2025\n\nItems:\n1. On-site support visit - 1 x $379.26 = $379.26\n2. Printer toner cartridge - 12 x $98.61 = $1,183.32\n3. Warehouse storage (pallet-month) - 31 x $22.10 = $685.10\n4. Freight - LTL shipment - 2 x $688.29 = $1,376.58\n\nSubtotal ____ $3,624.26\nTax ______ $181.21\nTOTAL _____ $3,805.47",
       "extracted": {
         "vendor_name": "Northwind Analytics Inc.",
-        "invoice_number": "IVO-99887",
+        "invoice_number": "NO-99887",
         "invoice_date": "2025-06-06",
-        "due_date": "2025-01-21",
+        "due_date": "2025-06-21",
         "line_items": [
           {
             "description": "On-site support visit",
@@ -3019,19 +3016,19 @@
       },
       "outcomes": {
         "vendor_name": "correct",
-        "invoice_number": "wrong",
+        "invoice_number": "correct",
         "invoice_date": "correct",
-        "due_date": "wrong",
+        "due_date": "correct",
         "line_items": "correct",
         "subtotal": "correct",
         "tax": "correct",
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 15.45,
-      "input_tokens": 3894,
-      "output_tokens": 597,
-      "cost_usd": 0.0092208
+      "seconds": 12.77,
+      "input_tokens": 3425,
+      "output_tokens": 559,
+      "cost_usd": 0.0079028
     },
     {
       "id": "inv-15",
@@ -3088,10 +3085,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 11.56,
-      "input_tokens": 3789,
-      "output_tokens": 450,
-      "cost_usd": 0.0075408
+      "seconds": 15.31,
+      "input_tokens": 3405,
+      "output_tokens": 453,
+      "cost_usd": 0.0068028
     },
     {
       "id": "inv-16",
@@ -3148,10 +3145,10 @@
         "total_amount": "correct",
         "currency": "correct"
       },
-      "seconds": 11.54,
-      "input_tokens": 3727,
-      "output_tokens": 411,
-      "cost_usd": 0.007026800000000001
+      "seconds": 9.92,
+      "input_tokens": 3339,
+      "output_tokens": 423,
+      "cost_usd": 0.0063708
     },
     {
       "id": "res-10",
@@ -3225,10 +3222,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 14.53,
-      "input_tokens": 4048,
-      "output_tokens": 562,
-      "cost_usd": 0.009178799999999999
+      "seconds": 12.46,
+      "input_tokens": 3530,
+      "output_tokens": 504,
+      "cost_usd": 0.007562800000000001
     },
     {
       "id": "res-11",
@@ -3312,10 +3309,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 13.84,
-      "input_tokens": 4219,
-      "output_tokens": 597,
-      "cost_usd": 0.009870799999999999
+      "seconds": 12.19,
+      "input_tokens": 3612,
+      "output_tokens": 565,
+      "cost_usd": 0.0083368
     },
     {
       "id": "res-12",
@@ -3394,10 +3391,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 13.95,
-      "input_tokens": 4107,
-      "output_tokens": 534,
-      "cost_usd": 0.009016799999999998
+      "seconds": 10.36,
+      "input_tokens": 3554,
+      "output_tokens": 503,
+      "cost_usd": 0.0076008000000000004
     },
     {
       "id": "res-13",
@@ -3478,10 +3475,10 @@
         "experience": "correct",
         "education": "correct"
       },
-      "seconds": 13.66,
-      "input_tokens": 4179,
-      "output_tokens": 577,
-      "cost_usd": 0.0095908
+      "seconds": 12.15,
+      "input_tokens": 3600,
+      "output_tokens": 587,
+      "cost_usd": 0.0085328
     },
     {
       "id": "con-10",
@@ -3522,7 +3519,7 @@
           "Buyer must pay for each delivery at the unit prices in Schedule A within 45 days of the invoice date.",
           "Each party must keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
           "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
-          "Neither party is liable for indirect or consequential damages; each party's total liability is capped at the fees paid in the 12 months before the claim.",
+          "Neither party is liable for indirect or consequential damages. Each party's total liability is capped at the fees paid in the 12 months before the claim.",
           "The Agreement replaces all earlier proposals and understandings on its subject."
         ],
         "payment_terms": "Buyer must pay for each delivery at the unit prices in Schedule A within 45 days of the invoice date.",
@@ -3539,10 +3536,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 18.07,
-      "input_tokens": 4347,
-      "output_tokens": 851,
-      "cost_usd": 0.012666799999999999
+      "seconds": 15.04,
+      "input_tokens": 3802,
+      "output_tokens": 832,
+      "cost_usd": 0.011386799999999999
     },
     {
       "id": "con-11",
@@ -3579,11 +3576,11 @@
         "effective_date": "2026-08-23",
         "expiration_date": "2028-08-23",
         "key_terms": [
-          "Provider shall perform services described in each Statement of Work signed by both parties with the skill and care of a qualified professional.",
+          "Provider shall perform the services described in each Statement of Work signed by both parties with the skill and care of a qualified professional.",
           "Each party shall keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding on it.",
-          "Neither party is liable for indirect or consequential damages. Each party's total liability is capped at the fees paid in the twelve months before the claim.",
-          "The Agreement constitutes the entire agreement on its subject and replaces all earlier proposals and understandings."
+          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
+          "Neither party is liable for indirect or consequential damages. Each party's total liability is capped at the fees paid in the 12 months before the claim.",
+          "The Agreement constitutes the parties' entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
         "payment_terms": "Client shall pay Provider the fees set out in each Statement of Work. Provider will invoice monthly, and Client shall pay each invoice within 30 days of receipt.",
         "termination_clause": "Either party may terminate for convenience on 60 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 15 days of written notice.",
@@ -3599,10 +3596,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 16.27,
-      "input_tokens": 4367,
-      "output_tokens": 847,
-      "cost_usd": 0.012666799999999999
+      "seconds": 26.33,
+      "input_tokens": 3830,
+      "output_tokens": 828,
+      "cost_usd": 0.0114028
     },
     {
       "id": "con-12",
@@ -3623,7 +3620,7 @@
           "chars": 1880
         }
       ],
-      "text_read": "CONSULTING AGREEMENT\n\nThis Consulting Agreement (the \"Agreement\") is made as of 16 Sep 2025 (the \"Effective\nDate\") by and between Northwind Analytics Inc., a New York company (\"Consultant\"), and\nVantage Point Consulting, a Texas company (\"Company\").\n\n1. SCOPE. Consultant shall provide data and reporting advisory services as requested by\nCompany and shall not subcontract any work without written consent.\n\n2. TERM. This Agreement begins on the Effective Date and ends on September 16, 2027,\nunless terminated earlier under Section 6.\n\n3. PAYMENT. Company shall pay Consultant $116 per hour, invoiced monthly and payable\nwithin fifteen (15) days of the invoice date.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 90 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Delaware, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Kevin O'Neil\n\nVantage Point Consulting\nBy: Thomas Webb",
+      "text_read": "CONSULTING AGREEMENT\n\nThis Consulting Agreement (the \"Agreement\") is made as of 16 Sep 2025 (the \"Effective\nDate\") by and between Northwind Analytics Inc., a New York company (\"Consultant\"), and\nVantage Point Consulting, a Texas company (\"Company\").\n\n1. SCOPE. Consultant shall provide data and reporting advisory services as requested by\nCompany and shall not subcontract any work without written consent.\n\n2. TERM. This Agreement begins on the Effective Date and ends on September 16, 2027,\nunless terminated earlier under Section 6.\n\n3. PAYMENT. Company shall pay Consultant $116 per hour, invoiced monthly and payable\nwithin fifteen (15) days of the invoice date.\n\n4. CONFIDENTIALITY. Each party shall keep the other party's confidential information\nsecret, use it only to perform this Agreement, and return or destroy it when this\nAgreement ends.\n\n5. WARRANTIES. Each party warrants that it has the authority to enter into this Agreement\nand that performing it will not breach any other agreement it is bound by.\n\n6. TERMINATION. Either party may terminate this Agreement for convenience on 60 days'\nwritten notice, or immediately if the other party materially breaches this Agreement and\ndoes not cure the breach within 30 days of written notice.\n\n7. LIMITATION OF LIABILITY. Neither party is liable for indirect or consequential damages.\nEach party's total liability is capped at the fees paid in the twelve months before the\nclaim.\n\n8. GOVERNING LAW. This Agreement is governed by the laws of the State of Delaware, without\nregard to its conflict of laws rules.\n\n9. ENTIRE AGREEMENT. This Agreement is the parties' entire agreement on its subject and\nreplaces all earlier proposals and understandings.\n\nIN WITNESS WHEREOF, the parties have signed this Agreement as of the Effective Date.\n\nNorthwind Analytics Inc.\nBy: Kevin O'Neil\n\nVantage Point Consulting\nBy: Thomas Webb",
       "extracted": {
         "contract_type": "Consulting Agreement",
         "parties": [
@@ -3643,12 +3640,13 @@
           "Consultant shall not subcontract any work without written consent.",
           "Each party shall keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
           "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
-          "Neither party is liable for indirect or consequential damages; each party's total liability is capped at the fees paid in the twelve months before the claim.",
+          "Neither party is liable for indirect or consequential damages.",
+          "Each party's total liability is capped at the fees paid in the twelve months before the claim.",
           "The Agreement constitutes the entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
         "payment_terms": "Company shall pay Consultant 116 per hour, invoiced monthly and payable within 15 days of the invoice date.",
-        "termination_clause": "Either party may terminate for convenience on 90 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 30 days of written notice.",
-        "governing_law": "State of Delaware, without regard to its conflict of laws rules."
+        "termination_clause": "Either party may terminate for convenience on 60 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 30 days of written notice.",
+        "governing_law": "Laws of the State of Delaware, without regard to its conflict of laws rules."
       },
       "outcomes": {
         "contract_type": "correct",
@@ -3660,10 +3658,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 15.45,
-      "input_tokens": 4327,
-      "output_tokens": 834,
-      "cost_usd": 0.012456799999999999
+      "seconds": 15.56,
+      "input_tokens": 3798,
+      "output_tokens": 817,
+      "cost_usd": 0.011228799999999999
     },
     {
       "id": "con-13",
@@ -3701,13 +3699,12 @@
         "expiration_date": "2029-03-21",
         "key_terms": [
           "Licensor grants Licensee a non-exclusive, non-transferable license to use the software for internal business purposes for up to 250 named users.",
-          "Licensee must pay an annual license fee of 71000.",
           "Each party must keep the other party's confidential information secret, use it only to perform the Agreement, and return or destroy it when the Agreement ends.",
-          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding on it.",
-          "Neither party is liable for indirect or consequential damages; each party's total liability is capped at the fees paid in the twelve months before the claim.",
-          "The Agreement replaces all earlier proposals and understandings concerning its subject."
+          "Each party warrants that it has authority to enter into the Agreement and that performance will not breach any other agreement binding it.",
+          "Neither party is liable for indirect or consequential damages. Each party's total liability is capped at the fees paid in the twelve months before the claim.",
+          "The Agreement constitutes the entire agreement on its subject and replaces all earlier proposals and understandings."
         ],
-        "payment_terms": "Annual license fee of 71000, due within 30 days of the Effective Date and of each anniversary.",
+        "payment_terms": "Licensee must pay an annual license fee of 71000, due within 30 days of the Effective Date and of each anniversary.",
         "termination_clause": "Either party may terminate for convenience on 30 days' written notice, or immediately if the other party materially breaches the Agreement and does not cure the breach within 30 days of written notice.",
         "governing_law": "State of California, without regard to its conflict of laws rules."
       },
@@ -3721,10 +3718,10 @@
         "termination_clause": "correct",
         "governing_law": "correct"
       },
-      "seconds": 19.28,
-      "input_tokens": 4362,
-      "output_tokens": 942,
-      "cost_usd": 0.013606799999999999
+      "seconds": 22.21,
+      "input_tokens": 3820,
+      "output_tokens": 921,
+      "cost_usd": 0.012312799999999999
     }
   ]
 }
