@@ -32,7 +32,7 @@ LOCATION="${LOCATION:-eastus}"
 RESOURCE_GROUP="doc-agent-rg"
 APP_ENV="doc-agent-env"
 APP_NAME="doc-agent"
-IMAGE_REPO="ghcr.io/terrellblash/readback"
+IMAGE_REPO="ghcr.io/victorblash/readback"
 SECRETS_FILE="${HOME}/.config/doc-agent/azure.env"
 DATABASE_FILE="${HOME}/.config/doc-agent/neon.env"
 

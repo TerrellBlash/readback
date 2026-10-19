@@ -48,7 +48,7 @@ Text ───────────────┴→ Ingest → Classify ─
 
 ```bash
 # Clone and install
-git clone https://github.com/TerrellBlash/readback.git
+git clone https://github.com/VictorBlash/readback.git
 cd readback
 pip install -r requirements-dev.txt   # requirements.txt alone to only run the server
 
