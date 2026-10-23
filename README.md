@@ -1,4 +1,4 @@
-# readback
+# readback [![CI](https://github.com/VictorBlash/readback/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/VictorBlash/readback/actions/workflows/ci.yml)
 
 > LangGraph pipeline that reads invoices, resumes and contracts from text, PDFs and scans. A second model re-reads every scanned page, anything doubtful goes to a human reviewer, and a published eval measures how often a wrong value gets through. Deployable to Azure Container Apps with `deploy.sh`.
 

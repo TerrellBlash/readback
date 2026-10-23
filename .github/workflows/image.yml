@@ -1,6 +1,7 @@
 # Builds the API image on every push to main that touches what goes into
 # it, and publishes it to GitHub's container registry tagged with the
-# commit hash. deploy.sh deploys the image for the commit it's run on.
+# commit hash, but only after the CI workflow passes for that commit.
+# deploy.sh deploys the image for the commit it's run on.
 name: Build image
 
 on:
@@ -22,7 +23,11 @@ env:
   IMAGE: ghcr.io/victorblash/readback  # registry names must be lowercase
 
 jobs:
+  test:
+    uses: ./.github/workflows/ci.yml
+
   build:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
