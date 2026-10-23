@@ -1,6 +1,6 @@
 # readback
 
-> LangGraph pipeline that reads invoices, resumes and contracts from text, PDFs and scans. A second model re-reads every scanned page, anything doubtful goes to a human reviewer, and a published eval measures how often a wrong value gets through. Live on Azure Container Apps.
+> LangGraph pipeline that reads invoices, resumes and contracts from text, PDFs and scans. A second model re-reads every scanned page, anything doubtful goes to a human reviewer, and a published eval measures how often a wrong value gets through. Deployable to Azure Container Apps with `deploy.sh`.
 
 The name comes from radio readback: a pilot repeats an instruction back, and a mismatch gets caught before anyone acts on it.
 
@@ -190,6 +190,9 @@ readback/
 │   ├── graph.py          # Graph wiring and the Postgres checkpointer
 │   └── main.py           # FastAPI endpoints, API key, body limits
 ├── tests/
+│   ├── __init__.py
+│   ├── markers.py                    # The `live` marker: skips OpenAI calls unless RUN_LIVE_TESTS=1
+│   ├── scripted_model.py             # Scripted stand-in for the model, to run the real graph offline
 │   ├── test_pipeline.py              # The whole graph against the real model (RUN_LIVE_TESTS=1)
 │   ├── test_review_api.py            # Review loop through the API, scripted model
 │   ├── test_read_check.py            # Second read: comparison, flags, refusals
@@ -205,17 +208,22 @@ readback/
 │   └── test_checkpointer_infra.py    # Postgres pool, setup lock, fresh database (needs Postgres)
 ├── evals/
 │   ├── README.md         # Dataset, scoring rules, metric definitions, limits
+│   ├── __init__.py
 │   ├── build_dataset.py  # Seeded synthetic dataset: 56 docs across text, PDFs, scans
 │   ├── run_eval.py       # Runs the pipeline per model; accuracy, routing, latency, cost
 │   ├── scoring.py        # Field comparison rules
 │   ├── pricing.py        # Token prices for cost estimates
 │   ├── pdfgen.py         # Builds text-layer and scanned PDFs for tests and the eval set
 │   ├── data/             # The dataset and labels.json
+│   ├── experiments/      # second_read.py and its results: how the second read was chosen
 │   └── results/          # One JSON per run, plus a generated summary
 ├── .github/workflows/image.yml  # Builds and publishes the image on push to main
+├── .dockerignore
+├── .env.example          # Every configuration variable, to copy to .env
 ├── Dockerfile
 ├── docker-compose.yml    # Local Postgres for tests
 ├── deploy.sh             # Azure Container Apps deployment
+├── LICENSE
 ├── requirements.txt      # Runtime dependencies
 ├── requirements-dev.txt  # Plus pytest and ruff
 └── pyproject.toml        # ruff settings
@@ -258,9 +266,11 @@ wrong in it. Those are the expensive ones, because nobody looks at them.
 
 What the numbers say:
 
-- **Clean input is solved.** On plain text, text PDFs and ordinary scans,
-  every gpt-6 run extracted every field correctly, and the second read
-  flagged none of the ordinary scans.
+- **Clean input: no field errors in this eval.** On the 33 clean documents
+  in the main set (11 plain text, 11 text-layer PDFs, 11 ordinary scans),
+  each of the four gpt-6 runs got all 252 fields right, and the second read
+  flagged none of the 11 ordinary scans. The documents are synthetic, built
+  from this project's own templates, and each configuration ran once.
 - **Every gpt-6 silent error came from a poor scan.** A misread looks like a
   valid value: 2026 read as 2025, invoice 91630 as 91830, a (312) area code
   as (912). The confidence gate only checks that fields are present. On its
